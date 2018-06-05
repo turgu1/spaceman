@@ -1,0 +1,5 @@
+.legend_u= t('.new_allocation_for_html', building: @allocation.space.floor.building.name, space: @allocation.space.name)
+
+= render partial: 'form', locals: { default_org_id: session[:current_org] }
+
+= link_to t('cmn.back'), back_home_index_path

@@ -1,0 +1,26 @@
+en:
+  allocations:
+    allocation_row:
+      of_space_to: of space %{item_from} to %{item_to}
+    allocation_row2:
+      of_space_to: of space %{item_from} to %{item_to}
+    equipment:
+      from_space_type: From Space Type
+      from_space: From Space
+      from_allocation: From Allocation
+      no_equipment: No Equipment
+    index:
+      no_allocation: There is no personnel / requirement allocation
+    index2:
+      no_allocation: There is no personnel / requirement allocation
+    moving_items:
+      no_moving_item: There is no moving item
+    moving_item_fields:
+      destination_space: Destination Space
+      replace_equipment: Replace equipment at destination
+    new:
+      new_allocation_for_html: New allocation for <b>%{building} / %{space}</b>
+    edit:
+      allocation_for_html: Allocation for <b>%{building} / %{space} &harr; %{target}</b>
+    form:
+      add_item: Add Item  

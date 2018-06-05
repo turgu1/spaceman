@@ -1,0 +1,16 @@
+= simple_form_for(@person) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :org, :as => :hidden
+    = f.input :allocations_count, as: :hidden
+    = f.input :first_name, input_html: { :class => 'first-name-field' }
+    = f.input :last_name, input_html: { :class => 'last-name-field' }
+    = f.input :title, input_html: { :class => 'person-title-field' }
+    = f.input :phone_number, input_html: { :class => 'phone-field' }
+    = f.input :needs_office_space
+    = f.input :from_date, :as => :string, input_html: { :class => 'datepicker date-field' }
+    = f.input :to_date,   :as => :string, input_html: { :class => 'datepicker date-field' }
+
+  .form-actions
+    = f.button :submit

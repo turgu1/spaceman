@@ -1,0 +1,14 @@
+.panel-inner
+  %ul#requirements-list.list-unstyled
+    - if rightbar_requirements_list.requirements.size == 0
+      %li
+        = link_to t('cmn.none'), '#'
+    -else
+      - rightbar_requirements_list.requirements.each do |requirement|
+        %li
+          = remote_link_to "#{requirement.name}", show_allocated_floors_requirement_path(requirement),
+                id: requirement.id,
+              type: 'Requirement',
+            remote: true,
+             title: t('.title', item: requirement.name),
+             class: "#{'draggable' if can? :create, Allocation}#{' alloc-needed' unless requirement.allocations.size > 0}"

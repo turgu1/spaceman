@@ -1,0 +1,31 @@
+%h1= t('cmn.moving_tasks')
+
+%table
+  %tr
+    %th= MovingTask.human_attribute_name(:name)
+    %th= MovingTask.human_attribute_name(:description)
+    %th= MovingTask.human_attribute_name(:specialty)
+    %th= MovingTask.human_attribute_name(:responsability)
+    %th= MovingTask.human_attribute_name(:order)
+    %th= MovingTask.human_attribute_name(:duration)
+    %th= MovingTask.human_attribute_name(:cost)
+    %th
+    %th
+    %th
+
+  - @moving_tasks.each do |moving_task|
+    %tr
+      %td= moving_task.name
+      %td= moving_task.description
+      %td= moving_task.specialty
+      %td= moving_task.responsability
+      %td= moving_task.order
+      %td= moving_task.duration
+      %td= moving_task.cost
+      %td= link_to t('cmn.show'), moving_task
+      %td= link_to t('cmn.edit'), edit_moving_task_path(moving_task)
+      %td= link_to t('cmn.destroy'), moving_task, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to t('.new_task'), new_moving_task_path

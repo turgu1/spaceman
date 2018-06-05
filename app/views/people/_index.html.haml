@@ -1,0 +1,27 @@
+.legend
+  = render partial: "people/new_person_link", locals: { org: org }
+  = t('.personnel')
+
+%table
+  %thead
+    %tr
+      %th= t('cmn.org')
+      %th= t('cmn.name')
+      %th.hcenter=        Person.human_attribute_name(:phone_number)
+      %th.nowrap.hcenter= Person.human_attribute_name(:from_date)
+      %th.nowrap.hcenter= Person.human_attribute_name(:to_date)
+      %th.no-print
+
+  %tbody
+    - index.each do |person|
+      %tr
+        %td= org.try(:abbreviation)
+        %td.nowrap= person.name
+        %td.hcenter= person.phone_number
+        %td.nowrap.hcenter= person.from_date
+        %td.nowrap.hcenter= person.to_date || ''
+        %td.nowrap.no-print= all_actions person, "[#{person.name}]", { 'data-right-column-state': true }
+
+%br
+
+

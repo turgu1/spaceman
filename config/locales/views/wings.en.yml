@@ -1,0 +1,12 @@
+en:
+  wings:
+    edit:
+      editing_html: Editing Wing <b>%{item}</b>
+    edit_wing_link:
+      title: Edit Wing Attributes
+    new:
+      new_for_building_html: New Wing for Building <b>%{item}</b>
+    new_wing_link:
+      title: Add a new Wing
+    show:
+      wing_html: Wing <b>%{item}</b>

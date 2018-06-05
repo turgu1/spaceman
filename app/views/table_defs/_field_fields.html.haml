@@ -1,0 +1,14 @@
+%tr.nested-fields
+  %td
+    = f.input_field :name, style: 'width:100%;', class: 'form-control'
+    = show_error(f.object, :name)
+  %td.hcenter
+    = f.input_field :field_type, collection: %w{String Text Integer Boolean}, style: 'width: 8em;', class: ['small-field', 'form-control']
+    = show_error(f.object, :field_type)
+  %td.hcenter
+    = f.input_field :required, class: 'form-control', class: 'auto-check'
+    = show_error(f.object, :required)
+  %td.hcenter
+    = f.input_field :order, class: 'tiny-field form-control'
+    = show_error(f.object, :order)
+  %td= link_to_remove_association t('cmn.destroy'), f, class: 'btn btn-xs btn-danger'

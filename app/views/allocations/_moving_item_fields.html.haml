@@ -1,0 +1,33 @@
+%tbody.nested-fields
+  %tr
+    %td.hcenter{ rowspan: 2 }
+      = f.input_field :qty, class: 'qty-field form-control', min: 1
+      = show_error f.object, :qty
+    %td{ rowspan: 2 }
+      = f.input_field :description, class: 'description-field form-control'
+      = show_error f.object, :description
+    %td
+      = f.input_field :weight, class: 'weight-field form-control'
+      = show_error f.object, :weight
+    %td.hcenter
+      = f.input_field :volume, class: 'volume-field form-control'
+      = show_error f.object, :volume
+    %td
+      = f.input_field :destination_id,
+          collection: Allocation.where(consumer_id: @allocation.consumer_id),
+          label_method: -> (obj) { "#{obj.short_name}" },
+          value_method: -> (obj) { obj.id },
+          class: 'destination-field form-control',
+          title: t('.destination_space')
+      = show_error f.object, :destination_id
+    %td
+      = f.input_field :replace_id,
+          class: 'replace-field form-control',
+          title: t('.replace_equipment')
+      = show_error f.object, :replace_id
+    %td.all-space{ rowspan: 2 }
+      = link_to_remove_association t('cmn.destroy'), f, class: 'btn btn-xs btn-danger'
+  %tr
+    %td{ colspan: 4}
+      = f.input_field :notes, class: 'table-note form-control', placeholder: 'Notes...'
+      = show_error f.object, :notes

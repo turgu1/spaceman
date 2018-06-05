@@ -1,0 +1,214 @@
+en:
+  activerecord:
+    models:
+      allocation: Allocation
+      building: Building
+      equipment_group: Equipment Group
+      equipment_item: Equipment Item
+      equipment_model: Equipment Model
+      field_def: Field Definition
+      floor: Floor
+      floor_image: Floor Image
+      moving_item: Moving Item
+      moving_task: Moving Task
+      org: Organisation
+      person: Person
+      report: Report
+      requirement: Requirement
+      space: Space
+      space_type: Space Type
+      specialty: Specialty
+      table_def: Table Definition
+      user: User
+      wing: Wing
+    attributes:      
+      allocation:
+        from_date: From Date
+        to_date: To Date
+        date: Date
+        notes: Notes
+      building:
+        name: Name
+        short_name: Short Name
+        photo: Photo
+        min_level: Minimum Level
+        max_level: Maximum Level
+        allocate_equipment: Allocate Equipment
+        moving_items: Moving Items
+      equipment_group:
+        name: Name
+        order: Order
+      equipment_item:
+        qty: Quantity
+        notes: Notes
+      equipment_model:
+        name: Name
+        order: Order
+        photo: Photo
+        supplier: Supplier
+        price: Price
+        notes: Notes
+        model_ident: Supplier Ident
+        price_str: Unit Price
+      field_def:
+        name: Name
+        field_type: Field Type
+        required: Required
+        order: Order
+      floor:
+        name: Name
+        corners_coor: Corners Coordinates
+        gage_area: Gage Area
+        gage_coor: Gage Coordinates
+        gage_center_coor: Gage Center Coordinates
+        level: Level
+        order: Order
+        drawing: Drawing
+        locator_coor: Locator Coordinates
+      floor_image:
+        level: Level
+        file: File
+        name: Name
+      moving_item:
+        weight: 'Weight (kg)'
+        volume: 'Volume (m³)'
+        notes: Notes
+        description: Description
+        destination: Destination
+        qty: Qty
+        replace: Replace
+      moving_task:
+        name: Name
+        description: Description
+        responsability: Responsability
+        order: Order
+        duration: Duration
+        cost: Cost
+      org:
+        name: Name
+        abbreviation: Abbrev
+        order: Order
+        admin: Admin assist.
+        manager: Manager
+      person:
+        first_name: First Name
+        last_name: Last Name
+        title: Title
+        phone_number: Phone
+        needs_office_space: Needs Space
+        from_date: From
+        to_date: To
+        allocations_count: Allocation Count
+        org_name: Organisation
+      report:
+        name: Name
+        group: Group
+        order: Order
+        icon: Icon
+        the_icon: Icon
+        params_script: Params Script (Haml)
+        exec_script: Exec Script (Ruby)
+        view_script: View Script (Haml)
+        enabled: Enabled
+      requirement:
+        requirement_date: Requirement Date
+        requirement_type: Requirement Type
+        from_date: From
+        to_date: To
+        project_name: Project Name
+        facility_criteria: Facility Criteria
+        scientific_criteria: Scientific Criteria
+        security_criteria: Security Criteria
+        facility_justification: Facility Justification
+        scientific_justification: Scientific Justification
+        security_justification: Security Justification
+        notes: Notes
+        pm_ok: PM OK
+        manager_ok: Manager OK
+        authorized_for_allocation: Authorized for Allocation
+        allocation_completed: Allocation Completed
+        created_by: Created By
+        allocations_count: Allocation Count
+        requester: Requester
+        requester_name: Requester
+      space:
+        name: Name
+        function: Function
+        figure: Figure
+        coor: Coordinates
+        center_coor: Center Coordinates
+        area: Area
+        properties: Properties
+        space_type: Space Type
+      space_type:
+        name: Name
+        spaces_count: Spaces Count
+        notes: Notes
+      specialty:
+        name: Name
+      table_def:
+        name: Name
+      user:
+        username: User Name
+        email: eMail
+        password: Password
+        roles: Roles
+        current_password: Current Password
+        password_confirmation: Password Confirmation
+        remember_me: Please Remember Me
+        man_all_building: Manage All Buildings
+        man_all_org: Manage All Organisations
+        buildings_to_man: Buildings to Manage
+        orgs_to_man: Sections/Services to Manage
+      wing:
+        name: Name
+        short_name: Short Name
+        order: Order
+        floors_count: Floor Count
+        visible: Visible
+        building_name: Building
+  simple_form:
+    options:
+      user:
+        roles:
+          admin: Admin
+          pilot: Pilot
+          buildings: Buildings
+          organisations: Organisations
+          requirements: Requirements
+          allocations: Allocations
+          space_types: Space Types
+          equipments: Equipments
+          reports: Reports
+          import: Import
+          backup: Backup
+
+  # Messages used inside app/models/...
+  allocation:
+    from_smaller_than_two: From Date must be smaller than To Date
+  floor:
+    building_not_found: 'ERROR: Building not found: %{item}'
+    wing_not_found: 'ERROR: Wing not found: %{item}'
+    floor_created: 'Floor created: %{item}'
+    unable_to_create_space: Unable to create space %{item}
+    space_created: Space %{item} created.
+    unable_to_create_floor: 'ERROR: Unable to create floor: %{item}'
+    floor_import_completed: 'Floor Import Completed: %{item}'
+    rectangle_corners: 'Must contains rectangle corners -> x1,y1,x2,y2.'
+    gage_coordinates_and_area: Gage Coordinates AND Gage Area must be both present, or both absent.
+    must_be_in_range: 'Must be in the range defined for the building: [%{from}..%{to}]'
+    locator_coor_not_valid: Locator coordinates not valid (must be in pair and larger or equal to 4).
+    corners_coor_not_valid: Corners coordinates not valid (must have 4 coordinates).
+  import:
+    key_unknown: 'Key Unknown: %{item}'
+  space:
+    invalid_figure_type: Invalid Figure Type
+    invalid_coordinates: Invalid Coordinates
+
+
+
+
+
+
+
+

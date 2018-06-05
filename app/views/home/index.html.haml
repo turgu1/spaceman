@@ -1,0 +1,20 @@
+%h1= t('.title')
+%h2= t('.version')
+%br/
+%br/
+%h4= t('.welcome')
+
+/[if lt IE 11]
+  %h3{ class: "text-warning" }
+    = t('.bad_version')
+
+.spaceman
+  %noscript
+    %br/
+    %br/
+    %h3{ class: "text-danger" }
+      = t('.javascript')
+
+- content_for :left_side do
+
+  %img{ src: "#{image_path 'mstile-70x70.png'}" }

@@ -1,0 +1,19 @@
+en:
+  reports:
+    edit:
+      editing_html:  Editing Report <b>%{item}</b>
+    edit_link:
+      title: Edit Report Attributes
+    form:
+      params_script: Parameters Script (Haml)
+      exec_script: Execution Script (Ruby)
+      view_script: View Script (Haml)
+      icon: Icon
+    icon_selector:
+      please_select: 'Please select the desired Icon:'
+    new:
+      new: New Report
+    new_link:
+      title: Add a new Report
+    show:
+      report_html: Report <b>%{item}</b>

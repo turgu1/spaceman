@@ -1,0 +1,5 @@
+replace_content('#modal-info', "<%= j(render(:partial => 'allocations/show_modal', :object => @allocation)) %>");
+replace_content('#flash-pane', "<%= j(render(partial: 'layouts/flash')) %>");
+$('#modal-dialog').modal({ backdrop: false, show: true});
+//replace_content('#main-pane',  "<%= j(render(partial: 'allocations/show')) %>");
+//replace_content('#flash-pane', "<%= j(render(partial: 'layouts/flash')) %>");

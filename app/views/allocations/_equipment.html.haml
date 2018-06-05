@@ -1,0 +1,52 @@
+%br/
+.tabbable
+  %ul.nav.nav-tabs
+    %li.active
+      = link_to t('.from_space_type'), '#space-type', 'data-toggle' => :tab
+    %li
+      = link_to t('.from_space'), '#space', 'data-toggle' => :tab
+    %li
+      = link_to t('.from_allocation'), '#allocation', 'data-toggle' => :tab
+  .tab-content
+    #space-type.tab-pane.active
+      %br/
+      - unless equipment.space.space_type.nil? || (equipment.space.space_type.equipment_items.size == 0)
+        %table
+          %thead
+            %tr
+              %th.hcenter= t('cmn.qty')
+              %th= t('cmn.name')
+              %th.hcenter= t('cmn.photo')
+          %tbody
+            - equipment.space.space_type.equipment_items.each do |item|
+              = render :partial => 'equipment_items/table_row', :object => item
+      - else
+        %h4= t('.no_equipment')
+    #space.tab-pane
+      %br/
+      - if equipment.space.equipment_items.size > 0
+        %table
+          %thead
+            %tr
+              %th.hcenter= t('cmn.qty')
+              %th= t('cmn.name')
+              %th.hcenter= t('cmn.photo')
+          %tbody
+            - equipment.space.equipment_items.each do |item|
+              = render :partial => 'equipment_items/table_row', :object => item
+      - else
+        %h4= t('.no_equipment')
+    #allocation.tab-pane
+      %br/
+      - data = render :partial => 'spaces/alloc_equipment', :object => equipment
+      - unless data.blank?
+        %table
+          %thead
+            %tr
+              %th.hcenter= t('cmn.qty')
+              %th= t('cmn.name')
+              %th.hcenter= t('cmn.photo')
+          %tbody
+            = data
+      - else
+        %h4= t('.no_equipment')

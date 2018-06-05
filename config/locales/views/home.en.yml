@@ -1,0 +1,18 @@
+en:
+  home:
+    counter_cache_reset:
+      completed: Counter Cache Reset Completed
+    do_import_data:
+      result_html: Import Data Result for <b>%{item}</b>
+    dropdown_menu:
+      adjust_counters: Adjust Counters   
+      import_data: Import Data 
+      backup_data: Backup Data
+    import_data:
+      import: Import XML Data
+    index:
+      title: Building Space Management (SpaceMan)
+      version: Version 2.0
+      welcome: Welcome! Have fun using this application!
+      bad_version: This version of Internet Explorer is not appropriate for use with this application. You may encounter various discrepancies in your interaction with SpaceMan. Please update your browser to version 9 or later.
+      javascript: Please enable JavaScript to use this application.

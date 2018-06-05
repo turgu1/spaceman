@@ -1,0 +1,27 @@
+%h1 Listing moving_items
+
+%table
+  %tr
+    %th Description
+    %th Allocation
+    %th Weight
+    %th Volume
+    %th Notes
+    %th Destination
+    %th Replace
+    %th.no-print.nowrap
+
+  - @moving_items.each do |moving_item|
+    %tr
+      %td= moving_item.description
+      %td= moving_item.allocation
+      %td= moving_item.weight
+      %td= moving_item.volume
+      %td= moving_item.notes
+      %td= moving_item.destination
+      %td= moving_item.replace
+      %td.no-print.nowrap= all_actions(moving_item, "[#{moving_item.description}]")
+
+%br
+
+= remote_link_to 'New Moving item', new_moving_item_path

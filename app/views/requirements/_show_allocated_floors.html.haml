@@ -1,0 +1,14 @@
+.legend_u= t('.allocations_for_html', item: @requirement.name)
+
+- if @floors.empty?
+  %h4= t('.no_allocation')
+- else
+  - @floors.each do |floor|
+    %p
+      %h3 #{floor.complete_name}
+      .entity-allocations{ id: "allocations-#{inc_center_index.to_s}", 'data-entity': 'requirements', 'data-entity-id': @requirement.id, 'data-floor-id': floor.id, 'nxt-load': 'b' }
+        %div#a
+          = render :partial => "/floors/drawing_allocations",
+            locals: { allocation_obj: @requirement, floor: floor }
+        %div#b
+

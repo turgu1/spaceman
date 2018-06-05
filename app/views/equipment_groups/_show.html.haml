@@ -1,0 +1,15 @@
+.legend_u
+  = render partial: 'equipment_groups/edit_link', object: @equipment_group
+  %span= t('.equipment_group_html', item: @equipment_group.name)
+
+= show_entry(@equipment_group) do |e|
+  = e.field :name
+  = e.field :order
+
+%br/
+
+= render :partial => 'equipment_models/index',
+    :object => @equipment_group.equipment_models,
+    :locals => { :equipment_group => @equipment_group }
+
+= remote_link_to t('cmn.back'), equipment_groups_path

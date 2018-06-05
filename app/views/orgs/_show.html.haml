@@ -1,0 +1,12 @@
+.legend_u
+  = render partial: 'orgs/edit_org_link', object: @org
+  #{@org.name} (#{@org.abbreviation})
+  = render partial: 'orgs/export_link', object: @org
+
+= show_entry(@org) do |e|
+  = e.field :manager_name, Org.human_attribute_name(:manager)
+  = e.field :admin_name,   Org.human_attribute_name(:admin)
+
+= render :partial => 'people/index', :object => @org.people, :locals => { :org => @org }
+
+= render :partial => 'requirements/index', :object => @org.requirements, :locals => { :org => @org }

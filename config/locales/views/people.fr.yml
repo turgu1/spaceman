@@ -1,0 +1,13 @@
+fr:
+  people:
+    show_allocated_floors:
+      allocation_for_html: Allocations pour <b>%{item}</b>
+      no_allocation: Aucune allocation
+    new_person_link:
+      add_person: "Ajout d'une Personne"
+    new:
+      new_person_for_html: New person for <b>%{item}</b>
+    index:
+      personnel: Personnel
+    edit:
+      editing_person_for_html: Edition de <b>%{person}</b> de <b>%{org}</b>

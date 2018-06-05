@@ -1,0 +1,26 @@
+= simple_form_for(@table_def) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, input_html: { class: 'medium-field' }
+
+    .panel.panel-default
+      .panel-body
+        .col-lg-9.col-sm-9
+          %h4= t('.fields')
+          %table#field_defs.nested-container
+            %thead
+              %tr
+                %th.nowrap{ style: 'width: 100%;'}= "* #{FieldDef.human_attribute_name(:name)}"
+                %th.hcenter= FieldDef.human_attribute_name(:field_type)
+                %th.hcenter= FieldDef.human_attribute_name(:required)
+                %th.hcenter= FieldDef.human_attribute_name(:order)
+                %th
+            %tbody#fields
+              = f.simple_fields_for :fields, wrapper: false do |ff|
+                = render 'field_fields', f: ff
+
+          = link_to_add_association t('cmn.add'), f, :fields, 'data-association-insertion-node': 'tbody#fields', 'data-association-insertion-method': 'append', class: 'btn btn-xs btn-primary'
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,37 @@
+= simple_form_for(@report) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .tabbable
+      %ul.nav.nav-tabs
+        %li.active= link_to t('cmn.attributes'), '#attributes', 'data-toggle' => :tab
+        %li= link_to t('.params_script'), '#params-script', 'data-toggle' => :tab
+        %li= link_to t('.exec_script'), '#exec-script', 'data-toggle' => :tab
+        %li= link_to t('.view_script'), '#view-script', 'data-toggle' => :tab
+      .tab-content
+        #attributes.tab-pane.active
+          %br
+          = f.input :name,  input_html: { class: 'large-field'}
+          = f.input :enabled
+          = f.input :group, input_html: { class: 'large-field'}
+          = f.input :order, input_html: { class: 'small-field'}
+          = f.input :icon, as: :hidden, input_html: { class: 'icon-field'}
+          .form-group
+            = label_tag 'the-icon', t('.icon'), class: 'control-label col-lg-3 col-sm-3'
+            .controls.col-lg-9.col-sm-9
+              %span#the-icon{ onclick: "call_remote('#{icon_selector_reports_path(format: :js)}');" }
+                %i{ class: "#{@report.icon.blank? ? 'fa fa-print' : @report.the_icon} fa-2x"}
+        #params-script.tab-pane
+          %br
+          = text_area_tag 'report[params_script]', @report.params_script, :class => 'code-haml'
+        #exec-script.tab-pane
+          %br
+          = text_area_tag 'report[exec_script]', @report.exec_script, :class => 'code-ruby'
+        #view-script.tab-pane
+          %br
+          = text_area_tag 'report[view_script]', @report.view_script, :class => 'code-haml'
+
+
+  .form-actions
+    %br
+    = f.button :submit

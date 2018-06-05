@@ -1,0 +1,12 @@
+.legend_u= t('.space_html', item: @space.complete_name)
+= show_entry(@space) do |e|
+    = e.field :floor_name, t('cmn.floor')
+    = e.field :name
+    = e.field :space_type_name, t('cmn.space_type')
+    = e.field :function
+    = e.field :figure
+    = e.field :coor
+    = e.field :center_coor
+    = e.field :area
+
+= render partial: 'equipment_items/index', object: @space.equipment_items, locals: { itemable: @space }

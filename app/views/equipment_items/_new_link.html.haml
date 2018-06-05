@@ -1,0 +1,4 @@
+= link_to('<i class="fa fa-plus"></i>'.html_safe,
+    new_equipment_item_path(itemable_id: itemable.id, itemable_type: itemable.class.name),
+    class: 'smallbtn',
+    title: t('.title')) if can? :create, EquipmentItem

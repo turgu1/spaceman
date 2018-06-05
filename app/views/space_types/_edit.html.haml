@@ -1,0 +1,7 @@
+.legend_u= t('.editing_html', item: @space_type.name)
+
+= render 'form'
+
+= remote_link_to(t('cmn.show'), @space_type)
+\|
+= remote_link_to t('cmn.back'), space_types_path

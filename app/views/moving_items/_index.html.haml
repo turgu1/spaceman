@@ -1,0 +1,33 @@
+.legend_u
+  -#= render partial:'equipment_items/new_link', locals: { itemable: itemable }
+  Moving Items
+
+- if index.size > 0
+
+  %table.no-strip
+    %thead
+      %tr
+        %th.hcenter Qty
+        %th Description
+        %th.hcenter Weight (kg)
+        %th.hcenter Volume (m3)
+        %th Destination
+        %th Replace
+
+    %tbody
+      - index.each do |moving_item|
+        %tr
+          %td.hcenter{ rowspan: 2 }= moving_item.qty
+          %td{ rowspan: 2 }= moving_item.description
+          %td.hcenter= moving_item.weight
+          %td.hcenter= moving_item.volume
+          %td= moving_item.destination.try(:short_name) || ''
+          /%td= ''
+          %td= ''
+        %tr
+          %td{ colspan: 4 }= moving_item.notes
+
+- else
+
+  %h4 No Moving Items Defined
+

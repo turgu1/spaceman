@@ -1,0 +1,15 @@
+= simple_form_for(@moving_item) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :allocation
+    = f.input :weight
+    = f.input :volume
+    = f.input :notes
+    = f.association :destination
+    = f.association :replace
+    = f.input :description
+    = f.input :qty
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,50 @@
+-# Draw the floor drawing will all spaces, their allocations and a map area to select spaces and show
+-# their parameters in a modal frame. The spaces are marked as droppable to allow very quick allocation
+-# of spaces to personnel and requirements.
+-#
+-# The data and the generated image are cached for better performance.
+-#
+-# Parameters:
+-#
+-#   drawing_full: floor
+-#
+-# Classes:
+-#
+-#   img-map: To indicate an image with a map area
+-#   droppable: To allow drag and drop through jquery (orgs and space types)
+-#   highlight: ImageMapster highlighting of areas on mouse hover
+-#   tips: To use Bootstrap tooltips
+-#   space-area: To allow the map_area_for_drop function to find the user selection on drag and drop
+
+.legend_u
+  = render partial: 'floors/edit_floor_link', object: drawing_full
+  <b>#{drawing_full.complete_name}</b>
+  = render partial: 'floors/edit_spaces_link', object: drawing_full
+  = render partial: 'floors/export_link', object: drawing_full
+
+- cache ['drawing-full', drawing_full] do
+
+  -# The image is going to be adjusted in size through imagemapster (class resize,
+  -# check_size function in spaceman.js). To limit flickering, css display is set to none
+  -# and adjusted to 'block' once resizing is done
+  %img{ src: "#{drawing_full_floor_path(drawing_full)}?#{drawing_full.cache_key}",
+      class: 'img-map droppable highlight resize',
+      style: 'display: none;',
+         id: 'floor-img',
+     usemap: "#drawing-full-map-#{drawing_full.id}",
+        alt: "Floor #{drawing_full.complete_name}" }
+
+  %map{ id: "drawing-full-map-#{drawing_full.id}",
+      name: "drawing-full-map-#{drawing_full.id}" }
+    - drawing_full.spaces.each do |space|
+      %area{ shape: "#{space.figure == 'R' ? 'rect' : 'poly'}",
+            coords: "#{space.coor}",
+               alt: "Local #{space.name}",
+             class: 'space-area',
+              href: '#',
+             title: space_title(space),
+             style: 'cursor:pointer;',
+           onclick: "call_remote('#{show_modal_space_path(space, format: :js)}'); return false;",
+                id: space.id }
+  %br/
+  %br/

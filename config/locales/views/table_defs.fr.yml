@@ -1,0 +1,20 @@
+fr:
+  table_defs:
+    dropdown_menu:
+      table_field_def: Définition des champs de table
+    edit:
+      editing_for_html:  Modification de la définition des champs pour la table <b>%{item}</b> 
+    edit_link:
+      title: Modification des paramètres de la définition des champs de la table
+    form:
+      fields: Champs
+    index:
+      table_fields_definitions: Définitions des champs de table
+      fields: Champs
+    new:
+      new: Nouvelle définition de champs de table
+    new_link:
+      title: "Ajout d'une définition de champs de table"
+    show:
+      fields: Champs
+      table_def_html: Definition des champs de la table <b>%{item}</b>

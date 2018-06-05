@@ -1,0 +1,41 @@
+# Generate an excel worksheet for an org
+# locals: { wb: wb, org: @org }
+
+big_title = wb.styles.add_style sz: 22, b: true
+title     = wb.styles.add_style sz: 16, b: true
+header    = wb.styles.add_style sz: 14, b: true, border: { :color => 'FF000000', style: :medium, edges: [:bottom] }
+header_c  = wb.styles.add_style sz: 14, b: true, border: { :color => 'FF000000', style: :medium, edges: [:bottom] }, alignment: { horizontal: :center }
+center    = wb.styles.add_style alignment: { horizontal: :center }
+bold      = wb.styles.add_style b: true
+
+wb.add_worksheet(name: "#{org.abbreviation}".gsub(/\/|\\|\?|\*|\[|\]|\:/, "_")) do |sheet|
+  sheet.add_row [org.name], style: [big_title]
+  sheet.add_row ['Abbreviation',    org.abbreviation],             style: [nil, bold]
+  sheet.add_row ['Manager',         org.manager.try(:name) || ''], style: [nil, bold]
+  sheet.add_row ['Admin Assistant', org.admin.try(:name)   || ''], style: [nil, bold]
+  sheet.add_row []
+  sheet.add_row ['Personnel'], style: [title]
+  sheet.add_row ['Last Name', 'First Name', 'Title', 'Phone', 'Space Needed', 'From Date', 'To Date'],
+                style: [header, header, header_c, header_c, header_c, header_c, header_c]
+  org.people.each do |person|
+    sheet.add_row [
+      person.last_name,
+      person.first_name,
+      person.title,
+      person.phone_number,
+      person.needs_office_space ? 'Yes' : 'No',
+      person.from_date.to_s,
+      person.to_date.to_s
+    ],
+    style: [ nil, nil, center, center, center, center, center]
+  end
+
+  sheet.add_row []
+  sheet.add_row ['Requirements'], style: [title]
+  sheet.add_row ['Name', 'Requester', 'From Date', 'To Date'],
+                style: [header, header, header_c, header_c]
+  org.requirements.each do |req|
+    sheet.add_row [req.project_name, req.person.try(:name), req.from_date.to_s, req.to_date.to_s],
+                  style: [nil, nil, center, center]
+  end
+end

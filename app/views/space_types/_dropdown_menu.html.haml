@@ -1,0 +1,2 @@
+- if can? :read, SpaceType
+  %li= remote_link_to("<i class=\"fa fa-square-o\"></i> #{SpaceType.model_name.human(count: 2)}".html_safe, space_types_path)

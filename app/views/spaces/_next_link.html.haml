@@ -1,0 +1,4 @@
+-#= @the_form.button :submit, 'Create & Next', html_input: { class: 'smallbtn' }
+= link_to t('.create_next'), '#',
+  class: 'smallbtn',
+  onclick: %Q{$('form').attr('action', $('form').attr('action') + '?next=1');$('[type="submit"]').click(); return false;}

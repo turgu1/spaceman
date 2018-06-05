@@ -1,0 +1,26 @@
+en:
+  spaces:
+    edit:
+      editing_html: Editing Space <b>%{item}</b>
+    equipment:
+      from_space_type: From Space Type
+      from_space: From Space
+      from_allocation: From Allocation
+      no_equipment: No Equipment
+    form:
+      computed_value: Computed value
+      computed_if_empty: Computed if empty
+    moving_items:
+      no_item: There is no moving item 
+    show_modal:
+      space_type_undefined: SPACE TYPE NOT DEFINED!
+      equipments: Equipments Details
+      new_allocation: New Allocation
+    show:
+      space_html: Space <b>%{item}</b>
+    allocations:
+      no_personnel_allocation: There is no personnel allocation
+    next_link:
+      create_next: Create & Next
+    new:
+      new_space: New Space

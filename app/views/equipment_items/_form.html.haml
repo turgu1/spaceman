@@ -1,0 +1,12 @@
+= simple_form_for(@equipment_item) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :itemable_id, as: :hidden
+    = f.input :itemable_type, as: :hidden
+    = f.association :equipment_model
+    = f.input :qty, input_html: { class: 'small-field' }
+    = f.input :notes
+
+  .form-actions
+    = f.button :submit

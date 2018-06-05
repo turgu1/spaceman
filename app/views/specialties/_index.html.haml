@@ -1,0 +1,17 @@
+.legend Listing specialties
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th.nowrap
+
+  %tbody
+    - @specialties.each do |specialty|
+      %tr
+        %td= specialty.name
+        %td.no-print.nowrap= all_actions specialty, "[#{specialty.name}]"
+
+%br
+
+= link_to 'New Specialty', new_specialty_path

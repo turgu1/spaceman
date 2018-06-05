@@ -1,0 +1,5 @@
+.legend_u= t('.equipment_items_count')
+
+- @items.each do |idx, count|
+  %p
+    #{EquipmentModel.find(idx).try(:name)}: #{count}

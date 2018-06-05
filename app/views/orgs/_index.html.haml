@@ -1,0 +1,27 @@
+.legend
+  = render 'orgs/new_org_link'
+  = t('cmn.organisations')
+  = render 'orgs/export_all_link'
+%table
+  %thead
+    %tr
+      %th=         Org.human_attribute_name(:name)
+      %th.hcenter= Org.human_attribute_name(:abbreviation)
+      %th.hcenter= Org.human_attribute_name(:order)
+      %th=         Org.human_attribute_name(:manager)
+      %th=         Org.human_attribute_name(:admin)
+      %th.no-print.nowrap
+
+  %tbody
+    - @orgs.each do |org|
+      %tr
+        %td= org.name
+        %td.hcenter= org.abbreviation
+        %td.hcenter= org.order
+        %td= org.manager.try(:small_name)
+        %td= org.admin.try(:small_name)
+        %td.no-print.nowrap= all_actions(org, "[#{org.name}]")
+
+%br
+
+

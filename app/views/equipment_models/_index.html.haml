@@ -1,0 +1,23 @@
+.legend
+  = render partial:'equipment_models/new_equipment_model_link', locals: { equipment_group: equipment_group }
+  = EquipmentModel.model_name.human(count: 2)
+
+%table
+  %thead
+    %tr
+      %th=         EquipmentModel.human_attribute_name(:name)
+      %th.hcenter= EquipmentModel.human_attribute_name(:order)
+      %th.hcenter= EquipmentModel.human_attribute_name(:photo)
+      %th.hcenter= EquipmentModel.human_attribute_name(:supplier)
+      %th.hcenter= EquipmentModel.human_attribute_name(:price_str)
+      %th.no-print.nowrap
+
+  %tbody
+    - index.each do |equipment_model|
+      %tr
+        %td= "#{h(equipment_model.name)}#{html_notes(h(equipment_model.notes))}".html_safe
+        %td.hcenter= equipment_model.order
+        %td.hcenter= image_tag("#{equipment_model.photo.thumb.url}?#{equipment_model.updated_at.to_f}", :class => 'thumbnail') unless equipment_model.photo.blank?
+        %td.hcenter= equipment_model.supplier
+        %td.hcenter= equipment_model.price_str
+        %td.no-print.nowrap= all_actions equipment_model, "[#{equipment_model.name}]"

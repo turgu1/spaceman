@@ -1,0 +1,4 @@
+%div{ style: 'display:inline;' }
+  - equipment_list(equip_photos).each do |key, item|
+    = "&nbsp;#{item[0]}x".html_safe
+    = item[1].nil? ? item[3] : image_tag("#{item[1]}?#{item[2]}", class: 'thumbnail', style: 'display:inline;')

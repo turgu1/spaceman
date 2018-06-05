@@ -1,0 +1,9 @@
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  %legend= t('.sign_in')
+  .form-inputs
+    = f.input :username, required: true, autofocus: true, input_html: { class:  'medium-field' }
+    = f.input :password, required: false, input_html: { class:  'medium-field' }
+  .form-actions
+    = f.button :submit, t('.sign_in'), id: 'sign-in'
+
+= render 'devise/shared/links'

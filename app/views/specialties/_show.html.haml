@@ -1,0 +1,6 @@
+= show_entry(@specialty) do |e|
+  = e.field :name
+
+= link_to 'Edit', edit_specialty_path(@specialty)
+\|
+= link_to 'Back', specialties_path

@@ -1,0 +1,48 @@
+fr:
+  cmn:
+    edit: Modifier
+    show: Visionner
+    destroy: Effacer
+    update: Mettre à jour
+    sure: Êtes-vous certain?
+    erasing: "On efface [%{item}] de type %{type} ... Êtes-vous certain?"
+    back: Retour
+    close: Fermer
+    none: Aucun
+    add: Ajout
+    disabled: Désactivé
+    cancel: Annule
+    'yes': Oui
+    'no': Non
+    english: Anglais
+    french: Français
+    language: Langue
+
+    organisation: Organisation
+    organisations: Organisations
+    org: Org
+    person_requirement: Personne / [Besoin]
+    person: Personne
+    people: Personnel
+    requirement: Besoin
+    requirements: Besoins
+    building: Édifice
+    buildings: Édifices
+    floor: Étage
+    space: Local
+    space_type: Type de local
+    allocation: Allocation
+    allocations: Allocations
+    name: Nom
+    from_date: De
+    to_date: À
+    notes: Notes
+    qty: Qté
+    description: Description
+    photo: Photo
+    equipments: Équipements
+    moving_items: Articles à déplacer
+    moving_tasks: Tâches de déplacement
+    attributes: Paramètres
+    duration: Durée
+    order: Ordre  

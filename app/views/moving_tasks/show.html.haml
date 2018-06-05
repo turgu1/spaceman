@@ -1,0 +1,14 @@
+%p#notice= notice
+
+= show_entry(@moving_task) do |e|
+  = e.field :name
+  = e.field :description
+  = e.field :specialty
+  = e.field :responsability
+  = e.field :order
+  = e.field :duration
+  = e.field :cost
+
+= link_to t('cmn.edit'), edit_moving_task_path(@moving_task)
+\|
+= link_to t('cmn.back'), moving_tasks_path

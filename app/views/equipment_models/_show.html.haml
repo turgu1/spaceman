@@ -1,0 +1,19 @@
+.legend_u
+  = render partial: 'equipment_models/edit_equipment_model_link', object: @equipment_model
+  %span= t('.equipment_model_html', item: @equipment_model.name)
+
+.container-fluid
+  .row
+    .col-lg-2.col-sm-2
+      = image_tag("#{show.photo.url}?#{show.updated_at.to_f}", class: 'thumbnail') unless show.photo.blank?
+    .col-lg-10.col-sm-10
+      = show_entry(show) do |e|
+        = e.field :name
+        = e.field :order
+        = e.field :supplier
+        = e.field :model_ident
+        = e.field :price_str
+        = e.field :notes
+
+
+= remote_link_to t('cmn.back'), back_home_index_path

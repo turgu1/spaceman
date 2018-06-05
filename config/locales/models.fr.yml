@@ -1,0 +1,221 @@
+fr:
+  activerecord:
+    models:
+      allocation: Allocation
+      building: Édifice
+      equipment_group: 
+        one: "Groupe d'équipement"
+        other: "Groupes d'équipement"
+      equipment_item:
+        one: Article
+        other: Articles
+      equipment_model: 
+        one: "Modèle d'équipement"
+        other: "Modèles d'équipement"
+      field_def: 
+        one: Définition de champ
+        other: Définitions de champ
+      floor: Étage
+      floor_image: Image de niveau
+      moving_item: 
+        one: Article à déplacer
+        other: Articles à déplacer
+      moving_task: Tâche de déplacement
+      org: Organisation
+      person: Personne
+      report: Rapport
+      requirement: Besoin
+      space: 
+        one: Local
+        other: Locaux
+      space_type: 
+        one: Type de local
+        other: Types de local
+      specialty: Spécialité
+      table_def: Definition de table
+      user: Utilisateur
+      wing: Aile
+    attributes:
+      allocation:
+        from_date: Date de début
+        to_date: Date de fin
+        date: Date
+        notes: Notes
+      building:
+        name: Nom
+        short_name: Nom court
+        photo: Photo
+        min_level: Niveau Minimum
+        max_level: Niveau Maximum
+        allocate_equipment: "Allocation d'équipement"
+        moving_items: Articles à déplacer
+      equipment_group:
+        name: Nom
+        order: Ordre
+      equipment_item:
+        qty: Quantité
+        notes: Notes
+      equipment_model:
+        name: Nom
+        order: Ordre
+        photo: Photo
+        supplier: Fournisseur
+        price: Prix
+        notes: Notes
+        model_ident: Identifiant du fournisseur
+        price_str: Prix unitaire
+      field_def:
+        name: Nom
+        field_type: Type de champ
+        required: Requis
+        order: Ordre
+      floor:
+        name: Nom
+        corners_coor: Coordonnées des coins
+        gage_area: Aire type
+        gage_coor: "Coordonnées de l'aire type"
+        gage_center_coor: "Centre de l'aire type"
+        level: Niveau
+        order: Ordre
+        drawing: Dessin
+        locator_coor: Coordonnées de localisation
+      floor_image:
+        level: Niveau
+        file: Fichier
+        name: Nom
+      moving_item:
+        weight: 'Poids (kg)'
+        volume: 'Volume (m³)'
+        notes: Notes
+        description: Description
+        destination: Destination
+        qty: Qté
+        replace: Remplace
+      moving_task:
+        name: Nom
+        description: Description
+        responsability: Responsabilité
+        order: Ordre
+        duration: Durée
+        cost: Coût
+      org:
+        name: Nom
+        abbreviation: Abbrév.
+        order: Ordre
+        admin: Assistant Admin.
+        manager: Gestionnaire
+      person:
+        first_name: Prénom
+        last_name: Nom
+        title: Titre
+        phone_number: Tél
+        needs_office_space: "Besoin d'espace"
+        from_date: De
+        to_date: À
+        allocations_count: "Nombre d'allocations"
+        org_name: Organisation
+      report:
+        name: Nom
+        group: Groupe
+        order: Ordre
+        icon: Pictogramme
+        the_icon: Pictogramme
+        params_script: Scipt Param. (Haml)
+        exec_script: Script Exéc. (Ruby)
+        view_script: Script Vision. (Haml)
+        enabled: Actif
+      requirement:
+        requirement_date: Date du besoin
+        requirement_type: Type de besoin
+        from_date: De
+        to_date: À
+        project_name: Nom du projet
+        facility_criteria: "Critère d'accès à l'équipement"
+        scientific_criteria: Critère scientifique
+        security_criteria: Critère de securité
+        facility_justification: Justification équipement
+        scientific_justification: Justification scientifique
+        security_justification: Justification sécurité
+        notes: Notes
+        pm_ok: Accord du gestionnaire de projet
+        manager_ok: "Accord de l'administrateur"
+        authorized_for_allocation: Allocation autorisée
+        allocation_completed: Allocation completée
+        created_by: Créé par
+        allocations_count: Nombre de locaux alloués
+        requester: Demandeur
+        requester_name: Demandeur
+      space:
+        name: Nom
+        function: Fonction
+        figure: Figure
+        coor: Coordonnées
+        center_coor: Coordonnées du centre
+        area: Aire
+        properties: Propriétés
+        space_type: Type de local
+      space_type:
+        name: Nom
+        spaces_count: Nombre de locaux
+        notes: Notes
+      specialty:
+        name: Nom
+      table_def:
+        name: Nom
+      user:
+        username: "Nom d'utilisateur"
+        email: Courriel
+        password: Mot de passe
+        roles: Rôles
+        current_password: Mot de passe actuel
+        password_confirmation: Confirmer
+        remember_me: Demeurer en ligne
+        man_all_building: Administre tous les édifices
+        man_all_org: Administre toutes les organisations
+        buildings_to_man: Édifices à administrer
+        orgs_to_man: Organisations à administrer
+      wing:
+        name: Nom
+        short_name: Nom court
+        order: Ordre
+        floors_count: "Nombre d'étages"
+        visible: Visible      
+        building_name: Édifice
+
+  simple_form:
+    options:
+      user:
+        roles:
+          admin: Administrateur
+          pilot: Pilote
+          buildings: Édifices
+          organisations: Organisations
+          requirements: Besoins
+          allocations: Allocations
+          space_types: Types de local
+          equipments: Équipements
+          reports: Rapports
+          import: Importation
+          backup: Sauvegarde
+          
+  # Messages used inside app/models/...
+  allocation:
+    from_smaller_than_two: La date de débute doit être plus petite quela date de fin
+  floor:
+    building_not_found: 'ERREUR: Édifice introuvable: %{item}'
+    wing_not_found: 'ERREUR: Aile introuvable: %{item}'
+    floor_created: "L'étage a été créée: %{item}"
+    unable_to_create_space: Incapable ce créer le local %{item}
+    space_created: Le local %{item} a été créé.
+    unable_to_create_floor: "ERREUR: Incapable de créer l'étage: %{item}"
+    floor_import_completed: "Le chargement de l'étage %{item} est complété."
+    rectangle_corners: 'Doit contenir les coins du rectangle -> x1,y1,x2,y2.'
+    gage_coordinates_and_area: "Les coordonnées et l'aire type doivent être toutes les deux présentes ou absentes."
+    must_be_in_range: "Doit être dans les limites définies pour l'édifice: [%{from}..%{to}]"
+    locator_coor_not_valid: Coordonnées de localisation non valides (nombre pair de coordonnées et plus grand ou égal à 4).
+    corners_coor_not_valid: Coordonnées de coins non valides (nombre de coordonnées doit être égal à 4).
+  import:
+    key_unknown: 'Clé inconnue: %{item}'
+  space:
+    invalid_figure_type: Type de figure non-valide
+    invalid_coordinates: Coordonnées non-valides

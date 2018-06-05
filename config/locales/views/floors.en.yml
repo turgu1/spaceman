@@ -1,0 +1,32 @@
+en:
+  floors:
+    bulk_space_type_modal:
+      space_type_for_space: Space Type for Selected Spaces
+      please_select: 'Please select the Space Type required for the selected Spaces:'
+      set_type: Set Space Type
+    drawing_allocations:
+      no_more_space: There is no more space allocation on this floor
+    edit:
+      editing_html: Editing Floor <b>%{item}</b>
+    edit_floor_link:
+      title: Edit Floor Attributes
+    edit_spaces:
+      editing_html: Editing Spaces of <b>%{item}</b>
+      add_space: Add Space
+      toggle: Toggle selection
+      adjust_space_type: Adjust Space Type
+      cursor: Cursor
+      change_cursor: Change Mouse Cursor.
+      align_all: Align all sides and edges.
+      align_top_bottom: Align top and bottom edges.
+      align_left_right: Align left and right edges.
+    edit_spaces_link:
+      edit: Edit Spaces
+    form:
+      computed_value: Computed value
+    new:
+      new_for_html: New Floor for Building <b>%{item}</b>
+    new_floor_link:
+      title: 'Add a new Floor'
+    adjust_floors:
+      completed: Floors Adjustment Completed

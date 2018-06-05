@@ -1,0 +1,19 @@
+.legend_u
+  = render partial: 'wings/edit_wing_link', object: @wing
+  = t('.wing_html', item: @wing.complete_name)
+
+= show_entry(@wing) do |e|
+  = e.field :name
+  = e.field :short_name
+  = e.field :building_name
+  = e.field :visible, as: :yesno
+  = e.field :floors_count
+  = e.field :order
+
+.legend_u
+  = render partial: 'floors/new_floor_link', object: @wing
+  = Floor.model_name.human.pluralize
+
+= render partial: 'floors/index', object: @wing.floors
+
+= remote_link_to t('cmn.back'), building_path(@wing.building_id)

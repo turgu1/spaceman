@@ -1,0 +1,9 @@
+- if can? :update, User
+  %li
+    = link_to("<i class='fa fa-cogs'></i> #{t('.adjust_counters')}".html_safe, counter_cache_reset_home_index_path)
+- if can? :import, :database
+  %li
+    = link_to("<i class='fa fa-database'></i> #{t('.import_data')}".html_safe, import_data_home_index_path)
+- if can? :backup, :database
+  %li
+    = link_to("<i class='fa fa-database'></i> #{t('.backup_data')}".html_safe, backup_home_index_path)

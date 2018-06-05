@@ -1,0 +1,16 @@
+en:
+  equipment_items:
+    counts_show_modal:
+      count_report: Equipment Items Counts Report
+      select_building: Please select buildings to calculate
+      do_report: Do Report
+    edit:
+      editing: Editing Equipment Item
+    equipment_selector:
+      select: Select
+    new:
+      new: New Equipment Item
+    new_link:
+      title: Add a new Equipment Item
+    do_counts:
+      equipment_items_count: Equipment Items Count Report

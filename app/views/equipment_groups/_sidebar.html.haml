@@ -1,0 +1,8 @@
+.well.well-small
+  %h4
+    = remote_link_to t('.equipment_groups'), equipment_groups_path
+  %br/
+  %ul.list-unstyled
+    - EquipmentGroup.all.order(:order, :name).each do |eg|
+      %li
+        = remote_link_to eg.name, equipment_group_path(eg)

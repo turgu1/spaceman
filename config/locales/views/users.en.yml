@@ -1,0 +1,25 @@
+en:
+  users:
+    edit:
+      title_html: Editing User <b>%{item}</b>
+      users: Users
+    dropdown_menu:
+      users: Users
+    index:
+      users: Users
+      password: Password
+      change_user_password: Change User Password
+    change_password:
+      change_password_for_html: Change Password for <b>%{item}</b>
+      change_password: Change Password
+      new_password: New Password
+      confirm: Confirmation
+      password_confirm: we need your current password to confirm your changes
+
+    change_password_for:
+      change_password_for_html: Change Password for <b>%{item}</b>
+      change_password: Change Password
+      new_password: New Password
+      confirm: Confirmation
+    password_changed_ok:
+      password_update_ok: Password successfully updated

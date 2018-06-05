@@ -1,0 +1,22 @@
+- if spaces.size == 0
+
+  %h4= t('.no_allocation') 
+
+- else
+
+  .legend= t('cmn.allocations')
+
+  %table
+    %thead
+      %tr
+        %th= t('cmn.space')
+        %th= t('cmn.org')
+        %th.nowrap= t('cmn.person_requirement')
+        %th.nowrap.hcenter= t('cmn.from_date')
+        %th.nowrap.hcenter= t('cmn.to_date')
+        %th= t('cmn.notes')
+        %th.nowrap.no-print
+    %tbody
+      - spaces.each do |space|
+        - space.allocations.each do |allocation|
+          = render 'allocations/allocation_row2', allocation: allocation, space: space

@@ -1,0 +1,59 @@
+= simple_form_for(@org) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, input_html:         { :class => 'large-field' }
+    = f.input :abbreviation, input_html: { :class => 'small-field' }
+    = f.input :order, input_html:        { :class => 'small-field' }
+
+    - if @org.id
+      = f.association :manager, :collection => Person.in_org(@org.id), input_html: { :class => 'person-field' }
+      = f.association :admin,   :collection => Person.in_org(@org.id), input_html: { :class => 'person-field' }
+
+      .panel.panel-default
+        .panel-body
+          .col-lg-12.col-sm-12
+            %h4= t('cmn.people')
+            %table#people.nested-container
+              %colgroup
+                %col{ span: 1, style: "width: 50%" }
+                %col{ span: 1, style: "width: 50%" }
+              %thead
+                %tr
+                  %th.nowrap=                            "* #{Person.human_attribute_name(:last_name)}"
+                  %th.nowrap=                            "* #{Person.human_attribute_name(:first_name)}"
+                  %th.person-title-field.hcenter=             Person.human_attribute_name(:title)
+                  %th.phone-field.hcenter=                    Person.human_attribute_name(:phone_number)
+                  %th.hcenter=                                Person.human_attribute_name(:needs_office_space)
+                  %th.date-field.hcenter.nowrap=         "* #{Person.human_attribute_name(:from_date)}"
+                  %th.date-field.hcenter=                     Person.human_attribute_name(:to_date)
+                  %th
+              %tbody#people-body
+                = f.simple_fields_for :people, wrapper: false do |person|
+                  = render 'person_fields', f: person
+
+            = link_to_add_association(t('cmn.add'), f, :people, 'data-association-insertion-node': '#people-body', 'data-association-insertion-method': 'append', class: 'btn btn-xs btn-default') if can? :create, Person
+
+      .panel.panel-default
+        .panel-body
+          .col-lg-12.col-sm-12
+            %h4= t('cmn.requirements')
+            %table#requirements.nested-container
+              %colgroup
+                %col{ span: 1, style: "width: 50%" }
+                %col{ span: 1, style: "width: 50%" }
+              %thead
+                %tr
+                  %th.nowrap=                    "* #{Requirement.human_attribute_name(:project_name)}"
+                  %th=                                Requirement.human_attribute_name(:requester)
+                  %th.date-field.hcenter.nowrap= "* #{Requirement.human_attribute_name(:from_date)}"
+                  %th.date-field.hcenter=             Requirement.human_attribute_name(:to_date)
+                  %th
+              %tbody#requirements-body
+                = f.simple_fields_for :requirements, wrapper: false do |requirement|
+                  = render 'requirement_fields', f: requirement
+
+            = link_to_add_association(t('cmn.add'), f, :requirements, 'data-association-insertion-node': "#requirements-body" , 'data-association-insertion-method': 'append', class: 'btn btn-xs btn-default')  if can? :create, Requirement
+
+  .form-actions
+    = f.button :submit

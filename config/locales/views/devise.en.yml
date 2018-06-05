@@ -1,0 +1,51 @@
+en:
+  devise:
+    confirmations:
+      new:
+        resend: Resend confirmation instructions
+    mailer:
+      confirmation_instructions:
+        welcome: "Welcome %{item}!"
+        confirm_to: "You can confirm your account email through the link below:"
+        confirm: Confirm my account
+      reset_password_instructions:
+        hello: "Hello %{item}!"
+        request_to_link: Someone has requested a link to change your password, and you can do this through the link below.
+        change_password: Change my password
+        if_not_requested: If you didn't request this, please ignore this email.
+        no_change_until: Your password won't change until you access the link above and create a new one.
+    passwords:
+      edit:
+        change: Change your password
+        new_password: New password
+        confirm: Confirm your new password
+        change: Change my password
+      new:
+         forgot: Forgot your password?
+         instructions: Send me reset password instructions
+    registrations:
+      new:
+        sign_up: Sign up
+      edit:
+        edit: Edit %{item}
+        cancel: Cancel my account
+        cancel_my_account: Account Cancellation
+        not_happy: Unhappy?
+        hints:
+          leave_blank: leave it blank if you don't want to change it
+          password_confirm: we need your current password to confirm your changes
+    sessions:
+      new:
+        sign_in: "Sign in"
+    shared:
+      links:
+        sign_in: Sign in
+        sign_up: Sign up
+        forgot: Forgot your password?
+        no_confirmation: Didn't receive confirmation instructions?
+        no_unlock: Didn't receive unlock instructions?
+        sign_with: Sign in with %{item}
+    unlocks:
+      new:
+        resend: Resend unlock instructions
+

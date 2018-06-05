@@ -1,0 +1,15 @@
+.legend_u #{@person.name}
+
+= show_entry(@person) do |e|
+  = e.field :org_name,
+  = e.field :first_name
+  = e.field :last_name
+  = e.field :title
+  = e.field :phone_number
+  = e.field :needs_office_space, as: :yesno
+  = e.field :from_date
+  = e.field :to_date
+
+- if can? :update, @person
+  = remote_link_to(t('cmn.edit'), edit_person_path(@person)) + " \|"
+= remote_link_to t('cmn.organisation'), org_path(@person.org)

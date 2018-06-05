@@ -1,0 +1,96 @@
+- org_id = @allocation.try(:consumer).try(:org_id) || (local_assigns[:default_org_id] ? default_org_id : nil)
+
+= simple_form_for(@allocation) do |f|
+  = f.error_notification
+
+  .tabbable
+    %ul.nav.nav-tabs
+      %li.active
+        = link_to t('cmn.attributes'), '#Attributes', 'data-toggle' => :tab
+      - if @allocation.allocate_equipment?
+        %li
+          = link_to t('cmn.equipments'), '#Equips', 'data-toggle' => :tab
+      - if @allocation.moving_items?
+        %li
+          = link_to t('cmn.moving_items'), '#MovingItems', 'data-toggle' => :tab
+    .tab-content
+      #Attributes.tab-pane.active
+        %br/
+        .form-inputs
+          = f.association :space, as: :hidden
+          - if @allocation.id.blank?
+            .panel.panel-default
+              .panel-body
+                .tabbable
+                  .col-lg-3.col-sm-3
+                  %ul.nav.nav-pills.col-lg-9.col-sm-9
+                    %li{ class: "#{@allocation.consumer_type != 'Requirement' ? 'active' : ''}" }
+                      = link_to t('cmn.person'), '#APerson', 'data-toggle' => :pill
+                    %li{ class: "#{@allocation.consumer_type == 'Requirement' ? 'active' : ''}" }
+                      = link_to t('cmn.requirement'), '#ARequirement', 'data-toggle' => :pill
+                  .tab-content
+                    %br/
+                    #APerson.tab-pane{ class: "#{@allocation.consumer_type != 'Requirement' ? 'active' : ''}" }
+                      %br/
+                      %br/
+                      .form-group.string
+                        = label_tag 'allocation_person_id', t('cmn.person'), class: 'control-label col-lg-3 col-sm-3 string'
+                        .controls.col-lg-9.col-sm-9
+                          - if org_id
+                            = collection_select(:allocation, :person_id ,
+                                Person.where('org_id = ?', [org_id]).order(:last_name, :first_name),
+                                :id, :name, { prompt: false, include_blank: '' }, { class: 'control-form person-field', 'onchange': "if ($(this).val() != '') { $('#allocation_requirement_id').val(''); }" })
+                          - else
+                            = collection_select(:allocation, :person_id ,
+                                Person.all.order(:last_name, :first_name),
+                                :id, :name, { prompt: false, include_blank: '' }, { class: 'control-form person-field', 'onchange': "if ($(this).val() != '') { $('#allocation_requirement_id').val(''); }" })
+
+                    #ARequirement.tab-pane{ class: "#{@allocation.consumer_type == 'Requirement' ? 'active' : ''}" }
+                      %br/
+                      %br/
+                      .form-group.string
+                        = label_tag 'allocation_requirement_id', t('cmn.requirement'), class: 'control-label col-lg-3 col-sm-3 string'
+                        .controls.col-lg-9.col-sm-9
+                          - if org_id
+                            = collection_select(:allocation, :requirement_id,
+                                Requirement.where('org_id = ?', [org_id]).order(:project_name),
+                                :id, :name, { prompt: false, include_blank: '' }, { class: 'control-form requirement-field', 'onchange': "if ($(this).val() != '') { $('#allocation_person_id').val(''); }" })
+                          - else
+                            = collection_select(:allocation, :requirement_id ,
+                                    Requirement.all.order(:project_name),
+                                    :id, :name, { prompt: false, include_blank: '' }, { class: 'control-form requirement-field', 'onchange': "if ($(this).val() != '') { $('#allocation_person_id').val(''); }" })
+                    = show_error f.object, :consumer_id
+
+          - else
+            = f.input :consumer_id,   as: :hidden
+            = f.input :consumer_type, as: :hidden
+
+          = f.input :from_date, as: :string, input_html: { class: 'datepicker date-field', 'data-provide': 'datepicker' }
+          = f.input :to_date,   as: :string, input_html: { class: 'datepicker date-field', 'data-provide': 'datepicker' }
+          = f.input :notes
+      - if @allocation.allocate_equipment?
+        #Equips.tab-pane
+          %br/
+          = render partial: 'equipment_items/equipment_selector', object: @allocation
+      - if @allocation.moving_items?
+        #MovingItems.tab-pane
+          %br/
+          .col-lg-12.col-sm-12
+          %table#moving-items-table.no-strip.nested-container
+            %thead
+              %tr
+                %th.nowrap.hcenter.qty-field= "* #{MovingItem.human_attribute_name(:qty)}"
+                %th.nowrap.description-field= "* #{MovingItem.human_attribute_name(:description)}"
+                %th.hcenter.weight-field=          MovingItem.human_attribute_name(:weight) 
+                %th.hcenter.volume-field=          MovingItem.human_attribute_name(:volume)
+                %th.destination-field=             MovingItem.human_attribute_name(:destination)
+                %th.replace-field=                 MovingItem.human_attribute_name(:replace)
+                %th.all-space
+            = f.simple_fields_for :moving_items, wrapper: false do |mi|
+              = render 'moving_item_fields', f: mi
+          = link_to_add_association t('.add_item'), f, :moving_items, 'data-association-insertion-node': '#moving-items-table', 'data-association-insertion-method': 'append', class: 'btn btn-xs btn-default'
+
+  %br/
+  %br/
+  .form-actions
+    = f.button :submit

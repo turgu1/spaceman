@@ -1,0 +1,38 @@
+-# Display a floor drawing with specific allocations for en entity
+-#
+-# This is used to present Org, People and Requirements related allocations on the center part
+-# of the screen.
+-#
+-# Parameters:
+-#
+-#   allocation_obj: The entity for witch the allocations are displayed
+-#   floor : The floor to be showned
+
+- unless floor.nil?
+  - if floor.spaces.size > 0
+    %img{  src: drawing_allocations_floor_path(floor,
+                    allocation_obj_id: allocation_obj.id,
+                            obj_class: "#{allocation_obj.class.name}") + "&#{Time.now.to_i.to_s}",
+         class: 'img-map highlight resize',
+           alt: "Floor #{floor.name}",
+        usemap: "#drawing-map-#{floor.id}",
+            id: "drawing-allocation-img-#{floor.id}", }
+
+    %map{ name: "drawing-map-#{floor.id}" }
+      - floor.spaces.each do |space|
+        %area{ shape: "#{space.figure == 'R' ? 'rect' : 'poly'}",
+              coords: "#{space.coor}",
+                 alt: "Local #{space.name}",
+                href: '#',
+               title: space_title(space),
+               style: 'cursor:pointer;',
+             onclick: "call_remote('#{show_modal_space_path(space, format: :js)}');" }
+    %br/
+    = render 'allocations/index2', spaces: floor.spaces
+    -# = render({ partial: 'allocations/index',
+    -#             object: allocation_obj.allocations.select { |a| a.space.floor_id == floor.id }})
+  - else
+    %img{ allocation_obj_id: allocation_obj.id,
+                        src: "#{drawing_allocations_floor_path(floor, obj_class: allocation_obj.class.name)}?#{Time.now.to_i.to_s}" }
+- else
+  %h4= t('.no_more_space')

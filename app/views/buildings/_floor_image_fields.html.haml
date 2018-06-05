@@ -1,0 +1,14 @@
+%tr.nested-fields
+  %td
+    = f.input_field :level, class: 'tiny-field form-control'
+    = show_error(f.object, :level)
+  %td.hcenter
+    = f.input_field :name,  class: 'medium-field form-control'
+    = show_error(f.object, :name)
+  %td
+    = f.input_field :file
+    = show_error(f.object, :file)
+  %td.hcenter{ style: 'width:100%;' }
+    = unless f.object.file.url.nil? then image_tag("#{f.object.file.url}?#{Time.now.to_i.to_s}", class: 'img-thumbnail', style: 'height:70px;') else '' end
+  %td
+    = link_to_remove_association t('cmn.destroy'), f, class: 'btn btn-xs btn-danger'

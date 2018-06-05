@@ -1,0 +1,12 @@
+fr:
+  wings:
+    edit:
+      editing_html: "Modification de l'aile <b>%{item}</b>"
+    edit_wing_link:
+      title: "Modification des paramètres de l'aile"
+    new:
+      new_for_building_html: "Nouvelle aile pour l'édifice <b>%{item}</b>"
+    new_wing_link:
+      title: "Ajout d'une nouvelle aile"
+    show:
+      wing_html: Aile <b>%{item}</b>

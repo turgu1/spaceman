@@ -1,0 +1,18 @@
+%table
+  %tbody
+    - idx = 0
+    - tableau.each do |item|
+      - if (idx mod 0) == 0
+        %tr
+      %td 
+      - idx = idx + 1
+        %td= org.try(:abbreviation)
+        %td.nowrap= person.name
+        %td.hcenter= person.phone_number
+        %td.nowrap.hcenter= person.from_date
+        %td.nowrap.hcenter= person.to_date || ''
+        %td.nowrap.no-print= all_actions person, "[#{person.name}]", { 'data-right-column-state': true }
+
+%br
+
+

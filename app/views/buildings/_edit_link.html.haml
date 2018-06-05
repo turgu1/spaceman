@@ -1,0 +1,4 @@
+= remote_link_to('<i class="fa fa-edit"></i>'.html_safe,
+    edit_building_path(edit_link),
+    class: 'smallbtn',
+    title: t('.title')) if can? :update, edit_link

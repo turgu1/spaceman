@@ -1,0 +1,7 @@
+= render partial: 'floors/drawing_full', object: @floor
+
+.no-print
+  = remote_link_to t('cmn.back'), wing_path(@floor.wing_id)
+  %br/
+  %br/
+= render 'allocations/index2', spaces: @floor.spaces

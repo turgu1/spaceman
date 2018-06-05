@@ -1,0 +1,18 @@
+.legend_u
+  = link_to(t('cmn.edit'), edit_allocation_path(@allocation), :class => 'smallbtn') if can? :update, @allocation
+  = Allocation.model_name.human
+
+= show_entry(@allocation) do |e|
+  = e.field :name,     t('cmn.space')
+  = e.field :target,   t('cmn.person_requirement')
+  = e.field :from_date
+  = e.field :to_date
+  = e.field :notes
+
+-#- if @allocation.allocate_equipment?
+-#  = render partial: 'equipment_items/index', object: @allocation.equipment_items, locals: { itemable: @allocation }
+-#
+-#- if @allocation.moving_items?
+-#  = render partial: 'moving_items/index', object: @allocation.moving_items
+
+= remote_link_to t('cmn.back'), back_home_index_path

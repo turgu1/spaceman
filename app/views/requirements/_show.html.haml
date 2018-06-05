@@ -1,0 +1,13 @@
+.legend_u= t('.requirement', item: @requirement.project_name)
+
+= show_entry(@requirement) do |e|
+  = e.field :project_name
+  = e.field :requester_name
+  = e.field :org_name
+  = e.field :from_date
+  = e.field :to_date
+  = e.field :notes
+
+= remote_link_to(t('cmn.edit'), edit_requirement_path(@requirement)) if can? :update, @requirement
+= "\|" if can? :update, @requirement
+= remote_link_to t('cmn.organisation'), org_path(@requirement.org)

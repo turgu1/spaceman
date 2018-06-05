@@ -1,0 +1,19 @@
+.legend_u
+  = render 'equipment_groups/new_link'
+  = EquipmentGroup.model_name.human(count: 2)
+
+%table
+  %thead
+    %tr
+      %th= EquipmentGroup.human_attribute_name(:name)
+      %th.hcenter= EquipmentGroup.human_attribute_name(:order)
+      -#%th Parent
+      %th.no-print.nowrap
+
+  %tbody
+    - @equipment_groups.each do |equipment_group|
+      %tr
+        %td= equipment_group.name
+        %td.hcenter= equipment_group.order
+        -#%td= equipment_group.parent
+        %td.no-print.nowrap= all_actions equipment_group, "[#{equipment_group.name}]"

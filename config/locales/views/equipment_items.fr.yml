@@ -1,0 +1,16 @@
+fr:
+  equipment_items:
+    counts_show_modal:
+      count_report: "Rapport du nombre d'articles d'équipment"
+      select_building: Sélectionnez les édifices pour le calcul
+      do_report: Lancer le rapport
+    edit:
+      editing: "Modification d'un article d'équipment"
+    equipment_selector:
+      select: Selectionner
+    new:
+      new: "Nouvel article d'équipment"
+    new_link:
+      title: "Ajouter un nouvel article d'équipment"
+    do_counts:
+      equipment_items_count: "Rapport du nombre d'articles d'équipment"

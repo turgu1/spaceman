@@ -1,0 +1,17 @@
+@media print {
+  body { background-color: #FFF; }
+
+  .no-print {
+    display: none ! important;
+  }
+
+  table {
+    width: 100%;
+    margin: 0;
+    float: none;
+  }
+
+  .new-page {
+    page-break-before: always;
+  }
+}

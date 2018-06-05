@@ -1,0 +1,27 @@
+.legend
+  = render 'reports/new_link'
+  = Report.model_name.human.pluralize
+
+%table
+  %thead
+    %tr
+      %th=         Report.human_attribute_name(:name)
+      %th.hcenter= Report.human_attribute_name(:enabled)
+      %th.hcenter= Report.human_attribute_name(:group)
+      %th.hcenter= Report.human_attribute_name(:order)
+      %th.hcenter= Report.human_attribute_name(:icon)
+      %th.hcenter{ style: 'width: 30em;' }= Report.human_attribute_name(:view_script)
+      %th.no-print
+
+  %tbody
+    - @reports.each do |report|
+      %tr
+        %td= report.name
+        %td.hcenter= report.enabled? ? 'Yes' : 'No'
+        %td.hcenter= report.group
+        %td.hcenter= report.order
+        %td.hcenter= report.icon.blank? ? "<i class='fa fa-print fa-2x'></i>".html_safe : "<i class='#{h(report.the_icon)} fa-2x'></i>".html_safe
+        %td.highlight{ style: 'width: 40em;' }
+          %pre{ style: 'width: 40em; background-color: #ddd;' }
+            = format_code_to_html report.view_script
+        %td.nowrap.no-print= all_actions report, "[#{report.name}]"

@@ -1,0 +1,4 @@
+= remote_link_to('<i class="fa fa-plus"></i>'.html_safe,
+    new_wing_path(building_id: new_wing_link.id),
+    class: 'smallbtn',
+    title: t('.title')) if can? :update, new_wing_link

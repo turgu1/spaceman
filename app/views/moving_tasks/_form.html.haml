@@ -1,0 +1,14 @@
+= simple_form_for(@moving_task) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :description
+    = f.association :specialty
+    = f.input :responsability
+    = f.input :order
+    = f.input :duration
+    = f.input :cost
+
+  .form-actions
+    = f.button :submit

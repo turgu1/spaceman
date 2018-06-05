@@ -1,0 +1,5 @@
+%h3= t('.result_html', item: @import.name)
+
+%ul
+  - @import.result.each do |r|
+    %li #{r}

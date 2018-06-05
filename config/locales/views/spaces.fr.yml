@@ -1,0 +1,27 @@
+fr:
+  spaces:
+    edit:
+      editing_html: Modification du local <b>%{item}</b> 
+    equipment:
+      from_space_type: Du type de local
+      from_space: Du local
+      from_allocation: "De l'allocation"
+      no_equipment: Aucun équipement 
+    form:
+      computed_value: Valeur calculée
+      computed_if_empty: Calculé si le champ est vide
+
+    moving_items:
+      no_item: Aucun article à déplacer 
+    show_modal:
+      space_type_undefined: TYPE DE LOCAL NOM DÉFINI!
+      equipments: Équipements
+      new_allocation: Nouvelle allocation
+    show:
+      space_html: Local <b>%{item}</b>
+    allocations:
+      no_personnel_allocation: Aucune allocation
+    next_link:
+      create_next: Ajout et Suivant
+    new:
+      new_space: Nouveau Local

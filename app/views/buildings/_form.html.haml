@@ -1,0 +1,33 @@
+
+= simple_form_for(@building, multipart: true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, input_html: { class: 'large-field' }
+    = f.input :short_name, input_html: { class: 'small-field' }
+    = f.input :min_level, input_html: { class: 'small-field' }
+    = f.input :max_level, input_html: { class: 'small-field' }
+    = f.input :allocate_equipment
+    = f.input :moving_items
+    = f.input :photo, as: :file
+
+    .panel.panel-default
+      .panel-body
+        .col-lg-12.col-sm-12
+          %h4= t('.levels')
+          %table#floor-images.nested-container
+            %thead
+              %tr
+                %th.nowrap#level-nbr=           "* #{FloorImage.human_attribute_name(:level)}"
+                %th.nowrap.hcenter#level-name=  "* #{FloorImage.human_attribute_name(:name)}"
+                %th.nowrap#level-file=          "* #{FloorImage.human_attribute_name(:file)}"
+                %th.hcenter#level-image=             FloorImage.human_attribute_name(:image)
+                %th
+            %tbody#floor-images-body
+              = f.simple_fields_for :floor_images, wrapper: false do |fi|
+                = render 'floor_image_fields', f: fi
+
+          = link_to_add_association t('.add_level'), f, :floor_images, { 'data-association-insertion-node':   '#floor-images-body', 'data-association-insertion-method': 'append', class: 'btn btn-xs btn-default' }
+
+  .form-actions
+    = f.button :submit

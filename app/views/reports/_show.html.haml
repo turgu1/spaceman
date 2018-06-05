@@ -1,0 +1,16 @@
+.legend_u
+  = render partial: 'reports/edit_link', object: @report
+  = t('.report_html', item: @report.name)
+
+= preserve do
+  = show_entry(@report) do |e|
+    = e.field :name
+    = e.field :enabled
+    = e.field :group
+    = e.field :order
+    = e.field :the_icon, as: :icon
+    = e.field :params_script, as: :haml
+    = e.field :exec_script, as: :ruby
+    = e.field :view_script, as: :haml
+
+= remote_link_to t('cmn.back'), reports_path

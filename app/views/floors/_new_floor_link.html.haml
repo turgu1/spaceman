@@ -1,0 +1,5 @@
+-# object must be pointing at the wing parent
+= remote_link_to('<i class="fa fa-plus"></i>'.html_safe,
+    new_floor_path(wing_id: new_floor_link.id),
+    class: 'smallbtn',
+    title: t('.title')) if can? :update, new_floor_link

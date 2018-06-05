@@ -1,0 +1,14 @@
+.panel-inner
+  %ul#people-list.list-unstyled
+    - if rightbar_people_list.people.size == 0
+      %li
+        = link_to t('cmn.none'), '#'
+    - else
+      - rightbar_people_list.people.each do |person|
+        %li
+          = remote_link_to person.small_name, show_allocated_floors_person_path(person),
+                id: person.id,
+              type: 'Person',
+            remote: true,
+             title: t('.title', item: person.name),
+             class: "#{'draggable' if can? :create, Allocation}#{' alloc-needed' if person.needs_office_space && (person.allocations.size == 0)}"

@@ -1,0 +1,14 @@
+%p#notice= notice
+
+= show_entry(@moving_item) do |e|
+  = e.field :description
+  = e.field :allocation
+  = e.field :weight
+  = e.field :volume
+  = e.field :destination
+  = e.field :replace
+  = e.field :notes
+
+= remote_link_to t('cmn.edit'), edit_moving_item_path(@moving_item)
+\|
+= remote_link_to t('cmn.back'), moving_items_path

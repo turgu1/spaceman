@@ -1,0 +1,24 @@
+fr:
+  users:
+    edit:
+      title_html: "Modification de l'utilisateur <b>%{item}</b>"
+      users: Utilisateurs
+    dropdown_menu:
+      users: Utilisateurs
+    index:
+      users: Utilisateurs
+      password: Mot de passe
+      change_user_password: Modifier le mot de passe
+    change_password:
+      change_password_for_html: Modification du mot de passe de <b>%{item}</b>
+      change_password: Modifier le mot de passe
+      new_password: Nouveau mot de passe
+      confirm: Confirmation
+      password_confirm: entrez votre mot de passe courant pour confirmer les changements
+    change_password_for:
+      change_password_for_html: Modification du mote de passe de <b>%{item}</b>
+      change_password: Modifier le mot de passe
+      new_password: Nouveau mot de passe
+      confirm: Confirmation
+    password_changed_ok:
+      password_update_ok: Votre mot de passse a été modifié avec succès.

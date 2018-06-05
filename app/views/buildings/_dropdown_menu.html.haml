@@ -1,0 +1,4 @@
+-# Dropdown menu for accessing the buildings in the navbar
+-#
+- Building.all.each do |b|
+  %li= remote_link_to "<i class='fa fa-home'></i> #{h(b.name)}".html_safe, building_path(b)

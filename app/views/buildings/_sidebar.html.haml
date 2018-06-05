@@ -1,0 +1,26 @@
+-#
+-# Left sidebar display of a building. This is triggered by the operator when he select a
+-# building from the dropdown navbar menu
+-#
+- if bldg = Building.find(session[:current_building])
+  .thumbnail
+    %img{ :src => bldg.photo_url.to_s, :onclick => 'call_remote("#{building_path(bldg)}");' }
+    .caption
+      %h4= remote_link_to bldg.name, building_path(bldg)
+      -# DO NOT DELETE THE COMMENTS!! - COULD BE REQUIRED SOMETIME...
+      -#%hr
+      -#%ul.list-unstyled
+      -#  - bldg.wings.each do |wing|
+      -#    - if wing.visible
+      -#      %li= link_to "<b>#{wing.short_name}</b>".html_safe, wing_path(wing), style: "font-color: grey;"
+      -#      - wing.floors.each do |floor|
+      -#        %li= link_to floor.name, floor_path(floor), class: 'floor-link'
+      -#    - else
+      -#      - wing.floors.each do |floor|
+      -#        %li= link_to floor.name, floor_path(floor)
+
+  -#- levels.each do |level|
+  -#  = render partial: 'buildings/sidebar_thumb', object: bldg, locals: { level: level, in_panels: false }
+
+  #levels
+    = render partial: 'buildings/sidebar_levels', object: bldg

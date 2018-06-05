@@ -1,0 +1,14 @@
+fr:
+  equipment_groups:
+    edit:
+      editing_html: "Modification du groupe d'équipement <b>%{item}</b>"
+    edit_link:
+      title: "Modification des paramètres du groupe d'équipement"
+    new:
+      new: "Nouveau groupe d'équipement"
+    new_link:
+      title: "Ajout d'un nouveau groupe d'équipement"
+    show:
+      equipment_group_html: "Groupe d'équipement <b>%{item}</b>"
+    sidebar:
+      equipment_groups: "Groupes d'équipement:"

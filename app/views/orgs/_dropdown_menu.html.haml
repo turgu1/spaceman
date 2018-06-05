@@ -1,0 +1,2 @@
+- Org.all.order(order: :asc, abbreviation: :asc).each do |org|
+  %li= remote_link_to "<i class='fa fa-sitemap'></i> #{h(org.abbreviation)}".html_safe, org_path(org)

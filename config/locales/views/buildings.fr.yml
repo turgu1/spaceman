@@ -1,0 +1,17 @@
+fr:
+  buildings:
+    edit:
+      editing_html: "Modification de l'édifice <b>%{item}</b>"
+    edit_link:
+      title: "Modification des paramètres de l'édifice"
+    export_link:
+      title: "Sauvegarde des données de l'édifice en format XML"
+    form:
+      levels: Niveaux
+      add_level: "Ajout d'un niveau"
+    new:
+      new: Nouvel Édifice
+    new_link:
+      title: "Ajout d'un édifice"
+    show:
+      wings: "Aile(s)"

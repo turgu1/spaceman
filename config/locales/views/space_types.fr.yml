@@ -1,0 +1,10 @@
+fr:
+  space_types:
+    edit:
+      editing_html:  Modification du type de local <b>%{item}</b>    
+    edit_link:
+      title: Modification des paramètre du type de local.
+    new:
+      new: Nouveau type de local
+    new_space_type_link:
+      title: "Ajout d'un nouveau type de local"

@@ -1,0 +1,34 @@
+= simple_form_for(@floor, multipart: true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :building, as: :hidden
+    = f.association :wing, as: :hidden
+    = f.input :name, input_html: { class: 'large-field' }
+    = f.input :level, input_html: { class: 'small-field' }
+    = f.input :order, input_html: { class: 'small-field' }
+    = f.input :drawing, as: :file
+
+    .panel.panel-default
+      .panel-body
+        = f.input :gage_coor, input_html: { class: ['large-field', :focus], id: 'gage_coor' }
+        = f.input :gage_area, input_html: { class: 'small-field' }
+        = f.input :gage_center_coor, input_html: { class: 'small-field' }, hint: t('.computed_value')
+
+    .panel.panel-default
+      .panel-body
+        = f.input :corners_coor, input_html: { class: 'medium-field' }
+        = f.input :apply_transformation, as: :boolean
+        
+    .panel.panel-default
+      .panel-body
+        = f.input :locator_coor, input_html: { class: 'large-field', id: 'location_coor' }
+        .control-group
+          %label.control-label.col-lg-3.col-sm-3 Level
+          .controls.col-lg-9.col-sm-9
+            %div{ id: "floor-locator-#{@floor.id.to_s}", onClick: "aOnClick(event, this, '#location_coor');" }
+              = render partial: 'drawing_locator', object: @floor
+        %span &nbsp;
+
+  .form-actions
+    = f.button :submit

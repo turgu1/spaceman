@@ -1,0 +1,11 @@
+.legend_u Spaces Validation
+
+Spaces with no Space Type defined:
+%ul
+  - some = false
+  - Space.all.each do |space|
+    - if space.space_type.nil?
+      %li #{space.complete_name}
+      - some = true
+  - unless some
+    %li NONE

@@ -1,0 +1,13 @@
+.legend_u
+  = render partial: 'space_types/edit_link', object: @space_type
+  = SpaceType.model_name.human
+
+= show_entry(@space_type) do |e|
+  = e.field :name
+  = e.field :short_name
+  = e.field :spaces_count
+  = e.field :notes
+
+= render partial: 'equipment_items/index', object: @space_type.equipment_items, locals: { itemable: @space_type }
+
+= remote_link_to t('cmn.back'), space_types_path

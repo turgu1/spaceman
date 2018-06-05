@@ -1,0 +1,22 @@
+= simple_form_for(@user) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :username, input_html: { class: 'medium-field' }
+    = f.input :email, input_html: { class: 'large-field' }
+
+    .panel.panel-default
+      .panel-body
+        = f.input :roles, collection: User.all_roles, as: :check_boxes, label_method: ->(obj){ t("simple_form.options.user.roles.#{obj}") }
+
+    .panel.panel-default
+      .panel-body
+        = f.input :man_all_building, input_html: { id: 'man_all_building', onclick: "$('.a_building').prop('disabled', $(this).prop('checked'));" }
+        = f.input :buildings_to_man, collection: Building.all, as: :check_boxes, value_method: :id, label_method: :short_name, input_html: { class: 'a_building', disabled: @user.man_all_building }
+
+    .panel.panel-default
+      .panel-body
+        = f.input :man_all_org, input_html: { id: 'man_all_org', onclick: "$('.an_org').prop('disabled', $(this).prop('checked'));" }
+        = f.input :orgs_to_man, collection: Org.all, as: :check_boxes, value_method: :id, label_method: :abbreviation, input_html: { class: 'an_org', disabled: @user.man_all_org }
+  .form-actions
+    = f.button :submit

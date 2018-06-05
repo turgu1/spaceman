@@ -1,0 +1,16 @@
+.modal-header
+  %button.close{ type: 'button', onclick: 'hide_modal(event);' } &times;
+  %span
+    = image_tag("#{show_modal.photo.url}?#{show_modal.updated_at.to_f}", class: 'small-img') unless show_modal.photo.blank?
+    %big.bigg &nbsp;&nbsp;<b>#{show_modal.name}</b>
+.modal-body
+  = show_entry(show_modal) do |e|
+    = e.field :order
+    = e.field :supplier
+    = e.field :model_ident
+    = e.field :price_str
+    = e.field :notes
+.modal-footer
+  = remote_link_to(t('cmn.edit'), edit_equipment_model_path(show_modal), class: 'btn btn-primary') if can? :update, show_modal
+  = link_to(t('cmn.close'), '', class: 'btn btn-primary', onclick: 'hide_modal(event);')
+

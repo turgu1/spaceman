@@ -1,0 +1,14 @@
+en:
+  equipment_groups:
+    edit:
+      editing_html: Editing Equipment Group <b>%{item}</b>
+    edit_link:
+      title: Edit Equipment Group Attributes
+    new:
+      new: New Equipment Group
+    new_link:
+      title: Add a new Equipment Group
+    show:
+      equipment_group_html: Equipment Group <b>%{item}</b>
+    sidebar:
+      equipment_groups: 'Equipement Groups:'

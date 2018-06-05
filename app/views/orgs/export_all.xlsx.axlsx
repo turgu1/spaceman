@@ -1,0 +1,5 @@
+wb = xlsx_package.workbook
+
+@orgs.each do |org|
+  render partial: 'export', locals: { wb: wb, org: org }
+end

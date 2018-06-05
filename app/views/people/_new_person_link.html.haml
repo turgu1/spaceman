@@ -1,0 +1,4 @@
+= remote_link_to('<i class="fa fa-plus"></i>'.html_safe,
+    new_person_path(:org => org.id),
+    :class => 'smallbtn',
+    :title => t('.add_person')) if can_create_person?(org.id)

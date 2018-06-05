@@ -1,0 +1,27 @@
+-# Used to show Personnel/Requirements allocations related to a space
+-#
+- if allocations.allocations.size == 0
+
+  %h4= t('.no_personnel_allocation')
+  %br
+  %br
+
+-else
+
+  %table
+    %thead
+      %tr
+        %th.all-space= t('cmn.person_requirement')
+        %th.date-display.hcenter= t('cmn.from_date')
+        %th.date-display.hcenter= t('cmn.to_date')
+        %th.no-print
+
+    %tbody
+      - allocations.allocations.each do |allocation|
+        %tr
+          %td= allocation.consumer_name
+          %td.hcenter.nowrap= allocation.from_date
+          %td.hcenter.nowrap= allocation.to_date || ''
+          %td.no-print.nowrap
+            = edit_action allocation, { 'data-dismiss' => :modal, 'data-target' => '#modal-dialog' }
+

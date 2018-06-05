@@ -1,0 +1,3 @@
+replace_content('#flash-pane', "<%= j(render(partial: 'layouts/flash')) %>");
+replace_content('#modal-info', "<%= j(render(partial: 'floors/bulk_space_type_modal', object: @floor, locals: { spaces: params[:spaces] })) %>");
+$('#modal-dialog').modal({ backdrop: false, show: 'true'});

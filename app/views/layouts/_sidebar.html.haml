@@ -1,0 +1,6 @@
+- if session[:sidebar] == 'equipment'
+  = render 'equipment_groups/sidebar'
+- elsif session[:current_building]
+  = render 'buildings/sidebar'
+- else
+  = yield :left_side

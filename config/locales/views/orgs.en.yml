@@ -1,0 +1,27 @@
+en:
+  orgs:
+    edit:
+      editing_html:  Editing Organisation <b>%{item}</b>
+    edit_org_link:
+      editing: Edit Organisation Attributes.
+    edit_org_link2:
+      editing: Edit Organisation Attributes.
+    export_all_link:
+      export_xml: Export all org data as XML.
+      export_excel: Export all org data as Excel Spreadsheet.
+    export_link:
+      export_xml: Export org data as XML.
+      export_excel: Export org data as Excel Spreadsheet.
+    new:
+      new_org: New Organisation
+    new_org_link:
+      new_org: Add a new Organisation
+    show_allocated_floors:
+      allocations_for_html:  Allocations for <b>%{item}</b>
+      no_allocation: There is no allocation
+    rightbar:
+      title: Show all allocations for %{item}.
+    rightbar_people_list:
+      title: Show all allocations for %{item}.
+    rightbar_requirements_list:
+      title: Show all allocations for %{item}.

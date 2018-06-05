@@ -1,0 +1,12 @@
+
+= simple_form_for(@import, url: do_import_data_path(@import), multipart: true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .panel.panel-default
+      .panel-body
+        = f.input :name
+        = f.input :import_file, as: :file
+
+  .form-actions
+    = f.button :submit

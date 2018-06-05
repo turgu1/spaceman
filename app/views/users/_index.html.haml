@@ -1,0 +1,23 @@
+.legend= t('.users')
+
+%table.table-header-rotated.table-striped
+  %thead
+    %tr
+      %th= t('activerecord.attributes.user.username')
+      %th.hcenter= t('activerecord.attributes.user.email')
+      - User.all_roles_syms.each do |role|
+        %th.nowrap.rotate-45
+          %div
+            %span= link_to t(role, scope: 'simple_form.options.user.roles'), '#'
+      %th
+  %tbody
+    - @users.each do |user|
+      %tr
+        %th.row-header= user.username
+        %th.hcenter= user.email
+        - User.all_roles.each do |role|
+          %td.hcenter= user.roles.index(role).nil? ? '' : 'X'
+        %td.nowrap{ style: 'text-align: left;' }
+          = link_to(t('.password'), change_password_for_user_path(user), class: 'xsmallbtn', remote: true, title: t('.change_user_password')) if can? :update, user
+          = edit_action user
+          = delete_action user, "[#{user.name}]"

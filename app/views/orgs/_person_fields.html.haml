@@ -1,0 +1,24 @@
+%tr.nested-fields
+  %td
+    = f.input_field :last_name,    class: 'form-control'
+    = show_error f.object, :last_name
+  %td
+    = f.input_field :first_name,   class: 'form-control'
+    = show_error f.object, :first_name
+  %td.hcenter
+    = f.input_field :title,        class: 'person-title-field form-control'
+    = show_error f.object, :title
+  %td.hcenter
+    = f.input_field :phone_number, class: 'phone-field form-control'
+    = show_error f.object, :phone_number
+  %td.hcenter
+    = f.input_field :needs_office_space, class: 'auto-check'
+    = show_error f.object, :needs_office_space
+  %td.hcenter
+    = f.input_field :from_date, as: :string, class: 'datepicker date-field form-control auto-date', 'data-provide': 'datepicker'
+    = show_error f.object, :from_date
+  %td.hcenter
+    = f.input_field :to_date, as: :string,   class: 'datepicker date-field form-control', 'data-provide': 'datepicker'
+    = show_error f.object, :to_date
+  %td
+    = link_to_remove_association t('cmn.destroy'), f, class: 'btn btn-xs btn-danger'

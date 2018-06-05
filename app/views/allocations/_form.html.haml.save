@@ -1,0 +1,116 @@
+- org_id = @allocation.try(:consumer).try(:org_id) || default_org_id
+
+= simple_nested_form_for(@allocation) do |f|
+  = f.error_notification
+
+  .tabbable
+    %ul.nav.nav-tabs
+      %li.active
+        = link_to 'Attributes', '#Attributes', 'data-toggle' => :tab
+      - if @allocation.space.floor.building.allocate_equipment?
+        %li
+          = link_to 'Equipments', '#Equips', 'data-toggle' => :tab
+      - if @allocation.space.floor.building.moving_items?
+        %li
+          = link_to 'Moving Items', '#MovingItems', 'data-toggle' => :tab
+    .tab-content
+      #Attributes.tab-pane.active
+        %br/
+        .form-inputs
+          = f.association :space, as: :hidden
+
+          .form-group.string
+            = label_tag 'allocation_person_id', 'Person', class: 'control-label col-lg-3 string'
+            .controls.col-lg-9
+              - if org_id
+                = collection_select(:allocation, :person_id ,
+                    Person.where('org_id = ?', [org_id]).order(:last_name, :first_name),
+                    :id, :name, { prompt: false, include_blank: '' }, { class: 'control-form' })
+              - else
+                = collection_select(:allocation, :person_id ,
+                    Person.all.order(:last_name, :first_name),
+                    :id, :name, { prompt: false, include_blank: '' }, { class: 'control-form' })
+          .form-group.string
+            = label_tag 'allocation_requirement_id', 'Requirement', class: 'control-label col-lg-3 string'
+            .controls.col-lg-9
+              - if org_id
+                = collection_select(:allocation, :requirement_id ,
+                    Requirement.where('org_id = ?', [org_id]).order(:project_name),
+                    :id, :name, { prompt: false, include_blank: '' }, { class: 'control-form' })
+              - else
+                = collection_select(:allocation, :requirement_id ,
+                        Requirement.all.order(:project_name),
+                        :id, :name, { prompt: false, include_blank: '' }, { class: 'control-form' })
+
+          -#- if org_id
+          -#  = f.association 'allocation[person_id]', collection: Person.where('org_id = ?', [org_id]).order('"last_name", "first_name" ASC')
+          -#  = f.association 'allocation[requirement_id]', collection: Requirement.where('org_id = ?', [org_id]).order('"project_name" ASC')
+          -#- else
+          -#  = f.association 'allocation[person_id]', collection: Person.all(order: '"last_name", "first_name" ASC')
+          -#  = f.association 'allocation[requirement_id]', collection: Requirement.all(order: '"project_name" ASC')
+
+
+          = f.input :from_date, as: :string, input_html: { class: 'datepicker date-field' }
+          = f.input :to_date,   as: :string, input_html: { class: 'datepicker date-field' }
+          = f.input :notes
+      - if @allocation.space.floor.building.allocate_equipment?
+        #Equips.tab-pane
+          %br/
+          = render partial: 'equipment_items/equipment_selector', object: @allocation
+      - if @allocation.space.floor.building.moving_items?
+        #MovingItems.tab-pane
+          .col-lg-12
+          %table#mitems
+            %thead
+              %tr
+                %th.hcenter.qty-field         Qty
+                %th.description-field         Description
+                %th.hcenter.weight-field      Weight (kg)
+                %th.hcenter.volume-field      Volume (m3)
+                / %th.destination-field         Destination
+                %th.all-space
+            %tbody
+              = f.simple_fields_for :moving_items, wrapper: false do |mi|
+                %tr.fields
+                  %td.hcenter
+                    = mi.input_field :qty, class: 'qty-field form-control'
+                    = show_error mi.object, :qty
+                  %td
+                    = mi.input_field :description, class: 'description-field form-control'
+                    = show_error mi.object, :description
+                  %td{ colspan: 5 }
+                    %table
+                      %tr
+                        %td
+                          = mi.input_field :weight, class: 'weight-field form-control'
+                          = show_error mi.object, :weight
+                        %td.hcenter
+                          = mi.input_field :volume, class: 'volume-field form-control'
+                          = show_error mi.object, :volume
+                        %td.hcenter
+                          = mi.input_field :destination,
+                              collection: Allocation.where(consumer_id: @allocation.consumer_id),
+                              label_method: -> (obj) { "#{obj.space.floor.building.short_name} / #{obj.space.name}" },
+                              value_method: -> (obj) { obj.id },
+                              class: 'destination-field form-control',
+                              placeholder: 'Destination',
+                              title: 'Destination Space'
+                          = show_error mi.object, :destination
+                        %td.hcenter
+                          = mi.input_field :replace,
+                              class: 'replace-field form-control',
+                              placeholder: 'Replace'
+                          = show_error mi.object, :replace
+                        %td{ rowspan: 2 }
+                          = mi.link_to_remove "Remove", class: 'btn btn-xs btn-danger'
+                      %tr
+                        %td{ colspan: 4}
+                          = mi.input_field :notes, class: 'table-note form-control', placeholder: 'Notes...'
+                          = show_error mi.object, :notes
+
+          = f.link_to_add "Add Item", :moving_items, 'data-target' => "#mitems", class: 'btn btn-xs btn-default'
+
+  %br/
+  %br/
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,4 @@
+= remote_link_to('<i class="fa fa-plus"></i>'.html_safe,
+    new_equipment_model_path,
+    class: 'smallbtn',
+    title: t('.title')) if can? :update, equipment_group

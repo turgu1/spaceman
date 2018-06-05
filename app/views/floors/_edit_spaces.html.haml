@@ -1,0 +1,33 @@
+.legend_u= t('.editing_html', item: @floor.complete_name)
+
+%div{ id: "floor-drawing-#{@floor.id.to_s}", onClick: "aOnClick(event, this);" }
+  = render partial: 'edit_spaces_drawing', object: @floor
+
+%br/
+
+= link_to(t('.add_space'), new_space_path(floor_id: @floor.id), remote: true, class: 'smallbtn') if can? :create, Space
+= link_to(t('.toggle'), '#',
+    onClick: "toggle_all_spaces('.floor-#{@floor.id}-space'); return false",
+      class: 'smallbtn')
+= link_to t('.adjust_space_type'), '#',
+      class: 'smallbtn adjust-button hide',
+    onclick: "event.stopPropagation(); call_remote_with_param('#{bulk_space_type_modal_floor_path(@floor)}', { spaces: get_selection() });"
+.pull-right
+  = link_to t('.cursor'), '#', title: t('.change_cursor'), onclick: 'event.stopPropagation(); change_cursor(); return false;', class: 'btn btn-info btn-sm smalll cursor-select'
+  = link_to '<i class="fa fa-arrows"></i>'.html_safe, '#',
+        class: 'smallbtn adjust-button hide',
+        title: t('.align_all'),
+      onclick: "event.stopPropagation(); call_remote_with_param('#{bulk_coor_adjust_floor_path(@floor)}', { spaces: get_selection(), type: 'all' });"
+  = link_to '<i class="fa fa-arrows-v"></i>'.html_safe, '#',
+        class: 'smallbtn adjust-button hide',
+        title: t('.align_top_bottom'),
+      onclick: "event.stopPropagation(); call_remote_with_param('#{bulk_coor_adjust_floor_path(@floor)}', { spaces: get_selection(), type: 'horizontal' });"
+  = link_to '<i class="fa fa-arrows-h"></i>'.html_safe, '#',
+        class: 'smallbtn adjust-button hide',
+        title: t('.align_left_right'),
+      onclick: "event.stopPropagation(); call_remote_with_param('#{bulk_coor_adjust_floor_path(@floor)}', { spaces: get_selection(), type: 'vertical' });"
+%span#next_space_entry
+%br/
+%br/
+#space-info
+

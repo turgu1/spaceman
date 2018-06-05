@@ -1,0 +1,15 @@
+en:
+  layouts:
+    application:
+      title: SpaceMan - Building Space Management
+    navbar:
+      reports: Reports
+      config: Config
+      new_building: <b>New Building</b>
+      new_org: <b>New Organisation</b>
+      list: <b>List</b>
+      test: Test
+      change_password: Change your password
+      logout: Logout
+    error:
+      advise_pilot: <h3>Internal Application Error, Please Advise the Application's Pilot</h3>

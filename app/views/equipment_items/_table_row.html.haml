@@ -1,0 +1,4 @@
+%tr
+  %td.hcenter= table_row.qty
+  %td= table_row.name
+  %td.hcenter= image_tag("#{table_row.photo.thumb.url}?#{table_row.updated_at.to_f}", :class => 'thumbnail') unless table_row.photo.blank?

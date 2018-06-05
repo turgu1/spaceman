@@ -1,0 +1,13 @@
+= simple_form_for(@wing) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :short_name
+    = f.input :visible
+    = f.input :floors_count
+    = f.input :order
+    = f.association :building, as: :hidden
+
+  .form-actions
+    = f.button :submit

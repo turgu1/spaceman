@@ -1,0 +1,25 @@
+-# Used to show Moving Items associated to allocations related to a space
+-#
+- all_moving_items = moving_items.moving_items
+- if all_moving_items.size == 0
+
+  %h4= t('.no_moving_item')
+
+-else
+
+  %table
+    %thead
+      %tr
+        %th= t('cmn.qty')
+        %th.all-space= t('cmn.description')
+        %th.no-print
+        %th.no-print
+
+    %tbody
+      - all_moving_items.each do |item|
+        %tr
+          %td= item.qty
+          %td.all-space= item.description
+          %td.no-print= edit_action item
+          %td.no-print= delete_action item, "#{item.description}"
+

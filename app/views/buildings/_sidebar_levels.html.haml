@@ -1,0 +1,12 @@
+-# Display drawings of building levels. When there is more than 4 potential levels, uses
+-# labelled panels accordion to shrink the space required to keep the thumbs on the sidebar
+- levels = levels_locations(sidebar_levels)
+- if levels.size > 4
+  .panel-group#locators
+    .panel.panel-default
+      - levels.each do |level|
+        = render partial: 'buildings/sidebar_thumb', object: sidebar_levels, locals: { level: level, in_panels: true }
+- else
+  - levels.each do |level|
+    = render partial: 'buildings/sidebar_thumb', object: sidebar_levels, locals: { level: level, in_panels: false }
+

@@ -1,0 +1,35 @@
+= simple_form_for(@space, remote: true) do |f|
+  = f.error_notification
+
+  .tabbable
+    %ul.nav.nav-tabs
+      %li.active
+        = link_to t('cmn.attributes'), "#Attributes", 'data-toggle' => :tab
+      - if @space.allocate_equipment?
+        %li
+          = link_to t('cmn.equipments'), "#Equips", 'data-toggle' => :tab
+    .tab-content
+      #Attributes.tab-pane.active
+        %br/
+        .form-inputs
+          = f.input :floor_id, as: :hidden
+          = f.association :space_type, input_html: { class: 'large-field' }
+          = f.input :name, input_html: { class: 'medium-field' }
+          = f.input :function, input_html: { class: 'large-field' }
+          = f.input :figure,
+            as: :radio_buttons,
+            collection: [['R', 'Rectangle'], ['P', 'Polygone']],
+            label_method: :last,
+            value_method: :first
+          = f.input :coor,        input_html: { class: 'large-field' }
+          = f.input :center_coor, input_html: { class: 'small-field' }, hint: t('.computed_value')
+          = f.input :area,        input_html: { class: 'small-field' }, hint: t('.computed_if_empty')
+      - if @space.allocate_equipment?
+        #Equips.tab-pane
+          %br/
+          = render partial: 'equipment_items/equipment_selector', object: @space
+  %br/
+  .form-actions
+    = f.button :submit
+    - @the_form = f
+

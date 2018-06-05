@@ -1,0 +1,18 @@
+language: ruby
+sudo: false
+cache: bundler
+script: "bundle exec rake"
+
+env:
+  - DATABASE_ADAPTER=sqlite3
+  - DATABASE_ADAPTER=postgresql
+
+rvm:
+  - 2.4.1
+  - 2.3.4
+  - 2.2.7
+
+gemfile:
+  - gemfiles/4.2.gemfile
+  - gemfiles/5.0.gemfile
+  - gemfiles/5.1.gemfile

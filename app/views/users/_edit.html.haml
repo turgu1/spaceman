@@ -1,0 +1,6 @@
+.legend_u= raw t('.title_html', item: h(@user.username))
+
+= render 'form'
+
+= remote_link_to t('.users'), users_path, :remote => true
+

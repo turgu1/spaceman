@@ -1,0 +1,19 @@
+%table
+  %thead
+    %tr
+      %th=         Wing.human_attribute_name(:name)
+      %th=         Wing.human_attribute_name(:short_name)
+      %th=         Wing.human_attribute_name(:building_name)
+      %th.hcenter= Wing.human_attribute_name(:floors_count)
+      %th.no-print.nowrap
+
+  %tbody
+    - index.each do |wing|
+      %tr
+        %td= wing.name
+        %td= wing.short_name
+        %td= wing.building_name
+        %td.hcenter= wing.floors_count
+        %td.no-print.nowrap= all_actions wing, "[#{wing.name}]"
+
+%br

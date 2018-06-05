@@ -1,0 +1,8 @@
+fr:
+  moving_tasks:
+    index:
+      new_task: Nouvelle tâche
+    new:
+      new: Nouvelle tâche
+    edit:
+      editing: Modification de la tâche

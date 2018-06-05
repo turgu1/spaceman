@@ -1,0 +1,12 @@
+en:
+  equipment_models:
+    edit:
+      editing_html: Editing Equipment Model <b>%{item}</b>
+    edit_equipment_model_link:
+      title: Edit Equipment Model Attributes
+    new:
+      new: New Equipment Model
+    new_equipment_model_link:
+      title: Add a new Equipment Model
+    show:
+      equipment_model_html: Equipment Model <b>%{item}</b>

@@ -1,0 +1,11 @@
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  %legend= t('.sign_up')
+  = f.error_notification
+  .form-inputs
+    = f.input :username, :required => true, :autofocus => true, input_html: { class:  'medium-field' }
+    = f.input :email, :required => true, input_html: { class:  'large-field' }
+    = f.input :password, :required => true, input_html: { class:  'medium-field' }
+    = f.input :password_confirmation, :required => true, input_html: { class:  'medium-field' }
+  .form-actions
+    = f.button :submit, t('.sign_up')
+= render 'devise/shared/links'

@@ -1,0 +1,20 @@
+en:
+  table_defs:
+    dropdown_menu:
+      table_field_def: Table Field Definition
+    edit:
+      editing_for_html:  Editing Table Fields Definition for Table <b>%{item}</b>
+    edit_link:
+      title: Edit Table Fields Definition Attributes
+    form:
+      fields: Fields
+    index:
+      table_fields_definitions: Table Fields Definitions
+      fields: Fields
+    new:
+      new: New Table Fields Definition
+    new_link:
+      title: Add a new Table Fields Definition
+    show:
+      fields: Fields
+      table_def_html: Table Field Definition <b>%{item}</b>

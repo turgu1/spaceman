@@ -1,0 +1,19 @@
+fr:
+  reports:
+    edit:
+      editing_html:  Modification du rapport <b>%{item}</b>
+    edit_link:
+      title: Modification des paramètres du rapport
+    form:
+      params_script: Script des paramètres (Haml)
+      exec_script: "Script d'exécution (Ruby)"
+      view_script: Script de visionnement (Haml)
+      icon: Pictogramme
+    icon_selector:
+      please_select: 'Selectionnez le pictogramme désiré:'
+    new:
+      new: Nouveau rapport
+    new_link:
+      title: "Ajout d'un nouveau rapport"
+    show:
+      report_html: Rapport <b>%{item}</b>

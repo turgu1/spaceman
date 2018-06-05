@@ -1,0 +1,32 @@
+fr:
+  floors:
+    bulk_space_type_modal:
+      space_type_for_space: Type de local pour la locaux sélectionnés
+      please_select: 'Sélectionnez le type de local désiré pour les locaux sélectionnés:'
+      set_type: Indiquez le type de local
+    drawing_allocations:
+      no_more_space: "Il n'y a plus de locaux d'alloué sur cet étage"
+    edit:
+      editing_html: "Modification de l'étage <b>%{item}</b>"
+    edit_floor_link:
+      title: "Modification des paramètres d'étage"
+    edit_spaces:
+      editing_html: Modification des locaux de <b>%{item}</b>
+      add_space: "Ajout d'un local"
+      toggle: Basculer la sélection
+      adjust_space_type: Ajuster le type de local
+      cursor: Curseur
+      change_cursor: Modifier le curseur de souris.
+      align_all: Aligner tous les rebords.
+      align_top_bottom: Aligner les rebords haut et bas.
+      align_left_right: Aligner les rebords gauche et droite.
+    edit_spaces_link:
+      edit: Modification des locaux
+    form:
+      computed_value: Valeur calculée
+    new:
+      new_for_html: "Nouvel étage pour l'édifice <b>%{item}</b>"
+    new_floor_link:
+      title: Ajouter un étage
+    adjust_floors:
+      completed: Ajustement des étages complété

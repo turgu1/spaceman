@@ -1,0 +1,26 @@
+fr:
+  allocations:
+    allocation_row:
+      of_space_to: Local %{item_from} pour %{item_to}
+    allocation_row2:
+      of_space_to: Local %{item_from} pour %{item_to}
+    equipment:
+      from_space_type: Du type de local
+      from_space: Du local
+      from_allocation: "De l'allocation"
+      no_equipment: Aucun équipement
+    index:
+      no_allocation: "Il n'y pas d'allocation (personnel et besoin)"
+    index2:
+      no_allocation: "Il n'y pas d'allocation (personnel et besoin)"
+    moving_items:
+      no_moving_item: "Il n'y a pas d'article à déplacer"
+    moving_item_fields:
+      destination_space: Local de destination
+      replace_equipment: Équipement remplacé à destination
+    new:
+      new_allocation_for_html: Nouvelle allocation pour <b>%{building} / %{space}</b>
+    edit:
+      allocation_for_html: Allocation pour <b>%{building} / %{space} &harr; %{target}</b>
+    form:
+      add_item: "Ajout d'un article"

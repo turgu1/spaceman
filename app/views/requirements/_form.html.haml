@@ -1,0 +1,14 @@
+= simple_form_for(@requirement) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :org, as: :hidden
+    = f.input :allocations_count, as: :hidden
+    = f.input :project_name, input_html: { class: 'large-field' }
+    = f.association :person, collection: Person.in_org(@requirement.org.id), input_html: { class: 'person-field' }
+    = f.input :from_date, as: :string, input_html: { class: 'datepicker date-field' }
+    = f.input :to_date, as: :string, input_html: { class: 'datepicker date-field' }
+    = f.input :notes
+
+  .form-actions
+    = f.button :submit

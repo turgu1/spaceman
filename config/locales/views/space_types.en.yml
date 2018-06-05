@@ -1,0 +1,10 @@
+en:
+  space_types:
+    edit:
+      editing_html:  Editing Space Type <b>%{item}</b>
+    edit_link:
+      title: Edit Space Type Attributes
+    new:
+      new: New Space Type
+    new_space_type_link:
+      title: Add a new Space Type

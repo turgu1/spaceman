@@ -1,0 +1,4 @@
+= link_to('<i class="fa fa-plus"></i>'.html_safe,
+    new_building_path,
+    class: 'smallbtn',
+    title: t('.title')) if can? :create, Building

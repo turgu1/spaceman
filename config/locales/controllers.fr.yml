@@ -1,0 +1,131 @@
+fr:
+  allocations:
+    auto_new:
+      create_ok: Allocation for [%{item}] was successfully created.
+    create:
+      create_ok: L'allocation pour [%{item}] a été créée avec succès.
+    update:
+      update_ok: L'allocation pour [%{item}] a été mise à jour avec succès.
+    destroy:
+      delete_ok: L'allocation pour [%{item}] a été détruite avec succès.
+      internal_error: Application Internal Error.
+  buildings:
+    create:
+      create_ok: L'édifice [%{item}] a été créé avec succès.
+    update:
+      update_ok: L'édifice [%{item}] a été mis à jour avec succès.
+    destroy:
+      delete_ok: L'édifice [%{item}] a été détruit avec succès.
+  equipment_groups:
+    create:
+      create_ok: Le groupe d'équipement [%{item}] a été créé avec succès.
+    update:
+      update_ok: Le groupe d'équipement [%{item}] a été mis à jour avec succès.
+    destroy:
+      delete_ok: Le groupe d'équipement [%{item}] a été détruit avec succès.
+  equipment_items:
+    create:
+      create_ok: La pièce d'équipment [%{item}] a été créée avec succès.
+    update:
+      update_ok: La pièce d'équipment [%{item}] a été mise à jour avec succès.
+    destroy:
+      delete_ok: La pièce d'équipment [%{item}] a été détruite avec succès.
+  equipment_models:
+    create:
+      create_ok: Le modèle d'équipement [%{item}] a été créé avec succès.
+    update:
+      update_ok: Le modèle d'équipement [%{item}] a été mis à jour avec succès.
+    destroy:
+      delete_ok: Le modèle d'équipement [%{item}] a été détruit avec succès.
+  floors:
+    bulk_coor_adjust:
+      coor_ok: Les coordonnées ont été ajustées avec succès
+    bulk_space_type:
+      space_type_ok: Les types de local a été mis à jour avec succès
+    create:
+      create_ok: L'étage [%{item}] a été créé avec succès.
+    update:
+      update_ok: L'étage [%{item}] a été mis à jour avec succès.
+    destroy:
+      delete_ok: L'étage [%{item}] a été détruit avec succès.
+  moving_items:
+    create:
+      create_ok: L'article à déplacer a été créé avec succès.
+    update:
+      update_ok: L'article à déplacer a été mis à jour avec succès.
+  moving_tasks:
+    create:
+      create_ok: La tâche de déplacement a été créé avec succès.
+    update:
+      update_ok: La tâche de déplacement a été mis à jour avec succès.
+  orgs:
+    create:
+      create_ok: L'organisation [%{item}] a été créé avec succès.
+    update:
+      update_ok: L'organisation [%{item}] a été mis à jour avec succès.
+    destroy:
+      delete_ok: L'organisation [%{item}] a été détruit avec succès.
+  people:
+    create:
+      create_ok: La personne a été créée avec succès.
+    update:
+      update_ok: La personne a été mise à jour avec succès.
+    destroy:
+      delete_ok: La personne [%{item}] a été détruite avec succès.
+  reports:
+    create:
+      create_ok: Le rapport a été créé avec succès.
+    update:
+      update_ok: Le rapport [%{item}] a été mis à jour avec succès.
+    destroy:
+      delete_ok: Le rapport [%{item}] a été détruit avec succès.
+  requirements:
+    create:
+      create_ok: Le besoin a été créé avec succès.
+    update:
+      update_ok: Le besoin a été mis à jour avec succès.
+    destroy:
+      delete_ok: Le besoin [%{item}] a été détruit avec succès.
+  space_types:
+    create:
+      create_ok: Le type de local a été créé avec succès.
+    update:
+      update_ok: Le type de local a été mis à jour avec succès.
+  spaces:
+    create:
+      create_ok: Le local a été créé avec succès.
+    update:
+      update_ok: Le local a été mis à jour avec succès.
+  specialties:
+    create:
+      create_ok: La spécialité a été créée avec succès.
+    update:
+      update_ok: La spécialité a été mise à jour avec succès.
+  table_defs:
+    create:
+      create_ok: La définition de table a été créée avec succès.
+    update:
+      update_ok: La définition de table a été mise à jour avec succès.
+  users:
+    do_change_password:
+      password_update_ok: Votre mot de passe a été mis à jour avec succès.
+      passwords_differ: Les deux mots de passe sont différents. S.v.p. essayez à nouveau.
+      unable_to_change_password: Impossible de changer le mot de passe
+    do_change_password_for:
+      password_update_ok: Le mot de passe pour l'utilisateur [%{item}] a été mis à jour avec succès.
+      passwords_differ: Les deux mots de passe sont différents. S.v.p. essayez à nouveau.
+      unable_to_change_password: Impossible de changer le mot de passe
+    do_change_language: 
+      language_ok: La langue a été mise à jour avec succès.
+      language_error: Incapable de mettre à jour la langue.
+    update:
+      update_ok: L'utilisateur [%{item}] a été mis à jour avec succès.
+    destroy:
+      delete_ok: L'utilisateur [%{item}] a été détruit avec succès.
+  wings:
+    create:
+      create_ok: L'aile [%{item}] a été créé avec succès.
+    update:
+      update_ok: L'aile [%{item}] a été mis à jour avec succès.
+    destroy:
+      delete_ok: L'aile [%{item}] a été détruit avec succès.

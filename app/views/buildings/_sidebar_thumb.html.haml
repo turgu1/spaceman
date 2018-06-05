@@ -1,0 +1,21 @@
+-# This generate a sidebar level picture with areas to permit floor selection by
+-# the user. The level drawing is also highlighting the current displayed floor when required
+-#
+-# sidebar_thumb = building
+-# level = [level_number, {floor_id => locator_coor, ...}
+-# session[:current_floor]
+
+- fi = FloorImage.where(building_id: sidebar_thumb.id, level: level[0]).take
+- floor = Floor.find(session[:current_floor]) unless session[:current_floor].nil?
+- unless fi.nil?
+  - if in_panels
+    .panel-heading
+      %a.panel-toggle{ href: "#fi-#{fi.id}", 'data-toggle' => 'collapse', 'data-parent' => '#locators'}
+        %h3.panel-title #{fi.name}
+    .panel-body.collapse{ id: "fi-#{fi.id}", class: "#{'in' if floor && (floor.level == level[0]) }"}
+      .panel-inner
+        = render partial: 'buildings/thumb', object: sidebar_thumb, :locals => { fi: fi, level: level, in_panels: in_panels }
+  - else
+    .thumbnail
+      = render partial: 'buildings/thumb', object: sidebar_thumb, :locals => { fi: fi, level: level, in_panels: in_panels }
+      .caption{ style: 'text-align:center;'}= "#{fi.name}"

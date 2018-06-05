@@ -1,0 +1,5 @@
+.legend_u= t('.editing_requirement_html', name: @requirement.project_name, org: @requirement.org.abbreviation)
+
+= render 'form'
+
+= remote_link_to t('cmn.back'), back_home_index_path

@@ -1,0 +1,15 @@
+.legend_u= t('.allocations_for_html', item: "#{@org.name} (#{@org.abbreviation})")
+
+- if @floors.empty?
+  %h4= t('.no_allocation')
+- else
+  - first = true
+  - @floors.each do |floor|
+    %p{ class: "#{first ? '' : 'new-page'}" }
+      - first = false
+      %h3 #{floor.complete_name}
+      .entity-allocations{ id: "allocations-#{inc_center_index.to_s}", 'data-entity': 'orgs', 'data-entity-id': @org.id, 'data-floor-id': floor.id, 'nxt-load': 'b' }
+        %div#a
+          = render partial: '/floors/drawing_allocations',
+            locals: { allocation_obj: @org, floor: floor }
+        %div#b

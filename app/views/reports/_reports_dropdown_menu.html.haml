@@ -1,0 +1,8 @@
+- group = ''
+- Report.all_reports.each do |report|
+  - if report.enabled? || can?(:create, Report)
+    - unless group == report.group
+      - group = report.group
+      %li= link_to "<b>#{group}:</b>".html_safe, '#'
+    %li
+      = link_to report_label(report, group).html_safe, prepare_report_path(report), remote: true

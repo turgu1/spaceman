@@ -1,0 +1,51 @@
+fr:
+  devise:
+    confirmations:
+      new:
+        resend: Retransmission des instructions
+    mailer:
+      confirmation_instructions:
+        welcome: "Bienvenue %{item}!"
+        confirm_to: "Vous pouvez confirmer votre adresse de courriel via le lien suivant:"
+        confirm: Confirmer mon compte
+      reset_password_instructions:
+        hello: "Bonjour %{item}!"
+        request_to_link: "Quelqu'un a demandé un lien pour modifier votre mot de passe, et vous pouvez le faire via le lien suivant."
+        change_password: Changer mon mot de passe
+        if_not_requested: "Si vous n'êtes pas le demandeur, vous pouvez ignorer ce message."
+        no_change_until: Votre mot de passe ne sera modifié que lorsque vous le changerai via le lien suivant.
+    passwords:
+      edit:
+        change: Changer votre mot de passe
+        new_password: Nouveau mot de passe
+        confirm: Confirmez votre nouveau mot de passe
+        change: Changer mon mot de passe
+      new:
+         forgot: "J'ai oublié mon mot de passe?"
+         instructions: Me transmettre les instructions de changement de mot de passe
+    registrations:
+      new:
+        sign_up: Inscription
+      edit:
+        edit: Modifier %{item}
+        cancel: Annuler mon compte
+        cancel_my_account: Annulation de mon compte
+        not_happy: Pas content?
+        hints:
+          leave_blank: laisser vide si vous ne voulez pas le modifier
+          password_confirm: entrez votre mot de passe courant pour confirmer les changements
+    sessions:
+      new:
+        sign_in: Ouvrir une session
+    shared:
+      links:
+        sign_in: Ouvrir une session
+        sign_up: Inscription
+        forgot: "J'ai oublié mon mot de passe?"
+        no_confirmation: Pas reçu les instructions de confirmation?
+        no_unlock: Pas reçu les instructions de déblocage?
+        sign_with: Connecté avec %{item}
+    unlocks:
+      new:
+        resend: Retransmettre les instructions de déblocage
+

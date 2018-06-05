@@ -1,0 +1,21 @@
+.legend_u
+  = render 'space_types/new_space_type_link'
+  = SpaceType.model_name.human(count: 2)
+
+%table
+  %thead
+    %tr
+      %th=         SpaceType.human_attribute_name(:name)
+      %th=         SpaceType.human_attribute_name(:short_name)
+      %th=         SpaceType.human_attribute_name(:notes)
+      %th.hcenter= SpaceType.human_attribute_name(:spaces_count)
+      %th.nowrap.no-print
+
+  %tbody
+    - @space_types.each do |space_type|
+      %tr
+        %td= space_type.name
+        %td= space_type.short_name
+        %td= space_type.notes
+        %td.hcenter= space_type.spaces_count
+        %td.no-print.nowrap= all_actions space_type, "[#{h(space_type.name)}]"

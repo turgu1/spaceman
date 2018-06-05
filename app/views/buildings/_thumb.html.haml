@@ -1,0 +1,28 @@
+-# The thumb needs 'resize' class if displayed inside a panel such that it will be resized
+-# through javascript at load time
+
+-# The image is going to be adjusted in size through imagemapster (class resize-in-panel,
+-# check_size function in spaceman.js). To limit flickering, css display is set to none
+-# and adjusted to 'block' once resizing is done
+
+- map_id = "locator-#{thumb.id}-#{level[0]}"
+- if level[1][session[:current_floor]]
+  %img{   src: "#{drawing_locator_floor_path(session[:current_floor])}?#{Time.now.to_i.to_s}",
+       usemap: "##{map_id}",
+        class: "img-map highlight#{' resize-in-panel' if in_panels}",
+        style: "display: #{if in_panels then 'none' else 'block' end};",
+           id: "img-#{thumb.id}-#{level[0]}" }
+- else
+  %img{   src: "#{fi.file.url}?#{Time.now.to_i.to_s}",
+       usemap: "##{map_id}",
+           id: "img-#{thumb.id}-#{level[0]}",
+        style: "display: #{if in_panels then 'none' else 'block' end};",
+        class: "img-map highlight#{' resize-in-panel' if in_panels}" }
+%map{ id: "#{map_id}",
+    name: "#{map_id}" }
+  - level[1].each do |floor_id, locator_coor|
+    %area{ shape: "#{locator_coor.split(',').size == 4 ? 'rect' : 'poly'}",
+          coords: "#{locator_coor}",
+            href: "#",
+         onclick: "call_remote('#{floor_path(floor_id)}', {push: true})",
+           style: 'cursor:pointer;'}

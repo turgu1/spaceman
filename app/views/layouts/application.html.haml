@@ -1,0 +1,40 @@
+!!! 5
+%html
+  %head
+    %title= t('.title')
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'false'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'false'
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    %meta{ 'http-equiv' => 'X-UA-Compatible', content: 'IE=9' }
+    %link{:href => "/assets/images/apple-touch-icon.png", :rel => "apple-touch-icon", :sizes => "180x180"}/
+    %link{:href => "/assets/images/favicon-32x32.png", :rel => "icon", :sizes => "32x32", :type => "image/png"}/
+    %link{:href => "/assets/images/favicon-16x16.png", :rel => "icon", :sizes => "16x16", :type => "image/png"}/
+    %link{:href => "/assets/images/manifest.json", :rel => "manifest"}/
+    %link{:color => "#5bbad5", :href => "/assets/images/safari-pinned-tab.svg", :rel => "mask-icon"}/
+    %meta{:content => "#ffffff", :name => "theme-color"}/
+%body
+  #hidden-pane.no-print{ style: 'display:none;' }
+  #modal-dialog.modal.fade.no-print{ tabindex: -1, role: :dialog }
+    .modal-dialog
+      #modal-info.modal-content
+
+  .container-fluid
+    .row.no-print
+      = render 'layouts/navbar'
+    .container-fluid{ style: 'margin-left:20px; margin-right:20px;'}
+      .row
+        #left-pane.col-lg-2.col-sm-2.no-print
+          = render 'layouts/sidebar'
+        .col-lg-8.col-sm-8
+          #flash-pane.no-print
+            = render 'layouts/flash'
+          #main-pane
+            = yield
+        #right-pane.col-lg-2.col-sm-2.no-print
+          = render 'layouts/rightbar'
+    .container-fluid.no-print{ style: 'margin-left:20px; margin-right:20px;'}
+      .row
+        .col-lg-12.col-sm-12
+          %hr
+          %span &copy; 2013, 2018 - Guy Turcotte

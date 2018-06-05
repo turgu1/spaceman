@@ -1,0 +1,244 @@
+// To keep room for the upper navbar
+
+body.busy, body.busy * {
+  cursor: wait !important;
+}
+
+// To get rid of flickers when collapseable panels are refreshed
+.collapsing {
+    transition: height 0s;
+}
+
+.accordion-heading a.accordion-toggle { display: inline-block; }
+
+.accordion-heading .pull-right {
+  margin-top: 2px;
+  margin-right: 3px;
+}
+
+#flash-pane {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: 0px;
+  z-index: 9999;
+}
+
+label.checkbox input {
+  display: inline-block;
+}
+
+.auto-check {
+  margin-left: 0px ! important; 
+  display: inline-block ! important;
+}
+
+.table tbody > tr > td {
+  vertical-align: middle ! important;
+}
+
+.table thead > tr > th {
+  vertical-align: bottom ! important;
+}
+
+.table tbody > tr > td img {
+  display:block;
+  margin: 0 auto;
+}
+
+.table tbody > tr > td input {
+  display:block;
+  margin: 0 auto;
+}
+
+.table .nowrap {
+  white-space: nowrap;
+}
+
+.scrollable {
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+@media screen {
+  body {
+    padding-top: 70px;
+    padding-bottom: 40px;
+  }
+}
+
+// To set the max hight of a side pane
+
+.side-pane {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.bigg {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.smalll {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tinyy {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 21px;
+  line-height: 40px;
+  color: #333;
+  border: 0;
+}
+
+.legend_u {
+  display: block;
+  width: 100%;
+  padding: 0;
+  font-size: 21px;
+  line-height: 40px;
+  color: #333;
+  border: 0;
+  margin-bottom: 20px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #E5E5E5;
+}
+
+textarea {
+  width: 90%;
+  height: 10em;
+}
+
+.show-label {
+  font-weight: bold;
+  text-align: right;
+  float: left;
+  width: 170px;
+  padding-right: 10px;
+}
+
+.show-value {
+  display: inline;
+}
+
+.large-field {
+  width: 30em;
+}
+
+.person-field, .requirement-field {
+  width: 18em;
+}
+
+.medium-field, .name-field, .description-field {
+  width: 15em;
+}
+
+.destination-field, .replace-field {
+  width: 12em;
+}
+
+.small-field {
+  width: 6em;
+}
+
+.qty-field, .weight-field, .volume-field {
+  width: 6em;
+}
+
+.tiny-field {
+  width: 62px;
+}
+
+.money-field {
+  width: 9em;
+}
+
+.date-field {
+  width: 7em;
+}
+
+.first-name-field, .last-name-field {
+  width: 12em
+}
+
+.person-title-field {
+  width: 5em;
+}
+
+.phone-field {
+  width: 5em;
+}
+
+.date-display {
+  width:12em;
+  white-space: nowrap;
+}
+
+.no-break {
+  white-space: nowrap;
+}
+
+area {
+  //z-index: 20;
+}
+
+.hcenter {
+  text-align: center !important;
+}
+
+.help-inline {
+  color: red;
+  font-style: bold;
+}
+
+.hide {
+  display: none;
+}
+
+.floor-link {
+  padding-left: 1em;
+}
+
+.code {
+  font-family: 'Lucida Console' !important;
+
+  pre {
+    max-height: 200px;
+    resize: auto;
+  }
+}
+
+.ace_editor {
+  border: 1px solid #DDD;
+  border-radius: 4px;
+}
+
+.btn-sm {
+  padding: 3px 10px;
+  vertical-align: 10%;
+}
+
+.alloc-needed {
+  color: red;
+}
+
+.all-space {
+  width: 100%;
+}
+
+.small-img {
+  width: 150px;
+  display: inline ! important;
+}
+
+

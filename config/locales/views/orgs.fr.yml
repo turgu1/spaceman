@@ -1,0 +1,28 @@
+fr:
+  orgs:
+    edit:
+      editing_html: Modification de <b>%{item}</b>
+    edit_org_link:
+      editing: "Modification des paramètres de l'organisation."
+    edit_org_link2:
+      editing: "Modification des paramètres de l'organisation."
+    export_all_link:
+      export_xml: Exportation des organisations en format XML.
+      export_excel: Exportation des organisations en format Excel.
+    export_link:
+      export_xml: "Exportation de l'organisations en format XML."
+      export_excel: "Exportation de l'organisations en format Excel."
+    new:
+      new_org: Nouvel organisation
+    new_org_link:
+      new_org: "Ajout d'une organisation"
+    show_allocated_floors:
+      allocations_for_html: Allocations pour <b>%{item}</b>
+      no_allocation: "Il n'y a aucune allocation"
+    rightbar:
+      title: Visionner toutes les allocations de %{item}.
+    rightbar_people_list:
+      title: Visionner toutes les allocations de %{item}.
+    rightbar_requirements_list:
+      title: Visionner toutes les allocations de %{item}.
+

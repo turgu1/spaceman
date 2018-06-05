@@ -1,0 +1,48 @@
+en:
+  cmn:
+    edit: Edit
+    show: Show
+    destroy: Remove
+    update: Update
+    sure: Are you sure?
+    erasing: "Deleting %{type} [%{item}] ... Are you sure?"
+    back: Back
+    close: Close
+    none: None
+    add: Add
+    disabled: Disabled
+    cancel: Cancel
+    'yes': 'Yes'
+    'no': 'No'
+    english: English
+    french: French
+    language: Language
+
+    organisation: Organisation
+    organisations: Organisations
+    org: Org
+    person_requirement: Person / [Requirement]
+    person: Person
+    people: Personnel
+    requirement: Requirement
+    requirements: Requirements
+    building: Building
+    buildings: Buildings
+    floor: Floor
+    space: Space
+    space_type: Space Type
+    name: Name
+    allocation: Allocation
+    allocations: Allocations
+    from_date: From Date
+    to_date: To Date
+    notes: Notes
+    qty: Qty
+    description: Description
+    photo: Photo
+    equipments: Equipments
+    moving_items: Moving Items
+    moving_tasks: Moving Tasks
+    attributes: Attributes
+    duration: Duration
+    order: Order  

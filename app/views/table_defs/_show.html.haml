@@ -1,0 +1,25 @@
+.legend_u
+  = render partial: 'table_defs/edit_link', object: @table_def
+  = t('.table_def_html', item: @table_def.name)
+
+= show_entry(@table_def) do |e|
+  = e.field :name
+
+%h3= t('.fields')
+
+%table
+  %thead
+    %tr
+      %th=         FieldDef.human_attribute_name(:name)
+      %th.hcenter= FieldDef.human_attribute_name(:field_type)
+      %th.hcenter= FieldDef.human_attribute_name(:order)
+      %th.hcenter= FieldDef.human_attribute_name(:required)
+  %tbody
+    - @table_def.fields.each do |ff|
+      %tr
+        %td= ff.name
+        %td.hcenter= ff.field_type
+        %td.hcenter= ff.order
+        %td.hcenter= ff.required? ? 'Yes' : 'No'
+
+= remote_link_to t('cmn.back'), table_defs_path

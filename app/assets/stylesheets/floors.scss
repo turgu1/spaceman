@@ -1,0 +1,20 @@
+// Place all the styles related to the Floors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.floor-thumb {
+  max-height: 100px ! important;
+  max-width: 250px ! important;
+}
+
+.space-edit.cursor-0, .cursor-select.cursor-0 {
+  cursor: image-url("space-pointer-0.cur"),crosshair;
+}
+
+.space-edit.cursor-1, .cursor-select.cursor-1 {
+  cursor: image-url("space-pointer-1.cur"),crosshair;
+}
+
+.space-edit.cursor-2, .cursor-select.cursor-2 {
+  cursor: image-url("space-pointer-2.cur"),crosshair;
+}

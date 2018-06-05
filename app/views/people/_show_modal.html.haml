@@ -1,0 +1,18 @@
+.modal-header
+  %button.close{ :type => 'button', onclick: 'hide_modal(event);' } &times;
+  %h3
+    #{show_modal.name}
+.modal-body
+  = show_entry(show_modal) do |e|
+    = e.field :org_name
+    = e.field :first_name
+    = e.field :last_name
+    = e.field :title
+    = e.field :phone_number
+    = e.field :needs_office_space
+    = e.field :from_date
+    = e.field :to_date
+.modal-footer
+  = remote_link_to(t('cmn.edit'), edit_person_path(show_modal), :class => 'btn btn-primary', 'data-dismiss' => :modal, 'data-target' => '#modal-dialog') if can? :update, show_modal
+  = link_to t('cmn.close'), '#', onclick: 'hide_modal(event);', :class => 'btn btn-primary'
+

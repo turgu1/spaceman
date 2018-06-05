@@ -1,0 +1,13 @@
+fr:
+  requirements:
+    edit:
+      editing_requirement_html: "Modification du besoin [ <b>%{name}</b> ] de l'organisation <b>%{org}</b>"
+    new:
+      new_requirement_for: "Nouveau besoin pour l'organisation <b>%{item}</b>"
+    new_requirement_link:
+      title: "Ajout d'un besoin"
+    show:
+      requirement: "Besoin [ %{item} ]"
+    show_allocated_floors:
+      allocations_for_html:  Allocations pour <b>%{item}</b>
+      no_allocation: "Il n'y a aucune allocation"

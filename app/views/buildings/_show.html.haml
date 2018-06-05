@@ -1,0 +1,19 @@
+.legend_u
+  = render partial: 'buildings/edit_link', object: @building
+  %span= raw "#{t('activerecord.models.building')} <b>#{@building.name}</b>"
+  = render partial: 'buildings/export_link', object: @building
+
+= show_entry(@building) do |e|
+  = e.field :name
+  = e.field :short_name
+  = e.field :min_level
+  = e.field :max_level
+  = e.field :allocate_equipment, as: :yesno
+  = e.field :moving_items, as: :yesno
+
+%br/
+.legend_u
+  = render partial: 'wings/new_wing_link', object: @building
+  %span= t('.wings')
+
+= render partial: 'wings/index', object: @building.wings

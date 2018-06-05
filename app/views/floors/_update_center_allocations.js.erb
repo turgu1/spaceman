@@ -1,0 +1,3 @@
+replace_content_no_flicker("#<%= center_target %>",  "<%= j(render 'floors/drawing_allocations', allocation_obj: allocation_obj, floor: @floor ) %>");
+replace_content('#flash-pane', "<%= j(render 'layouts/flash') %>");
+replace_content('#right-pane', "<%= j(render(partial: 'orgs/rightbar', object: @org)) %>");

@@ -1,0 +1,17 @@
+en:
+  buildings:
+    edit:
+      editing_html: Editing Building <b>%{item}</b>
+    edit_link:
+      title: Edit Building Attributes
+    export_link:
+      title: Export building data as XML
+    form:
+      levels: Levels
+      add_level: Add Level
+    new:
+      new: New building
+    new_link:
+      title: Add a new Building
+    show:
+      wings: Wing(s)

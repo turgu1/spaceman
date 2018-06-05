@@ -1,0 +1,127 @@
+Procédure de déploiement initial de Spaceman.
+
+Une foix les deux ordinateurs configurés (appserv et appdev) il est maintenant possible d'effectuer l'installation des applications.
+
+La procédure ci-dessous est spécifique au déploiement initial de l'application Spaceman. Il est nécessaire de suivre les étapes indiquées.
+
+1. Aviser les utilisateurs que l'application spaceman sera mise à niveau vers un nouveau serveur et qu'un prochain courriel leur fourniera les indications sur comment se connecter à nouveau. Leur indiquer le moment où le changement s'effectuera (leur laisser au moins 24 heures d'avis pour leur permettre de compléter des changements). Leur indiquer également que toutes les données seront migrées sur le nouveau serveur.
+
+2. Une fois arrivé au moment indiqué aux usagers pour faire le transfert, il est nécessaire de stopper l'accès à l'application Spaceman. Pour se faire, sur le serveur sds-bib, se logger comme administrateur et stopper le service unicorn de spaceman:
+
+   [ On est dans sds-bib dans un compte admin ]
+
+	 Effectuer la commande suivant:
+
+	 $ ls /etc/init.d
+
+	 Il devrait y avoir un fichier dont le nom débute par unicorn_spaceman... Noter le nom et l'utiliser pour exécuter la commande suivante:
+
+   $ sudo service unicorn_spaceman... stop
+
+3. On doit maintenant récupérer une copie des données en production sur le serveur courant (sds-bib). Elles sont composées de deux éléments: 1) des données localisées dans postgresql et 2) des données dans une arborescence de fichiers. Pour ce faire, effectuer les commandes suivantes:
+
+   [ On est dans sds-bib dans un compte admin ]
+
+   $ Effectuer la commande suivante pour récupérer le mot de passe de spaceman pour l'accès à Postgresql
+
+   $ sudo cat /home/spaceman/apps/spaceman/shared/config/database.yml
+
+   Le mot de passe devrait être requis par l'exécution de la commande pg_dump ici bas. Le nom d'utilisateur postgresql ainsi que le nom de la bd devraient correspondre à ceux dans database.yml sous 'production:' :
+
+	 $ cd ~
+	 $ mkdir spaceman_data
+	 $ cd spaceman_data
+	 $ pg_dump -h localhost -U spaceman -W spaceman_production --column-inserts --data-only > spaceman.psql
+	 $ (cd /home/spaceman/apps/spaceman/shared; sudo tar cf - system/data) >data_files.tar
+
+   Il serait bon de vérifier que le fichier spaceman.psql contient bien les commandes sql pour la regénération des données dans la nouvelle bd (commandes 'insert'). Devrait avoir plusieurs centaines de kilo-octets. C'est un fichier texte qui peut être regardé via la commande suivante:
+
+   $ less spaceman.psql
+
+   Pour le fichier  de l'arborescence de fichier, la commande suivante devrait produire une liste assez longue du contenu du fichier tar:
+
+   $ tar tf spaceman_data/data_files.tar
+
+   On peut maintenant copier vers appdev le fichier contenant les données:
+
+   $ cd ..
+	 $ tar cf spaceman_data.tar spaceman_data
+	 $ scp spaceman_data.tar userdev@appdev:Dev
+
+   Vérifier que le fichier résultat de la copy (commande scp) a bien été transmis dans le répertoire ~/Dev sur userdev@appdev.
+
+4. Se connecter sur userdev@appdev
+
+5. Préparatifs avant déploiement
+
+	 ---- Staging ----
+
+   Modifier les variables afin qu'elles représentent les identifiants locaux. Les valeurs sont les suivantes:
+
+   set :server,    "appdev"
+   set :app_user,  "stageuser"
+   set :superuser, "admdev"
+
+   Il faut donc remplacer 'appdev' pour le nom du poste de développement, 'stageuser' sera le nom de l'utilisateur qui sera géneŕé par le processus d'installation et 'admdev' est le nom du super-utilisateur pour le poste de développement
+
+   $ cd ~/Dev/spaceman
+   $ nano config/deploy/staging.rb
+
+	 ---- Production ----
+
+   Modifier les variables afin qu'elles représentent les identifiants locaux du serveur en production. Les valeurs sont les suivantes:
+
+   set :server,    "appserv"
+   set :app_user,  "userapp"
+   set :superuser, "admapp"
+
+   Il faut donc remplacer 'appserv' pour le nom du serveur en production, 'userapp' sera le nom de l'utilisateur qui sera géneŕé par le processus d'installation et 'admapp' est le nom du super-utilisateur pour le poste de développement
+
+   $ nano config/deploy/production.rb
+
+   ---- Installation des packages ruby ----
+
+   Pour permettre à capistrano d'être opérationnel, il faut installer les packages ruby qui se trouve dans le répertoire Dev/spaceman. Il faut exécuter la commande suivante:
+
+   $ bundle install --local
+
+6. Générer un fichier secrets.yml
+
+   Ce fichier est nécessaire pour rails et ne doit pas être divulgé. Comme il n'est pas présent dans les archives git, il faut le générer. Il doit être localisé dans le répertoire Dev/config. Voici un exemple de contenu (les lignes [debut] et [fin] n'en font pas partie):
+
+   [debut]
+   production:
+     secret_key_base: c6d97d31c71315308119361e48901a1fb7d8f0d9df528702937502y35070357321562ed37172ba89c012e482cd4eed815fa568f83daf87f4d8906bb8acfc9c9
+   [fin]
+
+   Pour se faire, un script générera automatiquement ce fichier. Le seed sera généré dans le script par un appel à la commande "bundle exec rake secret":
+
+   $ cd ~/Dev/spaceman
+   $ ./src/set-secret.sh
+
+7. Staging: Effectuer les commandes suivantes:
+
+   $ cp ../spaceman_data.tar .
+   $ bundle exec cap staging setup     <--- sera très long et très verbeux
+
+   $ bundle exec cap staging deploy    <--- assez verbeux mais moins long
+
+8. L'outil capistrano produit un fichier log situé dans Dev/spaceman/log/capistrano.log . Il serait utile de le parcourir pour voir s'il y a eu des erreurs d'exécution.
+
+9. Si tout s'est bien déroulé, il devrait être possible de se connecter à la nouvelle application en staging par l'entremise d'un fureteur web en utilisant l'url http://appdev:4577
+
+10. Production: Effectuer les commandes suivantes:
+
+   $ cp ../spaceman_data.tar .
+   $ bundle exec cap production setup     <--- sera très long et très verbeux
+
+   $ bundle exec cap production deploy    <--- assez verbeux mais moins long
+
+11. L'outil capistrano produit un fichier log situé dans Dev/spaceman/log/capistrano.log . Il serait utile de le parcourir pour voir s'il y a eu des erreurs d'exécution.
+
+12. Si tout s'est bien déroulé, il devrait être possible de se connecter à la nouvelle application en production par l'entremise d'un fureteur web en utilisant l'url http://appserv:4577
+
+13. Detruire le fichier capistrano.log car celui-ci contiens des traces d'exécution entourant le mot de passe généré pour l'utilisateur spaceman sous Postgresql:
+
+    $ rm log/capistrano.log
+    

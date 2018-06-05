@@ -1,0 +1,4 @@
+- cache ['drawing-full-thumb', drawing_full_thumb] do
+  %img{ src: "#{drawing_full_floor_path(drawing_full_thumb)}?#{drawing_full_thumb.cache_key}",
+      class: 'img-thumbnail floor-thumb',
+        alt: "#{t('cmn.floor')} #{drawing_full_thumb.complete_name}" }

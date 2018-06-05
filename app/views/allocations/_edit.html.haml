@@ -1,0 +1,5 @@
+.legend_u= t('.allocation_for_html', building: @allocation.space.floor.building.name, space: @allocation.space.name, target: @allocation.target)
+
+= render 'form'
+
+= remote_link_to t('cmn.back'), back_home_index_path

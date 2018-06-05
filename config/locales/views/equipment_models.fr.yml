@@ -1,0 +1,12 @@
+fr:
+  equipment_models:
+    edit:
+      editing_html: Modification du model d'équipement <b>%{item}</b>
+    edit_equipment_model_link:
+      title: Modification des paramètres du model d'équipement
+    new:
+      new: Nouveau model d'équipement
+    new_equipment_model_link:
+      title: Ajout d'un nouveau model d'équipement
+    show:
+      equipment_model_html: Model d'équipement <b>%{item}</b>

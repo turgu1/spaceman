@@ -1,0 +1,19 @@
+.legend_u
+  -#= render partial:'equipment_items/new_link', locals: { itemable: itemable }
+  = EquipmentItem.model_name.human(count: 2)
+
+%table
+  %thead
+    %tr
+      %th.hcenter= EquipmentModel.human_attribute_name(:photo)
+      %th=         EquipmentModel.human_attribute_name(:name)
+      %th.hcenter= EquipmentItem.human_attribute_name(:qty)
+      %th.hcenter= EquipmentItem.human_attribute_name(:notes)
+
+  %tbody
+    - index.each do |equipment_item|
+      %tr
+        %td.hcenter= image_tag("#{equipment_item.photo.thumb.url}?#{equipment_item.updated_at.to_f}", :class => 'thumbnail') unless equipment_item.photo.blank?
+        %td= "#{h(equipment_item.name)}#{html_notes(h(equipment_item.notes))}".html_safe
+        %td.hcenter= equipment_item.qty
+        %td= equipment_item.notes

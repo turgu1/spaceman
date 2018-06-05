@@ -1,0 +1,15 @@
+.legend
+  = render 'table_defs/new_link'
+  = t('.table_fields_definitions')
+
+%table
+  %tr
+    %th.nowrap=      "* #{t('cmn.name')}"
+    %th.all-space= t('.fields')
+    %th.no-print.nowrap
+
+  - @table_defs.each do |table_def|
+    %tr
+      %td= table_def.name
+      %td.all-space= table_def.fields.map { |f| f.name }.join(', ')
+      %td.no-print.nowrap= all_actions table_def, table_def.name

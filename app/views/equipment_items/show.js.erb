@@ -1,0 +1,4 @@
+replace_content('#flash-pane', "<%= j(render(partial: 'layouts/flash')) %>");
+replace_content(
+    '#main-pane',
+    "<%= j(render(partial: 'equipment_items/show', object: @equipment_item)) %>");

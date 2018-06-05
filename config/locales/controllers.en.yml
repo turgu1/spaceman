@@ -1,0 +1,131 @@
+en:
+  allocations:
+    auto_new:
+      create_ok: Allocation for [%{item}] was successfully created.
+    create:
+      create_ok: Allocation for [%{item}] was successfully created.
+    update:
+      update_ok: Allocation for [%{item}] was successfully updated.
+    destroy:
+      delete_ok: Allocation for [%{item}] was successfully deleted.
+      internal_error: Application Internal Error.
+  buildings:
+    create:
+      create_ok: Building [%{item}] was successfully created.
+    update:
+      update_ok: Building [%{item}] was successfully updated.
+    destroy:
+      delete_ok: Building [%{item}] was successfully deleted.
+  equipment_groups:
+    create:
+      create_ok: Equipment group [%{item}] was successfully created.
+    update:
+      update_ok: Equipment group [%{item}] was successfully updated.
+    destroy:
+      delete_ok: Equipment group [%{item}] was successfully deleted.
+  equipment_items:
+    create:
+      create_ok: Equipment item [%{item}] was successfully created.
+    update:
+      update_ok: Equipment item [%{item}] was successfully updated.
+    destroy:
+      delete_ok: Equipment item [%{item}] was successfully deleted.
+  equipment_models:
+    create:
+      create_ok: Equipment model [%{item}] was successfully created.
+    update:
+      update_ok: Equipment model [%{item}] was successfully updated.
+    destroy:
+      delete_ok: Equipment model [%{item}] was successfully deleted.
+  floors:
+    bulk_coor_adjust:
+      coor_ok: Coordinates adjusted successfully
+    bulk_space_type:
+      space_type_ok: Space Types updated successfully
+    create:
+      create_ok: Floor [%{item}] was successfully created.
+    update:
+      update_ok: Floor [%{item}] was successfully updated.
+    destroy:
+      delete_ok: Floor [%{item}] was successfully deleted.
+  moving_items:
+    create:
+      create_ok: Moving item was successfully created.
+    update:
+      update_ok: Moving item was successfully updated.
+  moving_tasks:
+    create:
+      create_ok: Moving task was successfully created.
+    update:
+      update_ok: Moving task was successfully updated.
+  orgs:
+    create:
+      create_ok: Organisation [%{item}] was successfully created.
+    update:
+      update_ok: Organisation [%{item}] was successfully updated.
+    destroy:
+      delete_ok: Organisation [%{item}] was successfully deleted.
+  people:
+    create:
+      create_ok: Person was successfully created.
+    update:
+      update_ok: Person was successfully updated.
+    destroy:
+      delete_ok: Person [%{item}] was successfully deleted.
+  reports:
+    create:
+      create_ok: Report was successfully created.
+    update:
+      update_ok: Report [%{item}] was successfully updated.
+    destroy:
+      delete_ok: Report [%{item}] was successfully deleted.
+  requirements:
+    create:
+      create_ok: Requirement was successfully created.
+    update:
+      update_ok: Requirement was successfully updated.
+    destroy:
+      delete_ok: Requirement [%{item}] was successfully deleted.
+  space_types:
+    create:
+      create_ok: Space type was successfully created.
+    update:
+      update_ok: Space type was successfully updated.
+  spaces:
+    create:
+      create_ok: Space was successfully created.
+    update:
+      update_ok: Space was successfully updated.
+  specialties:
+    create:
+      create_ok: Specialty was successfully created.
+    update:
+      update_ok: Specialty was successfully updated.
+  table_defs:
+    create:
+      create_ok: Table def was successfully created.
+    update:
+      update_ok: Table def was successfully updated.
+  users:
+    do_change_password:
+      password_update_ok: Password was successfully updated.
+      passwords_differ: The two passwords differ. Please retry.
+      unable_to_change_password: Unable to change password
+    do_change_password_for:
+      unable_to_change_password: Unable to change password
+      password_update_ok: Password for user [%{item}] was successfully updated.
+      passwords_differ: The two passwords differ. Please retry.
+    do_change_language: 
+      language_ok: Language was successfully updated.
+      language_error: Unable to update language.
+    update:
+      update_ok: User [%{item}] was successfully updated.
+    destroy:
+      delete_ok: User [%{item}] was successfully deleted.
+  wings:
+    create:
+      create_ok: Wing [%{item}] was successfully created.
+    update:
+      update_ok: Wing [%{item}] was successfully updated.
+    destroy:
+      delete_ok: Wing [%{item}] was successfully deleted.

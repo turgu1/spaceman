@@ -1,0 +1,13 @@
+en:
+  requirements:
+    edit:
+      editing_requirement_html:  Editing Requirement [ <b>%{name}</b> ] of Organisation <b>%{org}</b>
+    new:
+      new_requirement_for:  New requirement for Organisation <b>%{item}</b>    
+    new_requirement_link:
+      title: Add a new Requirement
+    show:
+      requirement: Requirement [ %{item} ]
+    show_allocated_floors:
+      allocations_for_html:  Allocations for <b>%{item}</b>
+      no_allocation: There is no allocation

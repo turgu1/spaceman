@@ -1,0 +1,24 @@
+
+.legend
+  = render 'buildings/new_link'
+  = Building.model_name.human(count: 2)
+
+%table
+  %thead
+    %tr
+      %th=         Building.human_attribute_name(:name)
+      %th.hcenter= Building.human_attribute_name(:short_name)
+      %th.hcenter= Building.human_attribute_name(:allocate_equipment)
+      %th.hcenter= Building.human_attribute_name(:moving_items)
+      %th.hcenter= Building.human_attribute_name(:photo)
+      %th.no-print.nowrap
+
+  %tbody
+    - @buildings.each do |building|
+      %tr
+        %td= building.name
+        %td.hcenter= building.short_name
+        %td.hcenter= building.allocate_equipment? ? t('cmn.yes') : ''
+        %td.hcenter= building.moving_items?       ? t('cmn.yes') : ''
+        %td.hcenter= render partial: 'buildings/photo_thumb', object: building
+        %td.no-print.nowrap= all_actions building, "[#{building.name}]"

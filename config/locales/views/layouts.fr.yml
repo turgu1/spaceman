@@ -1,0 +1,15 @@
+fr:
+  layouts:
+    application:
+      title: SpaceMan - Gestion des locaux
+    navbar:
+      reports: Rapports
+      config: Configuration
+      new_building: "<b>Ajout d'un édifice</b>"
+      new_org: "<b>Ajout d'une organisation</b>"
+      list: <b>Liste</b>
+      test: Essai
+      change_password: Nouveau mot de passe
+      logout: Fin de session
+    error:
+      advise_pilot: "<h3>Erreur interne de l'application. S.v.p. aviser le pilote</h3>"

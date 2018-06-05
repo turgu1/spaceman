@@ -1,0 +1,3 @@
+- alloc_equipment.each do |alloc|
+  - alloc.equipment_items.each do |item|
+    = render :partial => 'equipment_items/table_row', :object => item

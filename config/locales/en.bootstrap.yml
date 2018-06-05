@@ -1,0 +1,16 @@
+en:
+  Allocation: toto
+  helpers:
+    actions: Actions
+    links:
+      back: Back
+      cancel: Cancel
+      confirm: Are you sure?
+      destroy: Remove
+      edit: Edit
+      new: New
+    titles:
+      delete: Remove
+      edit: Edit
+      new: New
+      save: Save

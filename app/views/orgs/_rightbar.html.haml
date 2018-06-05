@@ -1,0 +1,28 @@
+-# The right column on screen will allow for quick access to an organisation
+-# list of people and requirements. A drag-and-drop feature will permit the
+-# user to allocate spaces quickly to a person or a requirement, dragging an
+-# entry from the lists to a location on a floor presented in the middle of
+-# the screen.
+
+- org = Org.get(rightbar)
+- unless org.nil?
+  %h3
+    = render partial: 'orgs/edit_org_link', object: org
+    = remote_link_to org.abbreviation, show_allocated_floors_org_path(org),
+      title: t('.title', item: org.abbreviation), class: :tips
+  .panel-group#right-column-org-showned{ 'data-org-id': org.id, 'onbeforeload': "alert('boo!')" }
+    .panel.panel-default
+      .panel-heading
+        %a.panel-toggle{ href: '#people-dict', 'data-toggle': 'collapse' }
+          %b= t('cmn.people')
+        .pull-right.panel-button= render partial: 'people/new_person_link', locals: { org: org }
+
+      .panel-body.collapse.side-pane#people-dict
+        = render partial: 'orgs/rightbar_people_list', object: org
+    .panel.panel-default
+      .panel-heading
+        %a.panel-toggle{ href: '#requirements-dict', 'data-toggle': 'collapse' }
+          %b= t('cmn.requirements')
+        .pull-right.panel-button= render partial: 'requirements/new_requirement_link', locals: { org: org }
+      .panel-body.collapse.side-pane#requirements-dict
+        = render partial: 'orgs/rightbar_requirements_list', object: org

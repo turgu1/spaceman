@@ -1,0 +1,2 @@
+= link_to("<i class='fa fa-arrow-right'></i> XML".html_safe, export_all_orgs_path(format: :xml), title: t('.export_xml'), class: 'btn btn-primary btn-sm') if can? :read, Org
+= link_to("<i class='fa fa-arrow-right'></i> Excel".html_safe, export_all_orgs_path(format: :xlsx), title: t('.export_excel'), class: 'btn btn-primary btn-sm') if can? :read, Org

@@ -1,0 +1,15 @@
+.legend_u= EquipmentItem.model_name.human
+
+.container-fluid
+  .row
+    .col-lg-2.col-sm-2
+      = image_tag("#{show.photo.url}?#{show.updated_at.to_f}", class: 'thumbnail') unless show.photo.blank?
+    .col-lg-10.col-sm-10
+      = show_entry(show) do |e|
+        = e.field :name
+        = e.field :qty
+        = e.field :notes
+
+= remote_link_to(t('cmn.edit'), edit_equipment_item_path(show)) if can? :update, show
+\|
+= remote_link_to t('cmn.back'), @equipment_item.itemable

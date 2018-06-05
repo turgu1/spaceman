@@ -1,0 +1,17 @@
+%img{     src: "#{drawing_full_floor_path(edit_spaces_drawing)}?#{Time.now.to_i.to_s}",
+       usemap: "#drawing-map-#{edit_spaces_drawing.id}",
+        class: 'img-map multi-select space-edit',
+           id: 'floor-img',
+       onload: 'init_selection(this)' }
+%map{ id: "drawing-map-#{edit_spaces_drawing.id}",
+    name: "drawing-map-#{edit_spaces_drawing.id}" }
+  - edit_spaces_drawing.spaces.each do |space|
+    %area{ shape: "#{space.figure == 'R' ? 'rect' : 'poly'}",
+          coords: "#{space.coor}",
+             alt: "Local #{space.name}",
+           class: "floor-#{edit_spaces_drawing.id}-space",
+            href: '#',
+           title: space_title(space),
+             key: "#{space.id}",
+           style: 'cursor:pointer;',
+         onclick: "on_click_state = 1; space_selected(event, this, '#{space.id}', '#{edit_space_path(space)}'); return false;" }

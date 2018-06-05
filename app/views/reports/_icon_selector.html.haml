@@ -1,0 +1,27 @@
+.modal-header
+  %button.close{ type: 'button', onclick: 'hide_modal(event);' } &times;
+  %h3= t('.please_select')    
+.modal-body
+  .scrollable
+    - icons = icon_list
+    %table
+      %thead
+        %tr
+          - (0..14).each do
+            %th
+      %tbody
+        - count = 0
+        - icons.each do |i|
+          - if (count % 12) == 0
+            - if count > 0
+              </tr>
+            <tr>
+          = "<td onclick='selected_toggle(this)'>#{i}</td>".html_safe
+          - count += 1
+        - while (count % 12) != 0
+          <td></td>
+          - count += 1
+.modal-footer
+  %button{ class: 'btn btn-primary', onclick: 'hide_modal(event);' } Cancel
+  %button{ class: 'btn btn-primary', onclick: 'icon_selected(event);' } Select
+

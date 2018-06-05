@@ -1,0 +1,8 @@
+%tr
+  %td= space.name
+  %td= allocation.consumer_org_name
+  %td.nowrap= allocation.consumer_name
+  %td.hcenter.nowrap= allocation.from_date
+  %td.hcenter.nowrap= allocation.to_date || ''
+  %td= allocation.notes
+  %td.no-print.nowrap= all_actions allocation, t('.of_space_to', item_from: space.name, item_to: allocation.consumer_name), { 'data-right-column-state': true, 'data-center-column-state': true }

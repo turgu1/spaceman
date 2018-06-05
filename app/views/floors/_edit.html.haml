@@ -1,0 +1,15 @@
+.legend_u
+  = t('.editing_html', item: @floor.complete_name)
+  = render partial: 'floors/edit_spaces_link', object: @floor
+
+%div{ id: "floor-drawing-#{@floor.id.to_s}", onClick: "aOnClick(event, this, '#gage_coor');" }
+  = render partial: 'drawing', object: @floor
+
+%br/
+%br/
+%br/
+%br/
+
+= render 'form'
+
+= remote_link_to t('cmn.show'), floor_path(@floor)

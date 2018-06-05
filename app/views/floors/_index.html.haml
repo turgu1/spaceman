@@ -1,0 +1,18 @@
+%table
+  %thead
+    %tr
+      %th=         Floor.human_attribute_name(:name)
+      %th.hcenter= Floor.human_attribute_name(:drawing)
+      %th.hcenter= Floor.human_attribute_name(:level)
+      %th.hcenter= Floor.human_attribute_name(:order)
+      %th.no-print.nowrap
+
+  %tbody
+    - index.each do |floor|
+      %tr
+        %td= floor.name
+        %td.hcenter= render partial: 'floors/drawing_full_thumb', object: floor
+        %td.hcenter= floor.level
+        %td.hcenter= floor.order
+        %td.no-print.nowrap= all_actions floor, "#{floor.name}"
+

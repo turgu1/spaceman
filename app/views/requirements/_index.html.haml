@@ -1,0 +1,21 @@
+.legend
+  = render partial: "requirements/new_requirement_link", locals: { org: org }
+  = t('cmn.requirements')
+
+%table
+  %thead
+    %tr
+      %th=         Requirement.human_attribute_name(:project_name)
+      %th=         Requirement.human_attribute_name(:requester)
+      %th.hcenter= Requirement.human_attribute_name(:from_date)
+      %th.hcenter= Requirement.human_attribute_name(:to_date)
+      %th.no-print
+
+  %tbody
+    - index.each do |requirement|
+      %tr
+        %td.nowrap= req(requirement.project_name)
+        %td.nowrap= requirement.person.try(:name)
+        %td.nowrap.hcenter= requirement.from_date
+        %td.nowrap.hcenter= requirement.to_date || ''
+        %td.nowrap.no-print= all_actions requirement, "[#{requirement.project_name}]"
