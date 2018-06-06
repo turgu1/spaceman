@@ -73,7 +73,7 @@ group :development, :test do
   gem 'capistrano-secrets-yml',     '~> 1.1.0', :require => false
   gem 'sshkit-sudo'
   gem 'capistrano-unicorn-nginx',   '~> 5.2.0', :require => false
-  gem 'capistrano-postgresql',      '~> 5.0.0', :require => false
+  gem 'capistrano-postgresql',      '~> 5.0.1', :require => false
   gem 'rspec-rails',                '~> 3.7.2'
   gem 'poltergeist',                '~> 1.17.0'
   gem 'database_cleaner',           '~> 1.6.2'
