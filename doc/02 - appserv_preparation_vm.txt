@@ -30,6 +30,7 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
     [on est sur admserv@appserv]
 
     $ sudo sh -c 'echo "admserv ALL=NOPASSWD: ALL" >/etc/sudoers.d/admserv'
+    $ sudo chmod 440 /etc/sudoers.d/admserv
 
 4. Mise à niveau de l'OS:
 
@@ -54,9 +55,30 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
 
 8. $ sudo apt install openssh-server
 
-9. reboot
+9. Facultatif: Sur appserv, ajout de l'adresse IP de appdev dans la table des hosts si le DNS ne contient pas les entrées pour appdev. ssh à partir de appdev vers appserv ne fonctionnera probablement pas tant que la table des hosts n'est pas à jour sur appserv ou qu'un serveur DNS ne répond pas...:
 
-10. Copier id_rsa.pub dans compte admserv@appserv à partir de userdev@appdev
+  $ sudo nano /etc/hosts
+
+  Ajouter une entrée:
+
+    x.x.x.x appdev
+
+  <ctrl-x>, <y>
+
+10. Facultatif: Sur appdev, ajout de l'adresse de appserv dans la table des hosts si le DNS ne contient pas les entrées pour appserv. ssh à partir de appserv vers appdev ne fonctionnera probablement pas tant que la table des hosts n'est pas à jour sur appdev ou qu'un serveur DNS ne répond pas...:
+
+  [ on est dans admdev@appdev ou userdev@appdev ]
+
+  $ sudo nano /etc/hosts
+
+  Ajouter une entrée:
+
+    x.x.x.x appserv
+
+  <ctrl-x>, <y>
+
+
+11. Copier id_rsa.pub dans compte admserv@appserv à partir de userdev@appdev
 
     [on est sur userdev@appdev]
    
@@ -71,7 +93,7 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
    
     $ scp ~/.ssh/id_rsa.pub admserv@appserv:.
 
-11. Installation de la clé publique ssh pour permettre le login sans mot de passe:
+12. Installation de la clé publique ssh pour permettre le login sans mot de passe:
    
    [on est sur admserv@appserv]
    
@@ -80,7 +102,7 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
    $ mv id_rsa.pub .ssh/authorized_keys
    $ chmod 600 .ssh/authorized_keys
    
-12. Facultatif: pour empêcher un login via mot de passe (clé rsa uniquement):
+13. Facultatif: pour empêcher un login via mot de passe (clé rsa uniquement):
 
    $ sudo nano /etc/ssh/sshd_config
    
@@ -94,30 +116,7 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
    
    <ctrl-x>, <y>
    
-13 Facultatif: Sur appserv, ajout de l'adresse de appdev dans la table des hosts si le dns ne contient pas les entrées pour appdev:
-
-  [ on est dans admserv@appserv ]
-
-  $ sudo nano /etc/hosts
-
-  Ajouter une entrée:
-
-    x.x.x.x appdev
-
-  <ctrl-x>, <y>
-
-14 Facultatif: Sur appdev, ajout de l'adresse de appserv dans la table des hosts si le dns ne contient pas les entrées pour appserv:
-
-  $ ssh admdev@appsev
-  $ sudo nano /etc/hosts
-
-  Ajouter une entrée:
-
-    x.x.x.x appserv
-
-  <ctrl-x>, <y>
-
-15. Validation: À partir de userdev@appdev, on doit pouvoir effectuer une commande ssh de login sans mot de passe:
+14. Validation: À partir de userdev@appdev, on doit pouvoir effectuer une commande ssh de login sans mot de passe:
 
    $ ssh admserv@appserv
    

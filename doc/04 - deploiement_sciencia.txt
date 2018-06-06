@@ -38,7 +38,7 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
 
    $ less sciencia.psql
 
-   Pour le fichier  de l'arborescence de fichier, la commande suivante devrait produire une liste assez longue du contenu du fichier tar:
+   Pour le fichier  de l'arborescence de fichier, la commande suivante devrait produire du contenu du fichier tar. Il se peut qu'il n'y ait pas grand chose:
 
    $ tar tf sciencia_data/data_files.tar
 
@@ -49,7 +49,6 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
    $ scp sciencia_data.tar userdev@appdev:Dev
 
    Vérifier que le fichier résultat de la copy (commande scp) a bien été transmis dans le répertoire  ~/Dev sur userdev@appdev.
-
 
 4. Se connecter sur userdev@appdev
 
@@ -88,7 +87,7 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
 
 6. Générer un fichier secrets.yml
 
-   Ce fichier est nécessaire pour rails et ne doit pas être divulgé. Comme il n'est pas présent dans les archives git, il faut le générer. Il doit être localisé dans le répertoire Dev/config. Voici un exemple de contenu (les lignes [debut] et [fin] n'en font pas partie):
+   Ce fichier est nécessaire pour rails et ne doit pas être divulgé. Comme il n'est pas présent dans les archives git, il faut le générer. Il doit être localisé dans le répertoire Dev/sciencia/config. Voici un exemple de contenu (les lignes [debut] et [fin] n'en font pas partie):
 
    [debut]
    production:
@@ -103,25 +102,25 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
 7. Staging: Effectuer les commandes suivantes:
 
    $ cp ../sciencia_data.tar .
-   $ bundle exec cap staging setup     <--- sera très long et très verbeux
+   $ bundle exec cap staging setup     <--- sera beaucoup plus court que pour spaceman
 
-   $ bundle exec cap staging deploy    <--- assez verbeux mais moins long
+   $ bundle exec cap staging deploy    <--- assez verbeux mais assez long
 
 8. L'outil capistrano produit un fichier log situé dans Dev/sciencia/log/capistrano.log . Il serait utile de le parcourir pour voir s'il y a eu des erreurs d'exécution.
 
-9. Si tout s'est bien déroulé, il devrait être possible de se connecter à la nouvelle application en staging par l'entremise d'un fureteur web en utilisant l'url http://appdev:41777
+9. Si tout s'est bien déroulé, il devrait être possible de se connecter à la nouvelle application en staging par l'entremise d'un fureteur web en utilisant l'url https://appdev:41777
 
 10. Production: Effectuer les commandes suivantes:
 
    $ cp ../sciencia_data.tar .
-   $ bundle exec cap production setup     <--- sera très long et très verbeux
+   $ bundle exec cap production setup     <--- sera beaucoup plus court que pour spaceman
 
-   $ bundle exec cap production deploy    <--- assez verbeux mais moins long
+   $ bundle exec cap production deploy    <--- assez verbeux mais assez long
 
 11. L'outil capistrano produit un fichier log situé dans Dev/sciencia/log/capistrano.log . Il serait utile de le parcourir pour voir s'il y a eu des erreurs d'exécution.
 
-12. Si tout s'est bien déroulé, il devrait être possible de se connecter à la nouvelle application en production par l'entremise d'un fureteur web en utilisant l'url http://appserv:41777
+12. Si tout s'est bien déroulé, il devrait être possible de se connecter à la nouvelle application en production par l'entremise d'un fureteur web en utilisant l'url https://appserv:41777
 
-13. Detruire le fichier capistrano.log car celui-ci contiens des traces d'exécution entourant le mot de passe généré pour l'utilisateur sciencia sous Postgresql:
+13. Detruire le fichier capistrano.log car celui-ci contient des traces d'exécution entourant le mot de passe généré pour l'utilisateur sciencia sous Postgresql:
 
     $ rm log/capistrano.log

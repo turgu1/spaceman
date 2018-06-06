@@ -4,7 +4,7 @@ Ce document explique comment préparer le poste virtuel à partir duquel les ins
 
 Contrairement aux installations effectuées avant 2018, les deux applications seront installées en utilisant le même compte utilisateur sur un seul serveur.
 
-Les deux applications sciencia et spaceman utilisant les mêmes versions de ruby et ruby on rails, leur environnement d'exécution est très similaire. La procédure indiquée ici n'a besoin d'être appliquée une seule fois. Elle contient tous les éléments requis pour les deux applications.
+Les deux applications sciencia et spaceman utilisant les mêmes versions de ruby et ruby on rails, leur environnement d'exécution est très similaire. La procédure indiquée ici n'a besoin d'être appliquée q'une seule fois. Elle contient tous les éléments requis pour les deux applications.
 
 Comme dans l'avenir les deux applications pourraient ne pas être synchro dans l'utilisation d'une même version de ruby et ruby on rails, les outils de ces deux technologies seront installés de telle sorte que plusieurs versions pourront cohabiter sur le serveur, ceci grâce à l'outil nommé rbenv.
 
@@ -25,19 +25,18 @@ Les éléments suivants doivent être ajustés dans le texte pour correspondre a
      Nom de l'utilisateur administrateur sur appdev
 
   userdev: 
-     Nom de l'utilisateur qui servira à démarrer les installations sur appdev (peut être le même utilisateur admdev)
+     Nom de l'utilisateur qui servira à installer les applications à partir de appdev (peut être le même utilisateur admdev)
 
   userserv: 
      Nom de l'utilisateur qui sera propriétaire des applications en production (ne peut pas être admserv pour des raisons de sécurité)
 
-1. Téléchargement de la version ISO Ubuntu Desktop 18.04 LTS
+1. Téléchargement de la version ISO Ubuntu Desktop 18.04 LTS (ou XUbuntu)
 
-2. Installation, utilisateur admin: admdev et login comme usager admdev
+2. Installation de appdev et login comme usager admdev
 
-3. Mise à niveau de l'OS:
+3. Installation des outils de base:
    
-   $ sudo apt update
-   $ sudo apt upgrade
+   $ sudo apt install git
 
 4. Changement de nom de host:
 
@@ -46,38 +45,69 @@ Les éléments suivants doivent être ajustés dans le texte pour correspondre a
    $ sudo nano hostname       --> modifier ubuntu pour appdev
    $ sudo nano hosts          --> modifier ubuntu pour appdev
 
-5. Changement de la date et heure pour EST:
+5. Changement de la date et heure pour EST. (choisir America / Montreal):
    
    $ sudo dpkg-reconfigure tzdata
 
 6. Installer anti-virus et outil de gestion réseau
 
-7. Installer les outils de base nécessaires à l'environnement de développement et pour capistrano (sauf pour ruby et ruby on rails qui seront effectués plus bas dans la procédure)
+7. Creation du compte userdev si différent de admdev
 
-   $ sudo apt install git net-tools openssh-server curl gcc make postgresql-10 postgresql-server-dev-10 libssl-dev libreadline-dev zlib1g-dev imagemagick libmagickwand-dev nodejs nginx unzip pgadmin3
-
-8. Creation du compte userdev si différent de admdev
+   [ on est dans admdev@appdev ]
 
    $ sudo adduser userdev
    ... répondre aux questions de l'outil...
 
-9. reboot et login userdev@appdev (ou admdev@appdev si on ne veut pas utiliser un autre utilisateur)
+   Autoriser le compte à effectuer des commandes sudo (superuser)
 
-10. Creation de la clé rsa pour userdev. Sera utilisé pour faciliter les échanges avec ssh entre appdev et appserv dans une prochaine étape (lors de la préparation du serveur appserv)
+   $ sudo usermod -aG sudo userdev
+
+   Créer le répertoire .ssh pour admdev:
+
+   $ mkdir ~/.ssh
+   $ chmod 700 ~/.ssh
+
+8. login userdev@appdev (ou admdev@appdev si on ne veut pas utiliser un autre utilisateur)
+
+   Ajouter une entrée dans sudoers pour que l'utilisateur admdev puisse utiliser sudo sans mot de passe: requis pour capistrano lors du staging.
+   
+    [on est sur admdev@appdev]
+
+    $ sudo sh -c 'echo "admdev ALL=NOPASSWD: ALL" >/etc/sudoers.d/admdev'
+    $ sudo chmod 440 /etc/sudoers.d/admdev
+
+9. Téléchargement de l'outil d'installation:
+
+   $ mkdir ~/Dev
+   $ cd ~/Dev
+   $ git clone https://github.com/turgu1/installer.git
+   $ cd installer
+
+10. Lancer le processus d'installation. Celui-ci effectuera les modifications suivantes:
+
+    - mise à niveau de l'OS (apt update/upgrade)
+    - installation de ruby et de ses dépendances
+    - installation de openssh pour permettre l'accès à ce poste en mode ssh
+    - installation de capistrano (applications ruby)
+    - téléchargement des applications sciencia et spaceman en provenance de github
+
+    Il sera nécessaire d'entrer le mot de passe du compte utilisateur pour les commandes sudo. Lorsque la mise à jour du poste débutera, il faudra répondre Y (yes) à la question de mise à niveau et ce, à deux reprises. L'application Bundle demandera le mot-de-passe de l'utilisateur afin d'installer les applications ruby propres à capistrano:
+
+    $ ./install.sh
+    $ cd ..
+
+11. Creation de la clé rsa pour userdev. Sera utilisé pour faciliter les échanges avec ssh entre appdev et appserv dans une prochaine étape (lors de la préparation du serveur appserv)
 
     $ mkdir ~/.ssh
     $ chmod 700 ~/.ssh
     $ cd ~/.ssh
     $ ssh-keygen -t rsa -b 4096
-    $ cd ~
 
-11. Récupération des codes sources:
+    La clé publique est ajoutée à admdev pour permettre le staging via capistrano:
 
-    $ mkdir Dev
-    $ cd Dev
-    $ git clone https://github.com/turgu1/spaceman.git
-    $ git clone https://github.com/turgu1/sciencia.git
-
+    $ sudo cp id_rsa.pub ~admdev/.ssh/authorized_keys
+    $ sudo chown admdev:admdev ~admdev/.ssh/authorized_keys
+    $ sudo chmod 600 ~admdev/.ssh/authorized_keys
 
 12. Creation du certificat nécessaire à nginx pour opérer l'application en mode SSL. Requis pour les installations de spaceman et sciencia.
 
@@ -97,88 +127,6 @@ Les éléments suivants doivent être ajustés dans le texte pour correspondre a
     $ spaceman/src/create-certificate.sh
     $ cd
 
-    Le certificat (fichiers nginx-selfsigned.key et nginx-selfsigned.crf) sont générés dans le répertoire courant qui devrait être ~/Dev, de telle sorte qu'il soit
-    accessible pour les deux applications lors du déploiement via capistrano.
+    Le certificat (fichiers nginx-selfsigned.key et nginx-selfsigned.crf) sont générés dans le répertoire courant qui devrait être ~/Dev, de telle sorte qu'il soit accessible pour les deux applications lors du déploiement via capistrano.
 
-OUTIL FACILITATEUR
-------------------
-
-Les commandes des paragraphes 13 et 14 ont été intégrées dans un script pour éviter de les exécutés à la main. Le script est le suivant:
-
-    $ ~/Dev/spaceman/src/ruby-setup.sh
-
-
-13. Installation de rbenv:
-
-    $ unzip ~/Dev/spaceman/src/rbenv-master.zip -d ~
-    $ mv ~/rbenv-master ~/.rbenv
-    $ mkdir ~/.rbenv/versions
-    $ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-    $ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
- 
-    $ mkdir ~/.rbenv/plugins
-    $ unzip ~/Dev/spaceman/src/ruby-build-master.zip -d ~/.rbenv/plugins
-    $ mv ~/.rbenv/plugins/ruby-build-master ~/.rbenv/plugins/ruby-build
-    $ source ~/.bashrc
-   
-    Vérification que tout est OK via la commande suivante:
-   
-    $ ~/Dev/spaceman/src/rbenv-doctor.sh
-   
-14. Installation de ruby (la plus récente en date du 28 mars 2018), version compatible avec spaceman et sciencia (en provenance de https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.1.tar.gz)
-
-    $ rm -rf ~/tmp
-    $ mkdir ~/tmp
-    $ cd ~/tmp
-    $ tar zxf ~/Dev/spaceman/src/ruby-2.5.1.tar.gz
-    $ cd ruby-2.5.1
-    $ ./configure --prefix=$HOME/.rbenv/versions/2.5.1
-    $ make
-    $ make install
-    $ ~/.rbenv/versions/2.5.1/bin/gem install --local ~/Dev/spaceman/src/bundler-1.16.2.gem
-    $ cd ~
-    $ rm -rf ~/tmp
-
-    $ ~/.rbenv/bin/rbenv global 2.5.1
-    $ source ~/.bashrc      
-
-    Vérification via la commande suivante:
-
-    $ ruby --version
-
-ÉLÉMENTS OPTIONNELS:
--------------------
-
-15. Préparation de postgresql (Optionnel: nécessaire uniquement pour lancer les applications en mode développement):
-
-   $ sudo -u postgres psql
-   \password
-   \quit
-
-   $ sudo -u postgres createuser spaceman --createdb --superuser --pwprompt
-   Enter password for new role: spaceman
-   Enter again: spaceman
-   
-   $ sudo -u postgres createuser sciencia --createdb --superuser --pwprompt
-   Enter password for new role: sciencia
-   Enter again: sciencia
-   
-   Modifier le fichier postgresql.conf pour y ajouter la ligne suivante:
-
-   listen_addresses = '*'
-
-   $ sudo nano /etc/postgresql/10/main/postgresql.conf
-
-   $ sudo service postgresql restart
-
-16. Installation de pgadmin4 (Optionnel. pgadmin3 fonctionne suffisament bien...)
-
-   Cela exige d'avoir accès au site de postgresql.org, sinon, il faudra utiliser une autre méthode...
-
-   $ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-   $ sudo apt-get install wget ca-certificates
-   $ sudo apt-get install pgadmin4
-
-[FIN DES ÉLÉMENTS OPTIONNELS]
-
-17. Fermer la session (terminal ou ssh)
+13. Fermer la session (terminal ou ssh)

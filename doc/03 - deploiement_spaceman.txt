@@ -75,26 +75,20 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
    set :app_user,  "userapp"
    set :superuser, "admapp"
 
-   Il faut donc remplacer 'appserv' pour le nom du serveur en production, 'userapp' sera le nom de l'utilisateur qui sera géneŕé par le processus d'installation et 'admapp' est le nom du super-utilisateur pour le poste de développement
+   Il faut donc remplacer 'appserv' pour le nom du serveur en production, 'userapp' sera le nom de l'utilisateur qui sera géneŕé par le processus d'installation et 'admapp' est le nom du super-utilisateur pour le serveur en production
 
    $ nano config/deploy/production.rb
 
-   ---- Installation des packages ruby ----
-
-   Pour permettre à capistrano d'être opérationnel, il faut installer les packages ruby qui se trouve dans le répertoire Dev/spaceman. Il faut exécuter la commande suivante:
-
-   $ bundle install --local
-
 6. Générer un fichier secrets.yml
 
-   Ce fichier est nécessaire pour rails et ne doit pas être divulgé. Comme il n'est pas présent dans les archives git, il faut le générer. Il doit être localisé dans le répertoire Dev/config. Voici un exemple de contenu (les lignes [debut] et [fin] n'en font pas partie):
+   Ce fichier est nécessaire pour rails et ne doit pas être divulgé. Comme il n'est pas présent dans les archives git, il faut le générer. Il doit être localisé dans le répertoire Dev/spaceman/config. Voici un exemple de contenu (les lignes [debut] et [fin] n'en font pas partie):
 
    [debut]
    production:
      secret_key_base: c6d97d31c71315308119361e48901a1fb7d8f0d9df528702937502y35070357321562ed37172ba89c012e482cd4eed815fa568f83daf87f4d8906bb8acfc9c9
    [fin]
 
-   Pour se faire, un script générera automatiquement ce fichier. Le seed sera généré dans le script par un appel à la commande "bundle exec rake secret":
+   Pour se faire, un script générera automatiquement ce fichier. Le seed sera généré dans le script par un appel à la commande "rake secret":
 
    $ cd ~/Dev/spaceman
    $ ./src/set-secret.sh
@@ -102,24 +96,24 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
 7. Staging: Effectuer les commandes suivantes:
 
    $ cp ../spaceman_data.tar .
-   $ bundle exec cap staging setup     <--- sera très long et très verbeux
+   $ cap staging setup     <--- sera très long et très verbeux
 
-   $ bundle exec cap staging deploy    <--- assez verbeux mais moins long
+   $ cap staging deploy    <--- assez verbeux mais moins long
 
 8. L'outil capistrano produit un fichier log situé dans Dev/spaceman/log/capistrano.log . Il serait utile de le parcourir pour voir s'il y a eu des erreurs d'exécution.
 
-9. Si tout s'est bien déroulé, il devrait être possible de se connecter à la nouvelle application en staging par l'entremise d'un fureteur web en utilisant l'url http://appdev:4577
+9. Si tout s'est bien déroulé, il devrait être possible de se connecter à la nouvelle application en staging par l'entremise d'un fureteur web en utilisant l'url https://appdev:4577
 
 10. Production: Effectuer les commandes suivantes:
 
    $ cp ../spaceman_data.tar .
-   $ bundle exec cap production setup     <--- sera très long et très verbeux
+   $ cap production setup     <--- sera très long et très verbeux
 
-   $ bundle exec cap production deploy    <--- assez verbeux mais moins long
+   $ cap production deploy    <--- assez verbeux mais moins long
 
 11. L'outil capistrano produit un fichier log situé dans Dev/spaceman/log/capistrano.log . Il serait utile de le parcourir pour voir s'il y a eu des erreurs d'exécution.
 
-12. Si tout s'est bien déroulé, il devrait être possible de se connecter à la nouvelle application en production par l'entremise d'un fureteur web en utilisant l'url http://appserv:4577
+12. Si tout s'est bien déroulé, il devrait être possible de se connecter à la nouvelle application en production par l'entremise d'un fureteur web en utilisant l'url https://appserv:4577
 
 13. Detruire le fichier capistrano.log car celui-ci contiens des traces d'exécution entourant le mot de passe généré pour l'utilisateur spaceman sous Postgresql:
 
