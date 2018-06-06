@@ -4,9 +4,9 @@ Une foix les deux ordinateurs configurés (appserv et appdev) il est maintenant 
 
 La procédure ci-dessous est spécifique au déploiement initial de l'application Spaceman. Il est nécessaire de suivre les étapes indiquées.
 
-1. Aviser les utilisateurs que l'application spaceman sera mise à niveau vers un nouveau serveur et qu'un prochain courriel leur fourniera les indications sur comment se connecter à nouveau. Leur indiquer le moment où le changement s'effectuera (leur laisser au moins 24 heures d'avis pour leur permettre de compléter des changements). Leur indiquer également que toutes les données seront migrées sur le nouveau serveur.
+1. Aviser les utilisateurs que l'application spaceman sera mise à niveau vers un nouveau serveur et qu'un prochain courriel leur fournira les indications sur comment se connecter à nouveau. Leur indiquer le moment où le changement s'effectuera (leur laisser au moins 24 heures d'avis pour leur permettre de compléter des changements). Leur indiquer également que toutes les données auront migrées sur le nouveau serveur.
 
-2. Une fois arrivé au moment indiqué aux usagers pour faire le transfert, il est nécessaire de stopper l'accès à l'application Spaceman. Pour se faire, sur le serveur sds-bib, se logger comme administrateur et stopper le service unicorn de spaceman:
+2. Une fois arrivé au moment indiqué aux usagers pour faire le transfert, il est nécessaire de stopper l'accès à l'application Spaceman. Pour ce faire, sur le serveur sds-bib, se logger comme administrateur et stopper le service unicorn de spaceman:
 
    [ On est dans sds-bib dans un compte admin ]
 
@@ -26,7 +26,7 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
 
    $ sudo cat /home/spaceman/apps/spaceman/shared/config/database.yml
 
-   Le mot de passe devrait être requis par l'exécution de la commande pg_dump ici bas. Le nom d'utilisateur postgresql ainsi que le nom de la bd devraient correspondre à ceux dans database.yml sous 'production:' :
+   Le mot de passe devrait être requis par l'exécution de la commande pg_dump ici-bas. Le nom d'utilisateur postgresql ainsi que le nom de la bd devraient correspondre à ceux dans database.yml sous 'production:' :
 
 	 $ cd ~
 	 $ mkdir spaceman_data
@@ -34,7 +34,7 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
 	 $ pg_dump -h localhost -U spaceman -W spaceman_production --column-inserts --data-only > spaceman.psql
 	 $ (cd /home/spaceman/apps/spaceman/shared; sudo tar cf - system/data) >data_files.tar
 
-   Il serait bon de vérifier que le fichier spaceman.psql contient bien les commandes sql pour la regénération des données dans la nouvelle bd (commandes 'insert'). Devrait avoir plusieurs centaines de kilo-octets. C'est un fichier texte qui peut être regardé via la commande suivante:
+   Il serait bon de vérifier que le fichier spaceman.psql contient bien les commandes sql pour la régénération des données dans la nouvelle bd (commandes 'insert'). Devrait avoir plusieurs centaines de kilo-octets. C'est un fichier texte qui peut être regardé via la commande suivante:
 
    $ less spaceman.psql
 
@@ -64,8 +64,8 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
 
    Il faut donc remplacer 'appdev' pour le nom du poste de développement, 'stageuser' sera le nom de l'utilisateur qui sera géneŕé par le processus d'installation et 'admdev' est le nom du super-utilisateur pour le poste de développement
 
-   $ cd ~/Dev/spaceman
-   $ nano config/deploy/staging.rb
+   $ cd ~/Dev
+   $ nano staging.rb
 
 	 ---- Production ----
 
@@ -75,20 +75,20 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
    set :app_user,  "userapp"
    set :superuser, "admapp"
 
-   Il faut donc remplacer 'appserv' pour le nom du serveur en production, 'userapp' sera le nom de l'utilisateur qui sera géneŕé par le processus d'installation et 'admapp' est le nom du super-utilisateur pour le serveur en production
+   Il faut donc remplacer 'appserv' pour le nom du serveur en production (ou son adresse IP), 'userapp' sera le nom de l'utilisateur qui sera géneré par le processus d'installation et 'admapp' est le nom du super-utilisateur pour le serveur en production
 
-   $ nano config/deploy/production.rb
+   $ nano production.rb
 
 6. Générer un fichier secrets.yml
 
-   Ce fichier est nécessaire pour rails et ne doit pas être divulgé. Comme il n'est pas présent dans les archives git, il faut le générer. Il doit être localisé dans le répertoire Dev/spaceman/config. Voici un exemple de contenu (les lignes [debut] et [fin] n'en font pas partie):
+   Ce fichier est nécessaire pour rails et ne doit pas être divulgué. Comme il n'est pas présent dans les archives git, il faut le générer. Il doit être localisé dans le répertoire Dev/spaceman/config. Voici un exemple de contenu (les lignes [debut] et [fin] n'en font pas partie):
 
    [debut]
    production:
      secret_key_base: c6d97d31c71315308119361e48901a1fb7d8f0d9df528702937502y35070357321562ed37172ba89c012e482cd4eed815fa568f83daf87f4d8906bb8acfc9c9
    [fin]
 
-   Pour se faire, un script générera automatiquement ce fichier. Le seed sera généré dans le script par un appel à la commande "rake secret":
+   Pour se faire, un script générera automatiquement ce fichier. Le seed sera généré dans le script par un appel à la commande ruby "SecureRandom.hex(64)":
 
    $ cd ~/Dev/spaceman
    $ ./src/set-secret.sh

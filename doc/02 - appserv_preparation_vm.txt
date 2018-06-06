@@ -55,7 +55,7 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
 
 8. $ sudo apt install openssh-server
 
-9. Facultatif: Sur appserv, ajout de l'adresse IP de appdev dans la table des hosts si le DNS ne contient pas les entrées pour appdev. ssh à partir de appdev vers appserv ne fonctionnera probablement pas tant que la table des hosts n'est pas à jour sur appserv ou qu'un serveur DNS ne répond pas...:
+9. Facultatif: sur appserv, ajout de l'adresse IP de appdev dans la table des hosts si le DNS ne contient pas les entrées pour appdev. ssh à partir de appdev vers appserv ne fonctionnera probablement pas tant que la table des hosts n'est pas à jour sur appserv ou qu'un serveur DNS ne répond pas...:
 
   $ sudo nano /etc/hosts
 
@@ -65,7 +65,7 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
 
   <ctrl-x>, <y>
 
-10. Facultatif: Sur appdev, ajout de l'adresse de appserv dans la table des hosts si le DNS ne contient pas les entrées pour appserv. ssh à partir de appserv vers appdev ne fonctionnera probablement pas tant que la table des hosts n'est pas à jour sur appdev ou qu'un serveur DNS ne répond pas...:
+10. Facultatif: Sur appdev, ajout de l'adresse de appserv dans la table des hosts si le DNS ne contient pas les entrées pour appserv. ssh à partir d'appserv vers appdev ne fonctionnera probablement pas tant que la table des hosts n'est pas à jour sur appdev ou qu'un serveur DNS ne répond pas...:
 
   [ on est dans admdev@appdev ou userdev@appdev ]
 

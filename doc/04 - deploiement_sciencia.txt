@@ -62,10 +62,10 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
    set :app_user,  "stageuser"
    set :superuser, "admdev"
 
-   Il faut donc remplacer 'appdev' pour le nom du poste de développement (ou son adresse IP), 'stageuser' sera le nom de l'utilisateur qui sera géneŕé par le processus d'installation et 'admdev' est le nom du super-utilisateur pour le poste de développement
+   Il faut donc remplacer 'appdev' pour le nom du poste de développement (ou son adresse IP), 'stageuser' sera le nom de l'utilisateur qui sera géneré par le processus d'installation et 'admdev' est le nom du super-utilisateur pour le poste de développement
 
-   $ cd ~/Dev/sciencia
-   $ nano config/deploy/staging.rb
+   $ cd ~/Dev
+   $ nano staging.rb
 
 	 ---- Production ----
 
@@ -75,9 +75,9 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
    set :app_user,  "userapp"
    set :superuser, "admapp"
 
-   Il faut donc remplacer 'appserv' pour le nom du serveur en production (ou son adresse IP), 'userapp' sera le nom de l'utilisateur qui sera géneŕé par le processus d'installation et 'admapp' est le nom du super-utilisateur pour le poste de développement
+   Il faut donc remplacer 'appserv' pour le nom du serveur en production (ou son adresse IP), 'userapp' sera le nom de l'utilisateur qui sera géneré par le processus d'installation et 'admapp' est le nom du super-utilisateur pour le poste de développement
 
-   $ nano config/deploy/production.rb
+   $ nano production.rb
 
    ---- Installation des packages ruby ----
 
@@ -94,7 +94,7 @@ La procédure ci-dessous est spécifique au déploiement initial de l'applicatio
      secret_key_base: c6d97d31c71315308119361e48901a1fb7d8f0d9df528702937502y35070357321562ed37172ba89c012e482cd4eed815fa568f83daf87f4d8906bb8acfc9c9
    [fin]
 
-   Pour se faire, un script générera automatiquement ce fichier. Le seed sera généré dans le script par un appel à la commande "bundle exec rake secret":
+   Pour se faire, un script générera automatiquement ce fichier. Le seed sera généré dans le script par un appel à la commande "SecureRandom.hex(64)":
 
    $ cd ~/Dev/sciencia
    $ ./src/set-secret.sh

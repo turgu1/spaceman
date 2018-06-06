@@ -1,10 +1,10 @@
-Préparations pour environnement de gestion des installations/mises-à-niveau de spaceman et sciencia dans machine virtuelle Ubuntu 18.04 LTS
+Préparations pour environnement de gestion des installations/mises à niveau de spaceman et sciencia dans machine virtuelle Ubuntu 18.04 LTS
 
-Ce document explique comment préparer le poste virtuel à partir duquel les installations et les mises-à-jour de spaceman et sciencia pourront être effectuées. Le poste peut également servir au développement de nouvelles fonctionalités car tous les outils associés à l'environnemnt de développement seront installés.
+Ce document explique comment préparer le poste virtuel à partir duquel les installations et les mises à jour de spaceman et sciencia pourront être effectuées. Le poste peut également servir au développement de nouvelles fonctionalités car tous les outils associés à l'environnement de développement seront installés.
 
 Contrairement aux installations effectuées avant 2018, les deux applications seront installées en utilisant le même compte utilisateur sur un seul serveur.
 
-Les deux applications sciencia et spaceman utilisant les mêmes versions de ruby et ruby on rails, leur environnement d'exécution est très similaire. La procédure indiquée ici n'a besoin d'être appliquée q'une seule fois. Elle contient tous les éléments requis pour les deux applications.
+Les deux applications sciencia et spaceman utilisant les mêmes versions de ruby et ruby on rails, leur environnement d'exécution est très similaire. La procédure indiquée ici n'a besoin d'être appliquée qu'une seule fois. Elle contient tous les éléments requis pour les deux applications.
 
 Comme dans l'avenir les deux applications pourraient ne pas être synchro dans l'utilisation d'une même version de ruby et ruby on rails, les outils de ces deux technologies seront installés de telle sorte que plusieurs versions pourront cohabiter sur le serveur, ceci grâce à l'outil nommé rbenv.
 
@@ -89,14 +89,15 @@ Les éléments suivants doivent être ajustés dans le texte pour correspondre a
     - installation de ruby et de ses dépendances
     - installation de openssh pour permettre l'accès à ce poste en mode ssh
     - installation de capistrano (applications ruby)
+    - copie de fichier de base production.rb et staging.rb dans le répertoire ~/Dev pour modification ultérieure
     - téléchargement des applications sciencia et spaceman en provenance de github
 
-    Il sera nécessaire d'entrer le mot de passe du compte utilisateur pour les commandes sudo. Lorsque la mise à jour du poste débutera, il faudra répondre Y (yes) à la question de mise à niveau et ce, à deux reprises. L'application Bundle demandera le mot-de-passe de l'utilisateur afin d'installer les applications ruby propres à capistrano:
+    Il sera nécessaire d'entrer le mot de passe du compte utilisateur pour les commandes sudo. Lorsque la mise à jour du poste débutera, il faudra répondre Y (yes) à la question de mise à niveau et ce, à deux reprises. L'application Bundle demandera le mot de passe de l'utilisateur afin d'installer les applications ruby propres à capistrano:
 
     $ ./install.sh
     $ cd ..
 
-11. Creation de la clé rsa pour userdev. Sera utilisé pour faciliter les échanges avec ssh entre appdev et appserv dans une prochaine étape (lors de la préparation du serveur appserv)
+11. Création de la clé rsa pour userdev. Sera utilisé pour faciliter les échanges avec ssh entre appdev et appserv dans une prochaine étape (lors de la préparation du serveur appserv)
 
     $ mkdir ~/.ssh
     $ chmod 700 ~/.ssh
