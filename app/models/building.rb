@@ -6,7 +6,7 @@ class Building < ApplicationRecord
 
   validates :name,  :short_name, presence: true, uniqueness: true
   validates :photo, :min_level, :max_level, presence: true
-  validates :min_level, :max_level, :numericality => true
+  validates :min_level, :max_level, numericality: true
 
   default_scope { order(:name) }
 

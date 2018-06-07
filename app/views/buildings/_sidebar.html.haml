@@ -4,7 +4,7 @@
 -#
 - if bldg = Building.find(session[:current_building])
   .thumbnail
-    %img{ :src => bldg.photo_url.to_s, :onclick => 'call_remote("#{building_path(bldg)}");' }
+    %img{ src: bldg.photo_url.to_s, onclick: 'call_remote("#{building_path(bldg)}");' }
     .caption
       %h4= remote_link_to bldg.name, building_path(bldg)
       -# DO NOT DELETE THE COMMENTS!! - COULD BE REQUIRED SOMETIME...

@@ -48,7 +48,7 @@ class Org < ApplicationRecord
       if the_org.class == self
         the_org
       else
-        self.with_people(the_org).take #self.find the_org, :include => :people
+        self.with_people(the_org).take #self.find the_org, include: :people
       end
     end
   end
@@ -73,7 +73,7 @@ class Org < ApplicationRecord
 
   # Build a floors array pertaining to the org allocations. Each entry contains:
   #
-  # { :floor => floor, :allocations => [allocs] }
+  # { floor: floor, allocations: [allocs] }
   #
   def allocation_floors
     Floor.with_allocations_to_org(self.id)

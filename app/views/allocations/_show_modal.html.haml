@@ -1,18 +1,18 @@
 .modal-header
-  %button.close{ :type => 'button', onclick: 'hide_modal(event);' } &times;
+  %button.close{ type: 'button', onclick: 'hide_modal(event);' } &times;
   %h3= Allocation.model_name.human
 
 .modal-body
   .tabbable
     %ul.nav.nav-pills
       %li.active
-        = link_to t('cmn.person_requirement'), '#ModalAlloc', 'data-toggle' => :tab
+        = link_to t('cmn.person_requirement'), '#ModalAlloc', 'data-toggle': :tab
       -#- if show_modal.allocate_equipment?
       -#  %li
-      -#    = link_to 'Equipments Details', '#ModalEquips', 'data-toggle' => :tab
+      -#    = link_to 'Equipments Details', '#ModalEquips', 'data-toggle': :tab
       -#- if show_modal.moving_items?
       -#  %li
-      -#    = link_to 'Moving Items', '#ModalMovingItems', 'data-toggle' => :tab
+      -#    = link_to 'Moving Items', '#ModalMovingItems', 'data-toggle': :tab
     .tab-content
       #ModalAlloc.tab-pane.active
         .scrollable
@@ -25,22 +25,22 @@
           = e.field :notes
         %br/
         -#- if show_modal.allocate_equipment?
-        -#  = render :partial => 'allocations/equip_photos', object: show_modal
+        -#  = render partial: 'allocations/equip_photos', object: show_modal
 
       -#- if show_modal.allocate_equipment?
       -#  #ModalEquips.tab-pane
       -#    .scrollable
-      -#      = render :partial => 'allocations/equipment', object: show_modal
+      -#      = render partial: 'allocations/equipment', object: show_modal
       -#
       -#- if show_modal.moving_items?
       -#  #ModalMovingItems.tab-pane
       -#    .scrollable
-      -#      = render :partial => 'allocations/moving_items', object: show_modal
+      -#      = render partial: 'allocations/moving_items', object: show_modal
 
 .modal-footer
   = link_to(t('cmn.edit'), edit_allocation_path(@allocation), 
-      :remote => true,
-      :class => 'btn btn-primary', 
-      'data-dismiss' => :modal, 
-      'data-target' => '#modal-dialog') if can? :update, @allocation
-  = link_to t('cmn.close'), '#', onclick: 'hide_modal(event);', :class => 'btn btn-primary', 'data-dismiss' => :modal, 'data-target' => '#modal-dialog'
+      remote: true,
+      class: 'btn btn-primary', 
+      'data-dismiss': :modal, 
+      'data-target': '#modal-dialog') if can? :update, @allocation
+  = link_to t('cmn.close'), '#', onclick: 'hide_modal(event);', class: 'btn btn-primary', 'data-dismiss': :modal, 'data-target': '#modal-dialog'

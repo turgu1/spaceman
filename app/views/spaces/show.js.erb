@@ -1,4 +1,4 @@
 replace_content('#flash-pane', "<%= j(render(partial: 'layouts/flash')) %>");
-replace_content("#floor-drawing-<%= @space.floor.id.to_s %>", "<%= j(render :partial => 'floors/edit_spaces_drawing', :object => @space.floor) %>");
-replace_content('#space-info', "<%= j(render(:partial => 'spaces/show')) %>");
+replace_content("#floor-drawing-<%= @space.floor.id.to_s %>", "<%= j(render partial: 'floors/edit_spaces_drawing', object: @space.floor) %>");
+replace_content('#space-info', "<%= j(render(partial: 'spaces/show')) %>");
 replace_content('#next_space_entry', "");

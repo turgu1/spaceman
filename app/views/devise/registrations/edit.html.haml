@@ -1,14 +1,14 @@
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-  %legend= t('.edit', :item => resource_name.to_s.humanize)
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  %legend= t('.edit', item: resource_name.to_s.humanize)
   = f.error_notification
   .form-inputs
-    = f.input :username, :required => true, :autofocus => true, input_html: { class:  'medium-field' }
-    = f.input :password, :autocomplete => "off", :hint => t('.hints.leave_blank'), :required => false, input_html: { class:  'medium-field' }
-    = f.input :password_confirmation, :required => false, input_html: { class:  'medium-field' }
-    = f.input :current_password, :hint => t('.hints.password_confirm'), :required => true, input_html: { class:  'medium-field' }
+    = f.input :username, required: true, autofocus: true, input_html: { class:  'medium-field' }
+    = f.input :password, autocomplete: "off", hint: t('.hints.leave_blank'), required: false, input_html: { class:  'medium-field' }
+    = f.input :password_confirmation, required: false, input_html: { class:  'medium-field' }
+    = f.input :current_password, hint: t('.hints.password_confirm'), required: true, input_html: { class:  'medium-field' }
   .form-actions
     = f.button :submit, t('cmn.update')
 %h3= t('.cancel_my_account')
 %p
-  #{t('.not_happy')} #{link_to t('.cancel'), registration_path(resource_name), :data => { :confirm => t('cmn.sure') }, :method => :delete}.
+  #{t('.not_happy')} #{link_to t('.cancel'), registration_path(resource_name), data: { confirm: t('cmn.sure') }, method: :delete}.
 = link_to t('cmn.back'), :back

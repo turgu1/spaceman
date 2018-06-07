@@ -24,7 +24,7 @@
       %td= moving_task.cost
       %td= link_to t('cmn.show'), moving_task
       %td= link_to t('cmn.edit'), edit_moving_task_path(moving_task)
-      %td= link_to t('cmn.destroy'), moving_task, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to t('cmn.destroy'), moving_task, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

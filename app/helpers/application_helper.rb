@@ -48,9 +48,9 @@ module ApplicationHelper
       unless label
         label = @context_obj.class.human_attribute_name(field_name)
       end
-      # :haml, :ruby => source code display pretty printing
-      # :icon => show icons in a reasonable size for the operator
-      # :yesno => output "Yes" or "No" instead of "true" or "false"
+      # :haml, ruby: source code display pretty printing
+      # icon: show icons in a reasonable size for the operator
+      # yesno: output "Yes" or "No" instead of "true" or "false"
       if options[:as] == :haml
         #val = "<pre>#{@context_obj.send(field_name)}</pre>"
         val = "<pre class=\"highlight\">#{format_code(@context_obj.send(field_name), :haml)}</pre>"

@@ -13,7 +13,7 @@
   %tbody
     - index.each do |equipment_item|
       %tr
-        %td.hcenter= image_tag("#{equipment_item.photo.thumb.url}?#{equipment_item.updated_at.to_f}", :class => 'thumbnail') unless equipment_item.photo.blank?
+        %td.hcenter= image_tag("#{equipment_item.photo.thumb.url}?#{equipment_item.updated_at.to_f}", class: 'thumbnail') unless equipment_item.photo.blank?
         %td= "#{h(equipment_item.name)}#{html_notes(h(equipment_item.notes))}".html_safe
         %td.hcenter= equipment_item.qty
         %td= equipment_item.notes

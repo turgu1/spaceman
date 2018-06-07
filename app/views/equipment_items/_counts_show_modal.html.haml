@@ -1,5 +1,5 @@
 .modal-header
-  %button.close{ :type => 'button', onclick: 'hide_modal(event);' } &times;
+  %button.close{ type: 'button', onclick: 'hide_modal(event);' } &times;
   %h3= t('.count_report')
   %h4= t('.select_building')
   = simple_form_for(:buildings, url: do_counts_equipment_items_path) do |f|
@@ -7,8 +7,8 @@
       = f.error_notification
 
       .form-inputs
-        = f.input 'selection', :collection => Building.all, :as => :check_boxes, :value_method => :id, :label_method => :short_name
+        = f.input 'selection', collection: Building.all, as: :check_boxes, value_method: :id, label_method: :short_name
     .modal-footer
       = f.button :submit, t('.do_report')
-      = link_to t('cmn.close'), '#', onclick: 'hide_modal(event);', :class => 'btn btn-primary'
+      = link_to t('cmn.close'), '#', onclick: 'hide_modal(event);', class: 'btn btn-primary'
 

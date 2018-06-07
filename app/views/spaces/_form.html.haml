@@ -4,10 +4,10 @@
   .tabbable
     %ul.nav.nav-tabs
       %li.active
-        = link_to t('cmn.attributes'), "#Attributes", 'data-toggle' => :tab
+        = link_to t('cmn.attributes'), "#Attributes", 'data-toggle': :tab
       - if @space.allocate_equipment?
         %li
-          = link_to t('cmn.equipments'), "#Equips", 'data-toggle' => :tab
+          = link_to t('cmn.equipments'), "#Equips", 'data-toggle': :tab
     .tab-content
       #Attributes.tab-pane.active
         %br/

@@ -7,7 +7,7 @@ class ModifyRolesManagementInUsers < ActiveRecord::Migration[5.1]
     remove_column :users, :role_allocation
     remove_column :users, :role_request
 
-    add_column :users, :roles, :string, :array => true, :default => []
+    add_column :users, :roles, :string, array: true, default: []
   end
 
   def down

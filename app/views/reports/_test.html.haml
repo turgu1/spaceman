@@ -1,5 +1,5 @@
 .modal-header
-  %button.close{ :type => "button", :onclick => 'hide_modal(event);' } &times;
+  %button.close{ type: "button", onclick: 'hide_modal(event);' } &times;
   %h3 Bâtiments et Allocations
   %h4 Veuillez sélectionner les bâtiments désirés:
   = simple_form_for(:buildings,
@@ -10,19 +10,19 @@
 
       .form-inputs
         = f.input 'selection',
-            :label => 'Bâtiments',
-            :collection => Building.all,
-            :as => :check_boxes,
-            :value_method => :id,
-            :label_method => :short_name
+            label: 'Bâtiments',
+            collection: Building.all,
+            as: :check_boxes,
+            value_method: :id,
+            label_method: :short_name
         .form-group
           %span.col-lg-3.col-sm-3
           .controls.col-lg-9.col-sm-9
             = link_to 'Tous', '#',
-                :class => 'smallbtn',
-                :onclick => '$("input.check_boxes").trigger("click"); return false;'
+                class: 'smallbtn',
+                onclick: '$("input.check_boxes").trigger("click"); return false;'
     .modal-footer
       = link_to 'Annule', '#',
-          :onclick => 'hide_modal(event);',
-          :class => 'btn btn-primary'
+          onclick: 'hide_modal(event);',
+          class: 'btn btn-primary'
       = f.button :submit, 'Exécution'

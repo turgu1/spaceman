@@ -8,8 +8,8 @@
 
 %br/
 
-= render :partial => 'equipment_models/index',
-    :object => @equipment_group.equipment_models,
-    :locals => { :equipment_group => @equipment_group }
+= render partial: 'equipment_models/index',
+    object: @equipment_group.equipment_models,
+    locals: { equipment_group: @equipment_group }
 
 = remote_link_to t('cmn.back'), equipment_groups_path

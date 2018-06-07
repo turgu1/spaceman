@@ -1,6 +1,6 @@
 = form_tag(bulk_space_type_floor_path) do
   .modal-header
-    %button.close{ :type => "button", onclick: 'hide_modal(event);' } &times;
+    %button.close{ type: "button", onclick: 'hide_modal(event);' } &times;
     %h3= t('.space_type_for_space')
     %p (#{space_list(spaces)})
   .modal-body
@@ -10,6 +10,6 @@
       = hidden_field_tag 'bulk_space_type[spaces][]', sp
     = select_tag 'bulk_space_type[space_type_id]', options_for_select(SpaceType.all.order(:name).collect{ |u| [u.name, u.id] })
   .modal-footer
-    = link_to t('cmn.cancel'), '#', onclick: 'hide_modal(event);', :class => 'btn btn-primary'
-    = submit_tag t('.set_type'), :class => 'btn btn-primary'
+    = link_to t('cmn.cancel'), '#', onclick: 'hide_modal(event);', class: 'btn btn-primary'
+    = submit_tag t('.set_type'), class: 'btn btn-primary'
 

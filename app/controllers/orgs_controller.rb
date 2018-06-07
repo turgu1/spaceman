@@ -57,7 +57,7 @@ class OrgsController < ApplicationController
                 { requirements: {
                   except: [:id, :org_id, :requester_id, :pm_id, :manager_id],
                   include: [
-                    { :person => { only: [:first_name, :last_name] } }
+                    { person: { only: [:first_name, :last_name] } }
                   ]}}]),
             filename: "org #{@org.abbreviation}.xml",
             type: :xml)}
@@ -82,7 +82,7 @@ class OrgsController < ApplicationController
                     { requirements: {
                         except: [:id, :org_id, :requester_id, :pm_id, :manager_id],
                         include: [
-                            { :person => { only: [:first_name, :last_name] } }
+                            { person: { only: [:first_name, :last_name] } }
                         ]}}]),
             filename: "orgs.xml",
             type: :xml)}

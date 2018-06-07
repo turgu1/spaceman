@@ -8,6 +8,6 @@
       %h3 #{floor.complete_name}
       .entity-allocations{ id: "allocations-#{inc_center_index.to_s}", 'data-entity': 'people', 'data-entity-id': @person.id, 'data-floor-id': floor.id }
         %div#a
-          = render :partial => '/floors/drawing_allocations',
+          = render partial: '/floors/drawing_allocations',
               locals: { allocation_obj: @person, floor: floor }
         %div#b

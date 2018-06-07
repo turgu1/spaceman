@@ -4,7 +4,7 @@
 - alloctest = Allocation.new
 - alloctest.space = show_modal
 .modal-header
-  %button.close{ :type => 'button', onclick: 'hide_modal(event);' } &times;
+  %button.close{ type: 'button', onclick: 'hide_modal(event);' } &times;
   %h3
     <b>#{show_modal.complete_short_name}</b>
   %h4
@@ -16,31 +16,31 @@
   .tabbable
     %ul.nav.nav-pills
       %li.active
-        = link_to t('cmn.person_requirement'), '#ModalAllocs', 'data-toggle' => :tab
+        = link_to t('cmn.person_requirement'), '#ModalAllocs', 'data-toggle': :tab
       - if show_modal.allocate_equipment?
         %li
-          = link_to t('cmn.equipments'), '#ModalEquips', 'data-toggle' => :tab
+          = link_to t('cmn.equipments'), '#ModalEquips', 'data-toggle': :tab
       - if show_modal.moving_items?
         %li
-          = link_to t('cmn.moving_items'), '#ModalMovingItems', 'data-toggle' => :tab
+          = link_to t('cmn.moving_items'), '#ModalMovingItems', 'data-toggle': :tab
     .tab-content
       #ModalAllocs.tab-pane.active
         .scrollable
         %br/
-        = render :partial => 'spaces/allocations', object: show_modal
+        = render partial: 'spaces/allocations', object: show_modal
         - if show_modal.allocate_equipment?
-          = render :partial => 'spaces/equip_photos', object: show_modal
+          = render partial: 'spaces/equip_photos', object: show_modal
 
       - if show_modal.allocate_equipment?
         #ModalEquips.tab-pane
           .scrollable
-            = render :partial => 'spaces/equipment', object: show_modal
+            = render partial: 'spaces/equipment', object: show_modal
 
       - if show_modal.moving_items?
         #ModalMovingItems.tab-pane
           .scrollable
-            = render :partial => 'spaces/moving_items', object: show_modal
+            = render partial: 'spaces/moving_items', object: show_modal
 
 .modal-footer
-  = remote_link_to(t('.new_allocation'), new_allocation_path(space_id: show_modal.id), class: 'btn btn-primary', 'data-dismiss' => :modal, 'data-target' => '#modal-dialog') if can? :new, alloctest
+  = remote_link_to(t('.new_allocation'), new_allocation_path(space_id: show_modal.id), class: 'btn btn-primary', 'data-dismiss': :modal, 'data-target': '#modal-dialog') if can? :new, alloctest
   = link_to t('cmn.close'), '#', onclick: 'hide_modal(event);', class: 'btn btn-primary'

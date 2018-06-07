@@ -1,3 +1,3 @@
 %p= t('.welcome', item: @resource.email)
 %p= t('.confirm_to')
-%p= link_to t('.confirm'), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+%p= link_to t('.confirm'), confirmation_url(@resource, confirmation_token: @resource.confirmation_token)

@@ -5,7 +5,7 @@ class CreateNewWings < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :short_name
       t.integer :order
-      t.integer :floors_count, :default => 0
+      t.integer :floors_count, default: 0
 
       t.timestamps
     end

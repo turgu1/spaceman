@@ -1,16 +1,16 @@
 .navbar.navbar-fixed-top.navbar-inverse.no-print{ role: :navigation }
   .container{ style: 'width: auto; margin-left:20px; margin-right:20px;'}
     .navbar-header
-      %button.navbar-toggle{ :type => 'button', 'data-target' => ".navbar-responsive-collapse", 'data-toggle' => 'collapse' }
+      %button.navbar-toggle{ type: 'button', 'data-target': ".navbar-responsive-collapse", 'data-toggle': 'collapse' }
         %span.fa.fa-navicon.fa-inverse
 
-      %a.navbar-brand{ :href => "#{root_path}" } SpaceMan
+      %a.navbar-brand{ href: "#{root_path}" } SpaceMan
 
     .navbar-collapse.collapse.navbar-responsive-collapse
       - if user_signed_in?
         %ul.nav.navbar-nav
           %li.dropdown
-            %a{ :href => '#', :class => 'dropdown-toggle', 'data-toggle' => :dropdown }
+            %a{ href: '#', class: 'dropdown-toggle', 'data-toggle': :dropdown }
               %i.fa.fa-home
               = t('cmn.buildings')
               %span.caret
@@ -21,7 +21,7 @@
               %li= link_to(t('.new_building').html_safe, new_building_path, html_options = { id: 'NewBuilding' }) if can? :create, Building
               %li= remote_link_to t('.list').html_safe, buildings_path, html_options = { id: 'ListBuildings' }
           %li.dropdown
-            %a{ :href => '#', :class => 'dropdown-toggle', 'data-toggle' => :dropdown }
+            %a{ href: '#', class: 'dropdown-toggle', 'data-toggle': :dropdown }
               %i.fa.fa-sitemap
               = t('cmn.organisations')
               %span.caret
@@ -32,7 +32,7 @@
               %li= remote_link_to(t('.new_org').html_safe, new_org_path) if can? :create, Org
               %li= remote_link_to t('.list').html_safe, orgs_path
           %li.dropdown
-            %a{ href: '#', class: 'dropdown-toggle', 'data-toggle' => :dropdown }
+            %a{ href: '#', class: 'dropdown-toggle', 'data-toggle': :dropdown }
               %i.fa.fa-print
               = t('.reports')
               %span.caret
@@ -44,7 +44,7 @@
                   = link_to t('.test'), test_reports_path, remote: true
 
           %li.dropdown
-            %a{ href: '#', class: 'dropdown-toggle', 'data-toggle' => :dropdown }
+            %a{ href: '#', class: 'dropdown-toggle', 'data-toggle': :dropdown }
               %i.fa.fa-cogs
               = t('.config')
               %span.caret
@@ -57,7 +57,7 @@
               = render 'table_defs/dropdown_menu'
         %ul.nav.navbar-nav.pull-right
           %li.dropdown
-            %a.dropdown-toggle{ href: '#', 'data-toggle' => :dropdown }
+            %a.dropdown-toggle{ href: '#', 'data-toggle': :dropdown }
               %i.fa.fa-user-circle
               #{h(current_user.username)}
               %span.caret
@@ -68,4 +68,4 @@
                 %a{ href: '#' }= "<b>#{t('cmn.language')}</b>".html_safe
               %li= remote_link_to("&nbsp;&nbsp;&nbsp;#{t('cmn.english')}".html_safe, do_change_language_users_path(language: 'en'))
               %li= remote_link_to("&nbsp;&nbsp;&nbsp;#{t('cmn.french')}".html_safe, do_change_language_users_path(language: 'fr'))
-          %li= link_to("<i class='fa fa-sign-out'></i> #{t('.logout')}".html_safe, destroy_user_session_path, :method => :delete)
+          %li= link_to("<i class='fa fa-sign-out'></i> #{t('.logout')}".html_safe, destroy_user_session_path, method: :delete)

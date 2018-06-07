@@ -3,7 +3,7 @@
     = f.input_field :project_name, class: 'form-control'
     = show_error f.object, :project_name
   %td
-    = f.input_field :requester_id, collection: Person.in_org(@org.id), :class => 'form-control'
+    = f.input_field :requester_id, collection: Person.in_org(@org.id), class: 'form-control'
     = show_error f.object, :requester_id
   %td.hcenter
     = f.input_field :from_date, as: :string, class: 'datepicker date-field form-control auto-date', 'data-provide': 'datepicker'

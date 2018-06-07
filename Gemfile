@@ -64,20 +64,20 @@ group :development, :test do
   gem 'listen',                     '>= 3.1.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen',      '~> 2.0.0'
-  gem 'capistrano',                 '~> 3.10',  :require => false
-  gem 'capistrano-bundler',         '~> 1.3',   :require => false
-  gem 'capistrano-rails',           '~> 1.3.1', :require => false
-  gem 'capistrano-rbenv',           '~> 2.1',   :require => false
-  gem 'capistrano-safe-deploy-to',  '~> 1.1.1', :require => false
-  gem 'capistrano-ssh-doctor',      '~> 1.0',   :require => false
-  gem 'capistrano-secrets-yml',     '~> 1.1.0', :require => false
+  gem 'capistrano',                 '~> 3.10',  require: false
+  gem 'capistrano-bundler',         '~> 1.3',   require: false
+  gem 'capistrano-rails',           '~> 1.3.1', require: false
+  gem 'capistrano-rbenv',           '~> 2.1',   require: false
+  gem 'capistrano-safe-deploy-to',  '~> 1.1.1', require: false
+  gem 'capistrano-ssh-doctor',      '~> 1.0',   require: false
+  gem 'capistrano-secrets-yml',     '~> 1.1.0', require: false
   gem 'sshkit-sudo'
-  gem 'capistrano-unicorn-nginx',   '~> 5.2.0', :require => false
-  gem 'capistrano-postgresql',      '~> 5.0.1', :require => false
+  gem 'capistrano-unicorn-nginx',   '~> 5.2.0', require: false
+  gem 'capistrano-postgresql',      '~> 5.0.1', require: false
   gem 'rspec-rails',                '~> 3.7.2'
   gem 'poltergeist',                '~> 1.17.0'
   gem 'database_cleaner',           '~> 1.6.2'
-  gem 'factory_bot_rails',          '~> 4.8.2', :require => false
+  gem 'factory_bot_rails',          '~> 4.8.2', require: false
   #gem 'bullet',                    '~> 5.6.0'
   gem 'i18n-tasks',                 '~> 0.9.21'
 

@@ -6,13 +6,13 @@
   .tabbable
     %ul.nav.nav-tabs
       %li.active
-        = link_to 'Attributes', '#Attributes', 'data-toggle' => :tab
+        = link_to 'Attributes', '#Attributes', 'data-toggle': :tab
       - if @allocation.space.floor.building.allocate_equipment?
         %li
-          = link_to 'Equipments', '#Equips', 'data-toggle' => :tab
+          = link_to 'Equipments', '#Equips', 'data-toggle': :tab
       - if @allocation.space.floor.building.moving_items?
         %li
-          = link_to 'Moving Items', '#MovingItems', 'data-toggle' => :tab
+          = link_to 'Moving Items', '#MovingItems', 'data-toggle': :tab
     .tab-content
       #Attributes.tab-pane.active
         %br/
@@ -108,7 +108,7 @@
                           = mi.input_field :notes, class: 'table-note form-control', placeholder: 'Notes...'
                           = show_error mi.object, :notes
 
-          = f.link_to_add "Add Item", :moving_items, 'data-target' => "#mitems", class: 'btn btn-xs btn-default'
+          = f.link_to_add "Add Item", :moving_items, 'data-target': "#mitems", class: 'btn btn-xs btn-default'
 
   %br/
   %br/

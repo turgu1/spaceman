@@ -6,7 +6,7 @@
       %ul#pills.nav.nav-pills.nav-stacked
         - first = true
         - groups.each do |group|
-          %li{ :class => "#{'active' if first}" }
+          %li{ class: "#{'active' if first}" }
             = link_to "<span class=\"badge\"></span>&nbsp;&nbsp;&nbsp;#{group.name}".html_safe, "#group-#{group.id}", ident: "group-#{group.id}", 'data-toggle': :tab, class: "btn-sm btn-info text-right"
           - first= false
     .col-lg-10.col-sm-10
@@ -19,21 +19,21 @@
                 %tr
                   %th.hcenter= t('.select')
                   %th.hcenter=                   EquipmentItem.human_attribute_name(:qty)
-                  %th{ :style => 'width:50%;' }= EquipmentModel.human_attribute_name(:name)
+                  %th{ style: 'width:50%;' }= EquipmentModel.human_attribute_name(:name)
                   %th.hcenter=                   EquipmentModel.human_attribute_name(:photo)
                   %th.hcenter=                   EquipmentModel.human_attribute_name(:price_str)
-                  %th{ :style => 'width:50%;' }= EquipmentItem.human_attribute_name(:notes)
+                  %th{ style: 'width:50%;' }= EquipmentItem.human_attribute_name(:notes)
               %tbody
                 - group.equipment_models.each do |model|
                   %tr{ id: "model-#{model.id}" }
                     - if item = equipment_selector.equipment_items.select { |i| i.equipment_model_id == model.id }.first
                       = hidden_field_tag "#{parent}[equipment_items_attributes][#{model.id}][id]", item.id, id: 'item_id'
                       = hidden_field_tag "#{parent}[equipment_items_attributes][#{model.id}][_destroy]", 0, id: 'destroy'
-                    = hidden_field_tag "#{parent}[equipment_items_attributes][#{model.id}][equipment_model_id]", model.id, :id => 'model_id', disabled: !item
+                    = hidden_field_tag "#{parent}[equipment_items_attributes][#{model.id}][equipment_model_id]", model.id, id: 'model_id', disabled: !item
                     %td.hcenter= check_box_tag "", 1, !item.nil?, onclick: "item_check(this, 'group-#{group.id}')", class: 'check'
-                    %td.hcenter= number_field_tag "#{parent}[equipment_items_attributes][#{model.id}][qty]", item.try(:qty), id: 'qty', class: 'small-field', :in => -500..500, disabled: !item, oninput: "item_check(this, 'group-#{group.id}')"
+                    %td.hcenter= number_field_tag "#{parent}[equipment_items_attributes][#{model.id}][qty]", item.try(:qty), id: 'qty', class: 'small-field', in: -500..500, disabled: !item, oninput: "item_check(this, 'group-#{group.id}')"
                     %td= "#{h(model.name)}#{html_notes(h(model.notes))}".html_safe
-                    %td.hcenter= image_tag("#{model.photo.thumb.url}?#{model.updated_at.to_f}", :title => "#{h(model.name)}#{unless model.notes.blank? then '&#10;Notes: ' + h(model.notes) end}".html_safe, :class => 'thumbnail') unless model.photo.blank?
+                    %td.hcenter= image_tag("#{model.photo.thumb.url}?#{model.updated_at.to_f}", title: "#{h(model.name)}#{unless model.notes.blank? then '&#10;Notes: ' + h(model.notes) end}".html_safe, class: 'thumbnail') unless model.photo.blank?
                     %td.hcenter= number_to_currency(model.price)
-                    %td= text_area_tag "#{parent}[equipment_items_attributes][#{model.id}][notes]", item.try(:notes), :id => 'notes', :disabled => !item
+                    %td= text_area_tag "#{parent}[equipment_items_attributes][#{model.id}][notes]", item.try(:notes), id: 'notes', disabled: !item
           - first = false

@@ -7,6 +7,6 @@
   = e.field :manager_name, Org.human_attribute_name(:manager)
   = e.field :admin_name,   Org.human_attribute_name(:admin)
 
-= render :partial => 'people/index', :object => @org.people, :locals => { :org => @org }
+= render partial: 'people/index', object: @org.people, locals: { org: @org }
 
-= render :partial => 'requirements/index', :object => @org.requirements, :locals => { :org => @org }
+= render partial: 'requirements/index', object: @org.requirements, locals: { org: @org }

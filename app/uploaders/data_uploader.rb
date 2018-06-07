@@ -27,15 +27,15 @@ class DataUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  #process :resize_to_limit => [900, 900]
-  #process :convert => 'png'
+  #process resize_to_limit: [900, 900]
+  #process convert: 'png'
   #
   #def filename
   #  super.chomp(File.extname(super)) + '.png' if original_filename.present?
   #end
 
   # Process files as they are uploaded:
-  # process :scale => [200, 300]
+  # process scale: [200, 300]
   #
   # def scale(width, height)
   #   # do something
@@ -43,7 +43,7 @@ class DataUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   # version :thumb do
-  #   process :scale => [50, 50]
+  #   process scale: [50, 50]
   # end
 
   # Add a white list of extensions which are allowed to be uploaded.

@@ -1,2 +1,2 @@
-replace_content('#modal-info', "<%= j(render(:partial => 'requirements/show_modal', :object => @requirement)) %>");
+replace_content('#modal-info', "<%= j(render(partial: 'requirements/show_modal', object: @requirement)) %>");
 $('#modal-dialog').modal({ backdrop: false, show: true });

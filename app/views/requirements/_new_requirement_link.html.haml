@@ -1,1 +1,1 @@
-= remote_link_to('<i class="fa fa-plus"></i>'.html_safe, new_requirement_path(:org => org.id), class: 'smallbtn', title: t('.title')) if can_create_requirement?(org.id)
+= remote_link_to('<i class="fa fa-plus"></i>'.html_safe, new_requirement_path(org: org.id), class: 'smallbtn', title: t('.title')) if can_create_requirement?(org.id)

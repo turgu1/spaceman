@@ -1,5 +1,5 @@
 .legend_u
-  = link_to(t('cmn.edit'), edit_allocation_path(@allocation), :class => 'smallbtn') if can? :update, @allocation
+  = link_to(t('cmn.edit'), edit_allocation_path(@allocation), class: 'smallbtn') if can? :update, @allocation
   = Allocation.model_name.human
 
 = show_entry(@allocation) do |e|

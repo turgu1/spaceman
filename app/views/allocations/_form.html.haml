@@ -6,13 +6,13 @@
   .tabbable
     %ul.nav.nav-tabs
       %li.active
-        = link_to t('cmn.attributes'), '#Attributes', 'data-toggle' => :tab
+        = link_to t('cmn.attributes'), '#Attributes', 'data-toggle': :tab
       - if @allocation.allocate_equipment?
         %li
-          = link_to t('cmn.equipments'), '#Equips', 'data-toggle' => :tab
+          = link_to t('cmn.equipments'), '#Equips', 'data-toggle': :tab
       - if @allocation.moving_items?
         %li
-          = link_to t('cmn.moving_items'), '#MovingItems', 'data-toggle' => :tab
+          = link_to t('cmn.moving_items'), '#MovingItems', 'data-toggle': :tab
     .tab-content
       #Attributes.tab-pane.active
         %br/
@@ -25,9 +25,9 @@
                   .col-lg-3.col-sm-3
                   %ul.nav.nav-pills.col-lg-9.col-sm-9
                     %li{ class: "#{@allocation.consumer_type != 'Requirement' ? 'active' : ''}" }
-                      = link_to t('cmn.person'), '#APerson', 'data-toggle' => :pill
+                      = link_to t('cmn.person'), '#APerson', 'data-toggle': :pill
                     %li{ class: "#{@allocation.consumer_type == 'Requirement' ? 'active' : ''}" }
-                      = link_to t('cmn.requirement'), '#ARequirement', 'data-toggle' => :pill
+                      = link_to t('cmn.requirement'), '#ARequirement', 'data-toggle': :pill
                   .tab-content
                     %br/
                     #APerson.tab-pane{ class: "#{@allocation.consumer_type != 'Requirement' ? 'active' : ''}" }

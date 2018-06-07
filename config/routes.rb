@@ -122,7 +122,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
+  devise_for :users, path: '', path_names: {sign_in: 'login', sign_out: 'logout'}
 
   get 'home/index'
 

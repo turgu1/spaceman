@@ -18,5 +18,5 @@
         %th.nowrap.no-print
     %tbody
       - index.each do |allocation|
-        = render :partial => 'allocations/allocation_row',
-          :object => allocation
+        = render partial: 'allocations/allocation_row',
+          object: allocation

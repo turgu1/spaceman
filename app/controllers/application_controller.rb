@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     # For debugging purpose only. Not to be used in production.
     # 
     #def set_user
-    #  @current_user = User.where(:username => 'the_username').take
+    #  @current_user = User.where(username: 'the_username').take
     #end
 
     # An easy way to have Devise accept :email as an attribute for a user sign_up process

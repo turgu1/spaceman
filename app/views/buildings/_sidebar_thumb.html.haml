@@ -10,12 +10,12 @@
 - unless fi.nil?
   - if in_panels
     .panel-heading
-      %a.panel-toggle{ href: "#fi-#{fi.id}", 'data-toggle' => 'collapse', 'data-parent' => '#locators'}
+      %a.panel-toggle{ href: "#fi-#{fi.id}", 'data-toggle': 'collapse', 'data-parent': '#locators'}
         %h3.panel-title #{fi.name}
     .panel-body.collapse{ id: "fi-#{fi.id}", class: "#{'in' if floor && (floor.level == level[0]) }"}
       .panel-inner
-        = render partial: 'buildings/thumb', object: sidebar_thumb, :locals => { fi: fi, level: level, in_panels: in_panels }
+        = render partial: 'buildings/thumb', object: sidebar_thumb, locals: { fi: fi, level: level, in_panels: in_panels }
   - else
     .thumbnail
-      = render partial: 'buildings/thumb', object: sidebar_thumb, :locals => { fi: fi, level: level, in_panels: in_panels }
+      = render partial: 'buildings/thumb', object: sidebar_thumb, locals: { fi: fi, level: level, in_panels: in_panels }
       .caption{ style: 'text-align:center;'}= "#{fi.name}"
