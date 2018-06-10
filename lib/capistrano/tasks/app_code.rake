@@ -1,7 +1,6 @@
 namespace :app_code do
 
   desc "Upload the application source code"
-
   task :upload do
 
     on roles :app do |host|

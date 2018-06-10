@@ -1,7 +1,7 @@
 
 namespace :rbenv do
-  desc "Install rbenv"
 
+  desc "Install rbenv"
   task :install do
 
     on roles :app do |host|

@@ -13,8 +13,8 @@
 #
 
 namespace :user_and_ssh_setup do
-  desc 'Create user on server and proper authorization keys'
 
+  desc 'Create user on server and proper authorization keys'
   task :install do
 
     on roles(:all) do |host|

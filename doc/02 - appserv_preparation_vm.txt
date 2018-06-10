@@ -25,7 +25,7 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
 
 2. Installation de l'OS, utilisateur [admserv, admservpassword] et login comme usager admserv
 
-3. Ajouter une entrée dans sudoers pour que l'utilisateur admserv puisse utiliser sudo sans mot de passe: requis pour capistrano.
+3. Ajouter une entrée dans sudoers pour que l'utilisateur admserv puisse utiliser sudo sans mot de passe: requis pour capistrano. Si possible, utiliser une session en ssh pour se connecter au serveur. Il sera ainsi possible d'effectuer des copier-coller des commandes au lieu de les taper à la main...
    
     [on est sur admserv@appserv]
 
@@ -53,9 +53,7 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
 
    ... selon les règles de gestion ...
 
-8. $ sudo apt install openssh-server
-
-9. Facultatif: sur appserv, ajout de l'adresse IP de appdev dans la table des hosts si le DNS ne contient pas les entrées pour appdev. ssh à partir de appdev vers appserv ne fonctionnera probablement pas tant que la table des hosts n'est pas à jour sur appserv ou qu'un serveur DNS ne répond pas...:
+8. Facultatif: sur appserv, ajout de l'adresse IP de appdev dans la table des hosts si le DNS ne contient pas les entrées pour appdev. Sinon, il faut avoir indiqué les adresse IP dans la mise à jour des fichiers ~/Dev/staging.rb et ~/Dev/production.rb dans la première partie de cette installation:
 
   $ sudo nano /etc/hosts
 
@@ -65,7 +63,7 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
 
   <ctrl-x>, <y>
 
-10. Facultatif: Sur appdev, ajout de l'adresse de appserv dans la table des hosts si le DNS ne contient pas les entrées pour appserv. ssh à partir d'appserv vers appdev ne fonctionnera probablement pas tant que la table des hosts n'est pas à jour sur appdev ou qu'un serveur DNS ne répond pas...:
+9. Facultatif: Sur appdev, ajout de l'adresse de appserv dans la table des hosts si le DNS ne contient pas les entrées pour appserv. Même commentaire que pour le paragraphe précédent:
 
   [ on est dans admdev@appdev ou userdev@appdev ]
 
@@ -78,14 +76,14 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
   <ctrl-x>, <y>
 
 
-11. Copier id_rsa.pub dans compte admserv@appserv à partir de userdev@appdev
+10. Copier id_rsa.pub dans compte admserv@appserv à partir de userdev@appdev
 
     [on est sur userdev@appdev]
    
     S'il n'y a pas de fichier id_rsa dans le compte, le générer de la manière suivante (devrait avoir été effectué dans la procédure de préparation de appdev):
   
     $ mkdir ~/.ssh
-    $ chmod 700 ~/.ssh
+    $ chmod 700 ~/.ssh    
     $ cd ~/.ssh
     $ ssh-keygen -t rsa -b 4096
    
@@ -93,16 +91,19 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
    
     $ scp ~/.ssh/id_rsa.pub admserv@appserv:.
 
-12. Installation de la clé publique ssh pour permettre le login sans mot de passe:
+11. Installation de la clé publique ssh pour permettre le login sans mot de passe:
    
    [on est sur admserv@appserv]
    
-   $ mkdir .ssh
-   $ chmod 700 .ssh
-   $ mv id_rsa.pub .ssh/authorized_keys
-   $ chmod 600 .ssh/authorized_keys
+   S'il n'y a pas de répertoire .ssh:
    
-13. Facultatif: pour empêcher un login via mot de passe (clé rsa uniquement):
+      $ mkdir .ssh
+      $ chmod 700 .ssh
+   
+   $ mv id_rsa.pub ~/.ssh/authorized_keys
+   $ chmod 600 ~/.ssh/authorized_keys
+   
+12. Facultatif: pour empêcher un login via mot de passe (clé RSA uniquement):
 
    $ sudo nano /etc/ssh/sshd_config
    
@@ -116,7 +117,7 @@ Les éléments suivants doivent  être ajustés dans le texte pour correspondre 
    
    <ctrl-x>, <y>
    
-14. Validation: À partir de userdev@appdev, on doit pouvoir effectuer une commande ssh de login sans mot de passe:
+13. Validation: À partir de userdev@appdev, on doit pouvoir effectuer une commande ssh de login sans mot de passe:
 
    $ ssh admserv@appserv
    

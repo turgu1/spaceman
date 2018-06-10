@@ -1,6 +1,6 @@
 namespace :ruby_lang do
-  desc 'Install Ruby and the Bundler gem'
 
+  desc 'Install Ruby and the Bundler gem'
   task :install do
 
     on roles :app do |host|

@@ -155,7 +155,18 @@ window.on_ajax_load = () ->
 
   $('.droppable').not('.ui-droppable').droppable({
     tolerance: 'pointer',
-    drop: (event, ui) -> event.stopPropagation(); check_drop(event, ui, this); return false })
+    accept: () -> return accept_drop(),
+    drop: (event, ui) -> 
+      if (! $('.already-dropped').length)
+        $('body').addClass('already-dropped')
+        setTimeout(
+          () -> $('.already-dropped').removeClass('already-dropped'),
+          100)
+        event.stopPropagation(); 
+        check_drop(event, ui, this); 
+        return false
+    })
+
   $('.draggable').not('.ui-draggable').draggable({
     cursor: 'hand',
     helper: 'clone'})

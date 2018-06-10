@@ -175,7 +175,11 @@ pnrect = (vertx, verty, testx, testy) ->
 area = []
 
 window.map_area_for_drop = () ->
+
+  area = []
+
   $('.space-area').each((i) ->
+    console.log(i + ": " + $(this).attr('id'))
     # This creates an array of area polygon objects so that we can test when an item has been dropped inside of one
     area[i] = {} # creates a new object which will have properties for id, x coordinates, and y coordinates
     area[i].id = $(this).attr("id")
@@ -210,6 +214,9 @@ dropTarget = (dropX, dropY) ->
 # Following a drag and drop movement by the user, this method find in which area the mouse cursor was in and
 # call the auto_new action of allocations to quickly add a new allocation. Does nothing if the
 # mouse cursor location doesn't point at a map area.
+
+window.accept_drop = () -> return area.length > 0
+
 window.check_drop = (event, ui, elem) ->
 
   x1 = event.pageX - $(elem).offset().left # ui.offset.left # + (ui.draggable.width()  / 2)  # establishes the center of the object to use for testing x,y
@@ -225,6 +232,7 @@ window.check_drop = (event, ui, elem) ->
     call_remote(
       '/allocations/auto_new.js?space_id=' + result + '&' + field + '=' + ui.draggable[0].id,
       { right_column_state: true, center_column_state: true, the_object: elem })
+    return true
 
   return false
 
