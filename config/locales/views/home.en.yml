@@ -12,7 +12,7 @@ en:
       import: Import XML Data
     index:
       title: Building Space Management (SpaceMan)
-      version: Version 2.0
+      version: Version 2.2
       welcome: Welcome! Have fun using this application!
       bad_version: This version of Internet Explorer is not appropriate for use with this application. You may encounter various discrepancies in your interaction with SpaceMan. Please update your browser to version 9 or later.
       javascript: Please enable JavaScript to use this application.
