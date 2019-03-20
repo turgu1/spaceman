@@ -12,7 +12,7 @@ fr:
       import: Importation de données XML
     index:
       title: Gestion des espaces de travail (SpaceMan)
-      version: Version 2.2
+      version: Version 2.3
       welcome: Bienvenue !
       bad_version: "Cette version d'Internet Explorer n'est pas appropriée pour utiliser cette application. Vous pourriez rencontrer divers écarts de fonctionnement. S.v.p. veuillez mettre à jour votre navigateur pour la version 11 ou plus récente."
       javascript: "S.v.p. activer Javascript dans votre navigateur. Cette application ne peut fonctionner convenablement sans l'aide de Javascript."
