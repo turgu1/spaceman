@@ -22,10 +22,10 @@ gem 'jquery-ui-rails',              '~> 6.0.1'
 
 gem 'haml-rails',                   '~> 1.0.0'
 
-gem 'simple_form',                  '~> 4.0.1'
+gem 'simple_form',                  '~> 5.0.0'
 gem 'cocoon',                       '~> 1.2.11'
 
-gem 'devise',                       '~> 4.6.1' # was 4.4.3 (GT)
+gem 'devise',                       '~> 4.7.1' # was 4.6.1 (GT)
 gem 'cancancan',                    '~> 2.1.3'
 
 gem 'carrierwave',                  '~> 1.2.2'
