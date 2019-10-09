@@ -44,7 +44,7 @@ gem 'axlsx_rails',                  '~> 0.5.2'
 gem 'ace-rails-ap',                 '~> 4.1.4'
 gem 'yaml_db', github: 'turgu1/yaml_db', branch: 'rails4'
 
-gem 'rubyzip',                      '~> 1.3.0'
+gem 'rubyzip',                      '~> 2.0.0'
 
 gem 'unicorn',                      '~> 5.4.0'
 
